@@ -1,4 +1,43 @@
 @tailwind base;
+@layer base {
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 40px;
+    font-weight: 700;
+  }
+  h3 {
+    font-size: 32px;
+    font-weight: 700;
+  }
+  h4 {
+    font-size: 28px;
+    font-weight: 700;
+  }
+  h5 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  h6 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* color */
+  --reject: #d63d22;
+  --success: #18c52d;
+  --upload: #74f583;
+  --main-gray: #999999;
+
+  /* transition */
+  --transition: all 0.3s ease-in-out;
+
+  /* border */
+  --radius: 4px;
+}
