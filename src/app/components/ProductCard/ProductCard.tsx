@@ -11,7 +11,7 @@ const ProductCard = ({
 }: Props) => {
   return (
     <>
-      <Link href={`product/${productId}`}>
+      <Link href={`products/${productId}`}>
         <div className="w-96 bg-white rounded-lg shadow-lg overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-[2px]">
           <div className="p-4">
             <h3 className="text-lg font-medium text-gray-900">{productName}</h3>

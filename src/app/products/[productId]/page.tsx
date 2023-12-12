@@ -8,7 +8,12 @@ type Props = {
 };
 
 const productDetailPage = ({ params: { productId } }: Props) => {
-  return <div>{productId}</div>;
+  return (
+    <>
+      <h1>hi</h1>
+      <div>{productId}</div>
+    </>
+  );
 };
 
 export default productDetailPage;

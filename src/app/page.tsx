@@ -6,9 +6,9 @@ export default function Home() {
   return (
     <>
     <header>
-      <h3>
+      <h4>
         Product List
-      </h3>
+      </h4>
     </header>
       <div>
         {products.map((product: Product) => {
