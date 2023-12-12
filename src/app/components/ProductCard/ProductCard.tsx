@@ -12,7 +12,7 @@ const ProductCard = ({
   return (
     <>
       <Link href={`products/${productId}`}>
-        <div className="w-96 bg-white rounded-lg shadow-lg overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-[2px]">
+        <div className="max-w-[320px] w-[260px] flex-grow bg-white rounded-lg shadow-xl overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-[2px] border-gray-200 border">
           <div className="p-4">
             <h3 className="text-lg font-medium text-gray-900">{productName}</h3>
             <p className="mt-1 text-sm text-gray-500">{productDescription}</p>
