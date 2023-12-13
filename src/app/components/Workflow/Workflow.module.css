@@ -1,0 +1,96 @@
+.dimond {
+  border: 4px solid;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  width: 50px;
+  height: 50px;
+  padding: 2px;
+  position: relative;
+  border-radius: var(--radius);
+  -webkit-border-radius: var(--radius);
+  -moz-border-radius: var(--radius);
+  -ms-border-radius: var(--radius);
+  -o-border-radius: var(--radius);
+}
+.dimond span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+  -moz-transform: translate(-50%, -50%) rotate(-45deg);
+  -ms-transform: translate(-50%, -50%) rotate(-45deg);
+  -o-transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.succeedItem .dimond {
+  border-color: var(--success);
+}
+.succeedItem {
+  color: var(--success);
+}
+
+.succeedItem .topRight,
+.succeedItem .topLeft,
+.succeedItem .bottomRight,
+.succeedItem .bottomLeft,
+.succeedItem .line {
+  background-color: var(--success);
+}
+.topRight,
+.topLeft,
+.bottomRight,
+.bottomLeft {
+  position: absolute;
+  width: 2px;
+  height: 30px;
+}
+
+.topLeft {
+  top: 7px;
+  left: -12px;
+}
+.topRight {
+  top: -25px;
+  right: 20px;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+.bottomLeft {
+  bottom: -25px;
+  left: 20px;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+.bottomRight {
+  top: 7px;
+  right: -12px;
+}
+
+.input input {
+  display: none;
+}
+
+.input {
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  display: inline-block;
+  padding: 4px 8px;
+  cursor: pointer;
+  -webkit-border-radius: var(--radius);
+  -moz-border-radius: var(--radius);
+  -ms-border-radius: var(--radius);
+  -o-border-radius: var(--radius);
+  font-size: 10px;
+  background-color: royalblue;
+  color: white;
+}

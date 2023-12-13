@@ -19,7 +19,7 @@ const ProductCard = ({
           </div>
           <div className="bg-gray-50 px-4 py-3 sm:px-6">
             <div className="text-sm text-center">
-              <span className="font-medium text-gray-900">$100</span> USD
+              <span className="font-medium text-gray-900">100</span>
             </div>
           </div>
         </div>
