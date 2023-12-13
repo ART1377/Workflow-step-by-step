@@ -26,20 +26,6 @@
   -o-transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.succeedItem .dimond {
-  border-color: var(--success);
-}
-.succeedItem {
-  color: var(--success);
-}
-
-.succeedItem .topRight,
-.succeedItem .topLeft,
-.succeedItem .bottomRight,
-.succeedItem .bottomLeft,
-.succeedItem .line {
-  background-color: var(--success);
-}
 .topRight,
 .topLeft,
 .bottomRight,
@@ -74,6 +60,66 @@
 .bottomRight {
   top: 7px;
   right: -12px;
+}
+
+.succeedItem .dimond {
+  border-color: var(--success);
+}
+.succeedItem {
+  color: var(--success);
+}
+
+.succeedItem .topRight,
+.succeedItem .topLeft,
+.succeedItem .bottomRight,
+.succeedItem .bottomLeft,
+.succeedItem .line {
+  background-color: var(--success);
+}
+
+.rejectedItem .dimond {
+  border-color: var(--reject);
+}
+.rejectedItem {
+  color: var(--reject);
+}
+
+.rejectedItem .topRight,
+.rejectedItem .topLeft,
+.rejectedItem .bottomRight,
+.rejectedItem .bottomLeft,
+.rejectedItem .line {
+  background-color: var(--reject);
+}
+
+.upladedItem .dimond {
+  border-color: var(--upload);
+}
+.upladedItem {
+  color: var(--upload);
+}
+
+.upladedItem .topRight,
+.upladedItem .topLeft,
+.upladedItem .bottomRight,
+.upladedItem .bottomLeft,
+.upladedItem .line {
+  background-color: var(--upload);
+}
+
+.defaultItem .dimond {
+  border-color: var(--main-gray);
+}
+.defaultItem {
+  color: var(--main-gray);
+}
+
+.defaultItem .topRight,
+.defaultItem .topLeft,
+.defaultItem .bottomRight,
+.defaultItem .bottomLeft,
+.defaultItem .line {
+  background-color: var(--main-gray);
 }
 
 .input input {
