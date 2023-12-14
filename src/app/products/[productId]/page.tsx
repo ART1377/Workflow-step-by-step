@@ -60,7 +60,7 @@ const productDetailPage = ({ params: { productId } }: Props) => {
           <Workflow steps={productData?.steps!} />
         </section>
 
-        <section className="mt-10">
+        <section className="my-10">
           <WorkflowOperations steps={productData?.steps!} />
         </section>
       </div>

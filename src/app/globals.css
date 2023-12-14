@@ -3,26 +3,32 @@
   h1 {
     font-size: 48px;
     font-weight: 700;
+    color: rgb(17 24 39);
   }
   h2 {
     font-size: 40px;
     font-weight: 700;
+    color: rgb(17 24 39);
   }
   h3 {
     font-size: 32px;
     font-weight: 600;
+    color: rgb(17 24 39);
   }
   h4 {
     font-size: 28px;
     font-weight: 500;
+    color: rgb(17 24 39);
   }
   h5 {
     font-size: 24px;
     font-weight: 400;
+    color: rgb(17 24 39);
   }
   h6 {
     font-size: 20px;
     font-weight: 400;
+    color: rgb(17 24 39);
   }
 }
 @tailwind components;
@@ -41,3 +47,8 @@
   /* border */
   --radius: 4px;
 }
+
+body {
+  background-color: #f2ebe375;
+}
+
