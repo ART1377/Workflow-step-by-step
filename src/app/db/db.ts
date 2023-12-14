@@ -202,6 +202,8 @@ export const products = [
         step: 2,
       },
       { person: { personName: "", personId: "" }, state: "default", step: 3 },
+      { person: { personName: "", personId: "" }, state: "default", step: 4 },
+      { person: { personName: "", personId: "" }, state: "default", step: 5 },
     ],
   },
   {

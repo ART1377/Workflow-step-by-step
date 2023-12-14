@@ -36,12 +36,12 @@
 }
 
 .topLeft {
-  top: 7px;
-  left: -12px;
+  top: 15%;
+  left: -25%;
 }
 .topRight {
-  top: -25px;
-  right: 20px;
+  top: -56%;
+  right: 48%;
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
@@ -49,8 +49,8 @@
   -o-transform: rotate(-90deg);
 }
 .bottomLeft {
-  bottom: -25px;
-  left: 20px;
+  bottom: -56%;
+  left: 48%;
   transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
@@ -58,8 +58,8 @@
   -o-transform: rotate(-90deg);
 }
 .bottomRight {
-  top: 7px;
-  right: -12px;
+  top: 15%;
+  right: -25%;
 }
 
 .succeedItem .dimond {
