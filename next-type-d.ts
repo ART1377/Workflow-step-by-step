@@ -9,6 +9,7 @@ export interface Step {
   person: Person;
   state: string;
   step: number;
+  file:File|null;
 }
 export interface Person {
   personName: string;

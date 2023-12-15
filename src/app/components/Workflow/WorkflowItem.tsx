@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  MdDoneAll,
-  MdClose,
-  MdCircle,
-  MdCheck,
-} from "react-icons/md";
+import { MdDoneAll, MdClose, MdCircle, MdCheck } from "react-icons/md";
 import style from "./Workflow.module.css";
 import { Step } from "../../../../next-type-d";
+import { MdPerson } from "react-icons/md";
 
 type Props = {
   step: Step;
@@ -58,9 +54,12 @@ const WorkflowItem = ({ step }: Props) => {
             )}
             {step.state}
           </span>
-          <p className="text-gray-500 text-xs my-1">
-            {step.person.personName}
-          </p>
+          {step.file && (
+            <p className="text-gray-500 text-xs my-1 font-bold flex items-center gap-px">
+              <MdPerson className="text-sm" />
+              {step.person.personName}
+            </p>
+          )}
         </div>
       </div>
     </>

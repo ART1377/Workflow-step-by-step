@@ -4,6 +4,7 @@ import { Step } from "../../../../next-type-d";
 import Button from "../Button/Button";
 import { MdDoneAll, MdClose, MdCircle, MdCheck } from "react-icons/md";
 import { useParams } from "next/navigation";
+import { MdPerson } from "react-icons/md";
 
 type Props = {
   steps: Step[];
@@ -19,7 +20,7 @@ const WorkflowOperations = ({ steps }: Props) => {
           return (
             <div
               key={step.step}
-              className={`w-full max-w-[600px] flex flex-col justify-between min-h-[140px] bg-white shadow rounded border-s-8 
+              className={`w-full max-w-[600px] flex flex-col justify-between min-h-[120px] bg-white shadow rounded border-s-8 
                 ${
                   step.state === "succeed"
                     ? "border-success shadow-success"
@@ -32,9 +33,10 @@ const WorkflowOperations = ({ steps }: Props) => {
             >
               <div className="p-3">
                 <h6 className="uppercase">step {step.step}</h6>
-                {step.person.personName && (
-                  <p className="capitalize mt-2">
-                    person name :
+                {step.file && (
+                  <p className="capitalize mt-2 flex items-center">
+                    <MdPerson className="text-base" />
+                    name :
                     <span className="font-bold ms-1">
                       {step.person.personName}
                     </span>
@@ -42,12 +44,7 @@ const WorkflowOperations = ({ steps }: Props) => {
                 )}
               </div>
               <div className="flex justify-between items-center gap-3 bg-gray-50 px-3 py-2">
-                <div
-                  className={`flex items-center 
-                
-               
-                `}
-                >
+                <div className={`flex items-center`}>
                   <span
                     className={`ms-2 me-1 ${
                       step.state === "succeed"
@@ -84,7 +81,7 @@ const WorkflowOperations = ({ steps }: Props) => {
                   </span>
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex gap-2">
                   <Button
                     variant="reject"
                     onClick={() => console.log("Rejected")}
