@@ -7,11 +7,11 @@ type Props = {
 };
 
 const ProductCard = ({
-  productData: { productId, productName, productDescription, steps },
+  productData: { id, productName, productDescription, steps },
 }: Props) => {
   return (
     <>
-      <Link href={`products/${productId}`} className="w-full sm:w-[47%] lg:w-[30%] max-w-[600px]">
+      <Link href={`products/${id}`} className="w-full sm:w-[47%] lg:w-[30%] max-w-[600px]">
         <div className=" flex-grow bg-white rounded-lg shadow-xl overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-[2px] border-gray-200 border">
           <div className="p-4">
             <h3 className="text-lg font-medium text-gray-900">{productName}</h3>

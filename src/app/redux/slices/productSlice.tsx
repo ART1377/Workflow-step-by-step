@@ -3,7 +3,7 @@ import axios from "axios";
 // import { RootState } from '../store';
 import { Product, Step } from "../../../../next-type-d";
 
-const API_URL = "http://127.0.0.1:3500/products";
+const API_URL = "http://127.0.0.1:3500";
 
 export interface InitialStateType {
   products: Product[];
@@ -15,6 +15,16 @@ const initialState: InitialStateType = {
   status: "idle", //'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
 };
+
+
+export const fetchProductById = createAsyncThunk(
+  "products/fetchProductById",
+  async (productId: string) => {
+    const response = await axios.get(`${API_URL}/products/${productId}`);
+    return response.data;
+  }
+);
+
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
@@ -82,11 +92,11 @@ const productSlice = createSlice({
         const updatedStep = action.payload.updatedStep;
 
         state.products = state.products.map((product: Product) =>
-          product.productId === productId
+          product.id === productId
             ? {
                 ...product,
                 steps: product.steps.map((step: Step) =>
-                  step.state === updatedStep.state ? updatedStep : step
+                  step.step === updatedStep.step ? updatedStep : step
                 ),
               }
             : product
@@ -95,6 +105,18 @@ const productSlice = createSlice({
       .addCase(updateProduct.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "Failed to update product";
+      })
+      // fetch single product
+      .addCase(fetchProductById.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchProductById.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.products = [action.payload]; // Assuming you store a single product in an array
+      })
+      .addCase(fetchProductById.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = "Failed to fetch product";
       });
   },
 });

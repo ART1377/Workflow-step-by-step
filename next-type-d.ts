@@ -1,5 +1,5 @@
 export interface Product {
-  productId: string;
+  id: string;
   productName: string;
   productDescription: string;
   steps: Step[];

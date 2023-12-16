@@ -2,7 +2,7 @@
 import React from "react";
 
 interface ButtonProps {
-  variant: "reject" | "success";
+  variant: "reject" | "success" | "upload";
   onClick: () => void;
   children: React.ReactNode;
 }
@@ -11,15 +11,17 @@ const Button: React.FC<ButtonProps> = ({ variant, onClick, children }) => {
   const getVariantClasses = () => {
     switch (variant) {
       case "reject":
-        return "bg-red-500 hover:bg-red-600 text-white px-2 py-1 capitalize";
+        return "bg-reject";
       case "success":
-        return "bg-green-500 hover:bg-green-600 text-white px-2 py-1 capitalize";
+        return "bg-success";
+      case "upload":
+        return " bg-cyan-600";
     }
   };
 
   return (
     <button
-      className={`rounded transition-all duration-500 ${getVariantClasses()}`}
+      className={`rounded transition-all duration-500 hover:opacity-80 text-white px-2 py-1 capitalize ${getVariantClasses()}`}
       onClick={onClick}
     >
       {children}

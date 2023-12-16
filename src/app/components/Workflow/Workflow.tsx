@@ -47,7 +47,7 @@ const Workflow = ({ steps }: Props) => {
         {/* All Steps Except Start Step ********* */}
 
         {/* All Steps Except Start Step ***** */}
-        {steps.map((step: Step) => (
+        {steps?.map((step: Step) => (
           <WorkflowItem key={step.step} step={step} />
         ))}
       </div>
