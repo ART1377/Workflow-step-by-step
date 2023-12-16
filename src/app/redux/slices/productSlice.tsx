@@ -5,6 +5,7 @@ import { Product, Step } from "../../../../next-type-d";
 
 const API_URL = "http://127.0.0.1:3500";
 
+
 export interface InitialStateType {
   products: Product[];
   status: string;
@@ -16,7 +17,6 @@ const initialState: InitialStateType = {
   error: null,
 };
 
-
 export const fetchProductById = createAsyncThunk(
   "products/fetchProductById",
   async (productId: string) => {
@@ -24,7 +24,6 @@ export const fetchProductById = createAsyncThunk(
     return response.data;
   }
 );
-
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",

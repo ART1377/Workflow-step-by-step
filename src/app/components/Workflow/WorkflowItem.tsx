@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdDoneAll, MdClose, MdCircle, MdCheck } from "react-icons/md";
 import style from "./Workflow.module.css";
 import { Step } from "../../../../next-type-d";
-import { MdPerson } from "react-icons/md";
+import { MdPerson, MdOutlineFileUpload, MdDeleteOutline } from "react-icons/md";
+import { useAppDispatch } from "@/app/redux/hooks/hooks";
+import { useParams } from "next/navigation";
+import { updateProduct } from "@/app/redux/slices/productSlice";
 
 type Props = {
   step: Step;
 };
 
 const WorkflowItem = ({ step }: Props) => {
+  const params = useParams();
+  const id = params.productId.toString();
+
+  const [file, setFile] = useState<File | null>(null);
+  const dispatch = useAppDispatch();
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFile(event.target.files![0]);
+    // if (!file) {
+    //   return;
+    // } else {
+    //   dispatch(
+    //     updateProduct({
+    //       productId: id,
+    //       updatedStep: { ...step, state: "uploaded" },
+    //     })
+    //   );
+    // }
+  };
+
+  console.log(file);
+
   return (
     <>
       <div
@@ -60,6 +85,25 @@ const WorkflowItem = ({ step }: Props) => {
               {step.person.personName}
             </p>
           )}
+
+          <div className="flex gap-1">
+            <label className="inline-block mt-0.5">
+              <input
+                type="file"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+              <div className="p-0.5 rounded cursor-pointer bg-upload">
+                <MdOutlineFileUpload className="text-base text-white" />
+              </div>
+            </label>
+            <div className="p-0.5 rounded cursor-pointer bg-reject">
+              <MdDeleteOutline className="text-base text-white" />
+            </div>
+            <div className="p-0.5 rounded cursor-pointer bg-success">
+              <MdCheck className="text-base text-white" />
+            </div>
+          </div>
         </div>
       </div>
     </>
@@ -67,3 +111,14 @@ const WorkflowItem = ({ step }: Props) => {
 };
 
 export default WorkflowItem;
+
+{
+  //   const [file, setFile] = useState<File | null>(null);
+  //   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //     setFile(event.target.files![0]);
+  //   };
+  /* <label className={` ${style.input}`}>
+              <input type="file" onChange={handleFileChange} />
+              Upload
+            </label> */
+}
