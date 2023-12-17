@@ -158,13 +158,3 @@ const WorkflowItem = ({ step }: Props) => {
 
 export default WorkflowItem;
 
-{
-  //   const [file, setFile] = useState<File | null>(null);
-  //   const fileChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //     setFile(event.target.files![0]);
-  //   };
-  /* <label className={` ${style.input}`}>
-              <input type="file" onChange={fileChangeHandler} />
-              Upload
-            </label> */
-}

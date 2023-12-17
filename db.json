@@ -170,9 +170,13 @@
             "personName": "Isaac",
             "personId": "006"
           },
-          "state": "succeed",
+          "state": "uploaded",
           "step": 1,
-          "file": null
+          "file": {
+            "name": "Screenshot (2).png",
+            "type": "image/png",
+            "size": 96304
+          }
         },
         {
           "person": {
@@ -197,9 +201,13 @@
             "personName": "Isaac",
             "personId": "006"
           },
-          "state": "default",
+          "state": "uploaded",
           "step": 4,
-          "file": null
+          "file": {
+            "name": "Screenshot (3).png",
+            "type": "image/png",
+            "size": 345996
+          }
         },
         {
           "person": {

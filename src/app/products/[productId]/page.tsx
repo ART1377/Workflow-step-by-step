@@ -45,7 +45,7 @@ const productDetailPage = ({ params: { productId } }: Props) => {
                         : "text-main-gray"
                     }`}
                   >
-                    step {step.step} : {step.state}
+                    Step {step.step} : {step.state}
                   </li>
                 );
               })}
