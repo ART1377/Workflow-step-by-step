@@ -1,17 +1,10 @@
 "use client";
 import React, { useEffect } from "react";
-import type { Metadata } from "next";
-// import { products } from "@/app/db/db";
-import { Product } from "../../../../next-type-d";
 import Workflow from "@/app/components/Workflow/Workflow";
 import WorkflowOperations from "@/app/components/WrokflowOperations/WorkflowOperations";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
-import {
-  fetchProductById,
-  fetchProducts,
-} from "@/app/redux/slices/productSlice";
-import Loading from "@/app/loading";
-import { notFound } from "next/navigation";
+import { fetchProductById } from "@/app/redux/slices/productSlice";
+import { notFound, useParams } from "next/navigation";
 
 type Props = {
   params: {
@@ -19,20 +12,17 @@ type Props = {
   };
 };
 
-
 const productDetailPage = ({ params: { productId } }: Props) => {
   const dispatch = useAppDispatch();
-  const products = useAppSelector((state) => state.product);
-  const productData = products.products[0];
-
+  const productData = useAppSelector((state) => state.product.products[0]);
+  const productStatus = useAppSelector((state) => state.product.status);
 
   useEffect(() => {
     dispatch(fetchProductById(productId));
   }, [dispatch]);
 
-  if (!productData) return notFound()
+  if (!productData && productStatus === "failed") return notFound();
 
-  
   return (
     <>
       {productData && (
@@ -61,9 +51,14 @@ const productDetailPage = ({ params: { productId } }: Props) => {
               })}
             </ul>
           </section>
+
+          {/* workflow and steps */}
+
           <section className="mt-10">
             <Workflow steps={productData?.steps!} />
           </section>
+
+          {/* workflow operations */}
 
           <section className="my-10">
             <div className="p-4 flex flex-col items-center gap-6">
@@ -71,7 +66,6 @@ const productDetailPage = ({ params: { productId } }: Props) => {
                 return <WorkflowOperations key={step.step} step={step} />;
               })}
             </div>
-            {/* <WorkflowOperations steps={productData?.steps!} /> */}
           </section>
         </div>
       )}
@@ -80,3 +74,5 @@ const productDetailPage = ({ params: { productId } }: Props) => {
 };
 
 export default productDetailPage;
+
+

@@ -36,7 +36,6 @@ const WorkflowOperations = ({ step }: Props) => {
     );
   }, [dispatch, id, step]);
 
-  console.log(step);
 
   return (
     <>
