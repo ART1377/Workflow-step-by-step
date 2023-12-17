@@ -1,11 +1,13 @@
+'use client'
 import React, { useState } from "react";
 import { MdDoneAll, MdClose, MdCircle, MdCheck } from "react-icons/md";
 import style from "./Workflow.module.css";
 import { Step } from "../../../../next-type-d";
 import { MdPerson, MdOutlineFileUpload, MdDeleteOutline } from "react-icons/md";
-import { useAppDispatch } from "@/app/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { useParams } from "next/navigation";
 import { updateProduct } from "@/app/redux/slices/productSlice";
+import toast from "react-hot-toast";
 
 type Props = {
   step: Step;
@@ -15,24 +17,57 @@ const WorkflowItem = ({ step }: Props) => {
   const params = useParams();
   const id = params.productId.toString();
 
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>();
   const dispatch = useAppDispatch();
+  const productState=useAppSelector(state=>state.product)
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const fileChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFile(event.target.files![0]);
-    // if (!file) {
-    //   return;
-    // } else {
-    //   dispatch(
-    //     updateProduct({
-    //       productId: id,
-    //       updatedStep: { ...step, state: "uploaded" },
-    //     })
-    //   );
-    // }
   };
 
-  console.log(file);
+  const deleteHandler = () => {
+    if (!file) {
+      return;
+    } else {
+      setFile(null);
+    }
+  };
+
+  const submitHandler = () => {
+    if (!file) {
+      return;
+    } else {
+    const test=  dispatch(
+        updateProduct({
+          productId: id,
+          updatedStep: {
+            ...step,
+            state: "uploaded",
+            file: {
+              ...file,
+              name: file.name,
+              type: file.type,
+              size: file.size,
+            },
+          },
+        })
+        );
+      if (productState.status==='succeeded') {
+        return(
+
+          toast.success('Successfully Submited!')
+        )
+      }
+      if (productState.status==='failed') {
+        return(
+
+          toast.error('Failed to Submit!')
+        )
+        
+      }
+      setFile(null);
+    }
+  };
 
   return (
     <>
@@ -66,7 +101,7 @@ const WorkflowItem = ({ step }: Props) => {
         <div className="content w-[80px]">
           <p className="text-gray-900 uppercase">step {step.step}</p>
           <span
-            className={`capitalize text-sm mt-1 font-bold flex items-center gap-1 ${style.status}`}
+            className={`capitalize text-sm mt-1 font-bold flex items-center gap-0.5 ${style.status}`}
           >
             {step.state === "succeed" ? (
               <MdDoneAll />
@@ -86,24 +121,35 @@ const WorkflowItem = ({ step }: Props) => {
             </p>
           )}
 
-          <div className="flex gap-1">
-            <label className="inline-block mt-0.5">
+          <div className="flex gap-1.5 mt-1">
+            <label className="inline-block">
               <input
                 type="file"
-                onChange={handleFileChange}
+                onChange={fileChangeHandler}
                 className="hidden"
               />
-              <div className="p-0.5 rounded cursor-pointer bg-upload">
+              <div className="p-0.5 rounded cursor-pointer shadow-lg bg-upload">
                 <MdOutlineFileUpload className="text-base text-white" />
               </div>
             </label>
-            <div className="p-0.5 rounded cursor-pointer bg-reject">
+            <div
+              onClick={deleteHandler}
+              className={`p-0.5 rounded shadow-lg bg-reject ${
+                file ? "!cursor-pointer" : "!cursor-not-allowed !opacity-40"
+              }`}
+            >
               <MdDeleteOutline className="text-base text-white" />
             </div>
-            <div className="p-0.5 rounded cursor-pointer bg-success">
+            <div
+              onClick={submitHandler}
+              className={`p-0.5 rounded shadow-lg bg-success ${
+                file ? "!cursor-pointer" : "!cursor-not-allowed !opacity-40"
+              }`}
+            >
               <MdCheck className="text-base text-white" />
             </div>
           </div>
+          {step.file && <small className="line-clamp-1 text-main-gray mt-0.5">{file?.name}</small>}
         </div>
       </div>
     </>
@@ -114,11 +160,11 @@ export default WorkflowItem;
 
 {
   //   const [file, setFile] = useState<File | null>(null);
-  //   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const fileChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
   //     setFile(event.target.files![0]);
   //   };
   /* <label className={` ${style.input}`}>
-              <input type="file" onChange={handleFileChange} />
+              <input type="file" onChange={fileChangeHandler} />
               Upload
             </label> */
 }

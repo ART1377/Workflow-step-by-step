@@ -12,7 +12,11 @@
           },
           "state": "rejected",
           "step": 1,
-          "file": null
+          "file": {
+            "name": "Screenshot (2).png",
+            "type": "image/png",
+            "size": 96304
+          }
         },
         {
           "person": {

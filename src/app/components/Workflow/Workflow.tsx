@@ -11,6 +11,8 @@ type Props = {
 };
 
 const Workflow = ({ steps }: Props) => {
+
+
   return (
     <>
       <div className="p-8 flex flex-col lg:!flex-row lg:justify-center lg:items-baseline lg:gap-5">

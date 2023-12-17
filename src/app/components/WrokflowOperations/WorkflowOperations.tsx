@@ -16,8 +16,6 @@ const WorkflowOperations = ({ step }: Props) => {
   const { productId } = useParams();
   const id = productId.toString();
 
-  console.log(productId);
-
   const dispatch = useAppDispatch();
 
   const rejectHandler = useCallback(() => {
@@ -27,7 +25,7 @@ const WorkflowOperations = ({ step }: Props) => {
         updatedStep: { ...step, state: "rejected" },
       })
     );
-  }, []);
+  }, [dispatch, id, step]);
 
   const successHandler = useCallback(() => {
     dispatch(
@@ -36,13 +34,15 @@ const WorkflowOperations = ({ step }: Props) => {
         updatedStep: { ...step, state: "succeed" },
       })
     );
-  }, []);
+  }, [dispatch, id, step]);
+
+  console.log(step);
 
   return (
     <>
       <div
         key={step.step}
-        className={`w-full max-w-[600px] flex flex-col justify-between min-h-[120px] bg-white shadow rounded border-s-8 
+        className={`w-full max-w-[600px] flex flex-col justify-between min-h-[130px] bg-white shadow rounded border-s-8 
                 ${
                   step.state === "succeed"
                     ? "border-success shadow-success"
