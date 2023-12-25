@@ -23,11 +23,12 @@ const productDetailPage = ({ params: { productId } }: Props) => {
 
   if (!productData && productStatus === "failed") return notFound();
 
+
   return (
     <>
       {productData && (
         <div>
-          <section className="flex flex-col justify-center text-center mt-10">
+          <section className="flex flex-col justify-center text-center">
             <h3 className="text-gray-900">{productData?.productName}</h3>
             <p className="text-gray-500">{productData?.productDescription}</p>
             <ul className="mt-4 text-left mx-auto lg:flex lg:gap-5 lg:mt-8">
@@ -42,7 +43,7 @@ const productDetailPage = ({ params: { productId } }: Props) => {
                         ? "text-reject"
                         : step.state === "uploaded"
                         ? "text-upload"
-                        : "text-main-gray"
+                        : "text-gray-main"
                     }`}
                   >
                     Step {step.step} : {step.state}
@@ -74,5 +75,3 @@ const productDetailPage = ({ params: { productId } }: Props) => {
 };
 
 export default productDetailPage;
-
-

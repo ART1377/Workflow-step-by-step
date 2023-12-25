@@ -36,6 +36,14 @@ const WorkflowOperations = ({ step }: Props) => {
     );
   }, [dispatch, id, step]);
 
+  const defaultHandler = useCallback(() => {
+    dispatch(
+      updateProduct({
+        productId: id,
+        updatedStep: { ...step, state: "dafault", file: null },
+      })
+    );
+  }, [dispatch, id, step]);
 
   return (
     <>
@@ -49,7 +57,7 @@ const WorkflowOperations = ({ step }: Props) => {
                     ? "border-reject shadow-reject"
                     : step.state === "uploaded"
                     ? "border-upload shadow-upload"
-                    : "border-main-gray shadow-main-gray"
+                    : "border-gray-main shadow-gray-main"
                 }`}
       >
         <div className="p-3">
@@ -72,7 +80,7 @@ const WorkflowOperations = ({ step }: Props) => {
                   ? "text-reject"
                   : step.state === "uploaded"
                   ? "text-upload"
-                  : "text-main-gray"
+                  : "text-gray-main"
               }`}
             >
               {step.state === "succeed" ? (
@@ -93,7 +101,7 @@ const WorkflowOperations = ({ step }: Props) => {
                   ? "text-reject"
                   : step.state === "uploaded"
                   ? "text-upload"
-                  : "text-main-gray"
+                  : "text-gray-main"
               }`}
             >
               {step.state}
@@ -101,6 +109,9 @@ const WorkflowOperations = ({ step }: Props) => {
           </div>
 
           <div className="flex gap-2">
+            <Button variant="gray" onClick={defaultHandler}>
+              Default
+            </Button>
             <Button variant="reject" onClick={rejectHandler}>
               Reject
             </Button>

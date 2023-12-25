@@ -39,16 +39,31 @@
   --reject: #d63d22;
   --success: #10b624;
   --upload: #00b0c7;
-  --main-gray: #999999;
+  --primary-light: #3d81ff;
+  --primary-main: #0051e7;
+  --primary-dark: #003aa7;
+  --gray-light: #d6d6d6;
+  --gray-main: #999999;
+  --gray-dark: #707070;
+  --light: #f1f1f1;
+  --dark: #141414;
+  --body: #f2ebe3;
+  
 
   /* transition */
   --transition: all 0.3s ease-in-out;
 
-  /* border */
-  --radius: 4px;
+  /* border radius */
+  --radius-small: 2px;
+  --radius-main: 4px;
+  --radius-large: 8px;
 }
 
 body {
-  background-color: #f2ebe375;
+  background-color: var(--bg-body);
 }
 
+
+h1,h2,h3,h4,h5,h6,p,small,span{
+  color: var(--dark);
+}

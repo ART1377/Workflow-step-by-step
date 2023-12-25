@@ -108,10 +108,10 @@
 }
 
 .defaultItem .dimond {
-  border-color: var(--main-gray);
+  border-color: var(--gray-main);
 }
 .defaultItem {
-  color: var(--main-gray);
+  color: var(--gray-main);
 }
 
 .defaultItem .topRight,
@@ -119,7 +119,7 @@
 .defaultItem .bottomRight,
 .defaultItem .bottomLeft,
 .defaultItem .line {
-  background-color: var(--main-gray);
+  background-color: var(--gray-main);
 }
 
 /* .input input {

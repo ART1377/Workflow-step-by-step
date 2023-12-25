@@ -23,9 +23,13 @@
             "personName": "Fatima",
             "personId": "002"
           },
-          "state": "succeed",
+          "state": "uploaded",
           "step": 2,
-          "file": null
+          "file": {
+            "name": "Screenshot (2).png",
+            "type": "image/png",
+            "size": 96304
+          }
         },
         {
           "person": {
@@ -50,7 +54,7 @@
             "personName": "Ella",
             "personId": "003"
           },
-          "state": "default",
+          "state": "succeed",
           "step": 5,
           "file": null
         }

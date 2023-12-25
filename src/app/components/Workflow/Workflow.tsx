@@ -15,14 +15,14 @@ const Workflow = ({ steps }: Props) => {
 
   return (
     <>
-      <div className="p-8 flex flex-col lg:!flex-row lg:justify-center lg:items-baseline lg:gap-5">
+      <div className="p-8 flex flex-wrap flex-col 850:!flex-row 850:justify-center 850:items-baseline 850:gap-5">
         {/* Start Step ********* */}
 
         <div
           id="step"
-          className={`flex mt-6 gap-6 justify-center lg:flex-col ${style.succeedItem}`}
+          className={`flex mt-6 gap-6 justify-center 850:flex-col ${style.succeedItem}`}
         >
-          <div className="flex flex-col items-center gap-4 lg:flex-row">
+          <div className="flex flex-col items-center gap-4 850:flex-row">
             <div className={`${style.dimond}`}>
               <span className="uppercase text-xs font-bold">start</span>
               <div className={style.topLeft}></div>
@@ -31,7 +31,7 @@ const Workflow = ({ steps }: Props) => {
               <div className={style.bottomRight}></div>
             </div>
             <div
-              className={`w-1 h-20 bg-black lg:w-20 lg:h-1 ${style.line}`}
+              className={`w-1 h-20 850:w-20 850:h-1 ${style.line}`}
             ></div>
           </div>
           <div className="content w-[80px]">
