@@ -11,6 +11,10 @@ yarn dev
 # or
 pnpm dev
 # or
+#and
+to run local server : 
+npx json-server -w db.json -p 3500 -H 127.0.0.1
+
 bun dev
 ```
 
