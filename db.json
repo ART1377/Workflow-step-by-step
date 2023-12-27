@@ -10,13 +10,9 @@
             "personName": "John",
             "personId": "001"
           },
-          "state": "rejected",
+          "state": "dafault",
           "step": 1,
-          "file": {
-            "name": "Screenshot (2).png",
-            "type": "image/png",
-            "size": 96304
-          }
+          "file": null
         },
         {
           "person": {
