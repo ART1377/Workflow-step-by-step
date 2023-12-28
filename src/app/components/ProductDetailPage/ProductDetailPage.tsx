@@ -4,13 +4,13 @@ import Workflow from "@/app/components/Workflow/Workflow";
 import WorkflowOperations from "@/app/components/WrokflowOperations/WorkflowOperations";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { fetchProductById } from "@/app/redux/slices/productSlice";
-import { notFound, useParams } from "next/navigation";
+import { notFound } from "next/navigation";
 
 type Props = {
   productId: string;
 };
 
-const productDetailPage = ({ productId }: Props) => {
+const ProductDetailPage = ({ productId }: Props) => {
   const dispatch = useAppDispatch();
   const productData = useAppSelector((state) => state.product.products[0]);
   const productStatus = useAppSelector((state) => state.product.status);
@@ -33,6 +33,7 @@ const productDetailPage = ({ productId }: Props) => {
   
   return (
     <>
+    
       {productData && (
           <div>
             <div className="flex justify-center mb-4">
@@ -103,4 +104,4 @@ const productDetailPage = ({ productId }: Props) => {
   );
 };
 
-export default productDetailPage;
+export default ProductDetailPage;

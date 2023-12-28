@@ -9,16 +9,16 @@ const Sidebar = () => {
   }
 
   const sidebarItmes: SidebarItme[] = [
-    { title: "part 1", path: "part-one", icon: <MdPerson /> },
-    { title: "part 2", path: "part-two", icon: <MdPerson /> },
-    { title: "part 3", path: "part-three", icon: <MdPerson /> },
-    { title: "part 4", path: "part-four", icon: <MdPerson /> },
-    { title: "part 5", path: "part-five", icon: <MdPerson /> },
-    { title: "part 6", path: "part-six", icon: <MdPerson /> },
-    { title: "part 7", path: "part-seven", icon: <MdPerson /> },
-    { title: "part 8", path: "part-eight", icon: <MdPerson /> },
-    { title: "part 9", path: "part-nine", icon: <MdPerson /> },
-    { title: "part 10", path: "part-ten", icon: <MdPerson /> },
+    { title: "part 1", path: "part1", icon: <MdPerson /> },
+    { title: "part 2", path: "part2", icon: <MdPerson /> },
+    { title: "part 3", path: "part3", icon: <MdPerson /> },
+    { title: "part 4", path: "part4", icon: <MdPerson /> },
+    { title: "part 5", path: "part5", icon: <MdPerson /> },
+    { title: "part 6", path: "part6", icon: <MdPerson /> },
+    { title: "part 7", path: "part7", icon: <MdPerson /> },
+    { title: "part 8", path: "part8", icon: <MdPerson /> },
+    { title: "part 9", path: "part9", icon: <MdPerson /> },
+    { title: "part 10", path: "part10", icon: <MdPerson /> },
   ];
 
   return (

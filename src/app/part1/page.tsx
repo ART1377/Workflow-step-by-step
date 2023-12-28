@@ -26,9 +26,10 @@ export default function Home() {
           <h5>Product List</h5>
         </div>
         <div className="flex flex-wrap gap-3">
-          {products?.map((product: Product) => {
-            return <ProductCard key={product.id} productData={product} />;
-          })}
+          {products &&
+            products?.map((product: Product) => {
+              return <ProductCard key={product.id} productData={product} />;
+            })}
         </div>
       </div>
     </>
