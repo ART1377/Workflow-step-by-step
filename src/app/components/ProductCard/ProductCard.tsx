@@ -7,6 +7,7 @@ import ProductDetailPage from "../ProductDetailPage/ProductDetailPage";
 import BaseModal from "../BaseModal/BaseModal";
 import Workflow from "../Workflow/Workflow";
 import WorkflowOperations from "../WrokflowOperations/WorkflowOperations";
+import NotificationItem from "../NotificationItem/NotificationItem";
 
 type Props = {
   productData: Product;
@@ -151,6 +152,7 @@ const ProductCard = ({
               </div>
             )}
           </div>
+       
         </BaseModal>
       )}
     </>

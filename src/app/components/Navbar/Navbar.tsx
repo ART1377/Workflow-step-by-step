@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   MdPerson,
   MdNotifications,
@@ -7,9 +7,11 @@ import {
 } from "react-icons/md";
 import DropDownItem from "../DropDownItem/DropDownItem";
 import Link from "next/link";
+import { AuthContext } from "@/app/context/AuthContext";
 
 const Navbar = () => {
   const [searchInput, setSearchInput] = useState("");
+  const authCtx=useContext(AuthContext)
 
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
@@ -66,6 +68,8 @@ const Navbar = () => {
     return () => clearInterval(interval);
   }, []);
 
+
+
   return (
     <nav className="bg-primary-dark shadow p-4 sticky top-0 z-10 h-[64px] flex border-none">
       <div className="flex justify-between items-center w-full">
@@ -86,7 +90,7 @@ const Navbar = () => {
               </DropDownItem>
               <DropDownItem>
                 <p
-                  onClick={() => console.log("Logout clicked")}
+                  onClick={authCtx?.logout}
                   className="flex items-center gap-1"
                 >
                   <MdLogout />
