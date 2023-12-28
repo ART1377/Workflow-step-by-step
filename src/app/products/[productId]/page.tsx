@@ -21,8 +21,9 @@ const productDetailPage = ({ params: { productId } }: Props) => {
     dispatch(fetchProductById(productId));
   }, [dispatch]);
 
-  if (!productData && productStatus === "failed") return notFound();
-
+  if (!productData && productStatus === "failed"){
+    return notFound();
+  } 
 
   return (
     <>

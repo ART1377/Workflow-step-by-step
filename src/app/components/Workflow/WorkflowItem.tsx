@@ -11,11 +11,12 @@ import toast from "react-hot-toast";
 
 type Props = {
   step: Step;
+  id:string;
 };
 
-const WorkflowItem = ({ step }: Props) => {
-  const params = useParams();
-  const id = params.productId.toString();
+const WorkflowItem = ({ step,id }: Props) => {
+  // const params = useParams();
+  // const id = params?.productId?.toString();
 
   const [file, setFile] = useState<File | null>();
   const dispatch = useAppDispatch();

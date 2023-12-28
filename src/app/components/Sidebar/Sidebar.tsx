@@ -27,7 +27,7 @@ const Sidebar = () => {
         <ul>
           {sidebarItmes.map((item: SidebarItme) => {
             return (
-              <li className="mb-2 transition-all duration-150 hover:border-s-4 hover:border-white rounded-radius-main">
+              <li key={item.title} className="mb-2 transition-all duration-150 hover:border-s-4 hover:border-white rounded-radius-main">
                 <Link
                   href={item.path}
                   className="flex items-center gap-2 text-lg bg-primary-main px-2 py-1.5 shadow rounded-radius-main capitalize font-medium"

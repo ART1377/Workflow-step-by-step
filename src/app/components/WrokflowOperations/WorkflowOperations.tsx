@@ -10,11 +10,12 @@ import { updateProduct } from "@/app/redux/slices/productSlice";
 
 type Props = {
   step: Step;
+  id: string;
 };
 
-const WorkflowOperations = ({ step }: Props) => {
-  const { productId } = useParams();
-  const id = productId.toString();
+const WorkflowOperations = ({ step, id }: Props) => {
+  // const { productId } = useParams();
+  // const id = productId.toString();
 
   const dispatch = useAppDispatch();
 

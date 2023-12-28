@@ -1,18 +1,15 @@
 "use client";
 import { Step } from "../../../../next-type-d";
 import style from "./Workflow.module.css";
-import {
-  MdPlayArrow,
-} from "react-icons/md";
+import { MdPlayArrow } from "react-icons/md";
 import WorkflowItem from "./WorkflowItem";
 
 type Props = {
   steps: Step[];
+  id: string;
 };
 
-const Workflow = ({ steps }: Props) => {
-
-
+const Workflow = ({ steps, id }: Props) => {
   return (
     <>
       <div className="p-8 flex flex-wrap flex-col 850:!flex-row 850:justify-center 850:items-baseline 850:gap-5">
@@ -30,9 +27,7 @@ const Workflow = ({ steps }: Props) => {
               <div className={style.bottomLeft}></div>
               <div className={style.bottomRight}></div>
             </div>
-            <div
-              className={`w-1 h-20 850:w-20 850:h-1 ${style.line}`}
-            ></div>
+            <div className={`w-1 h-20 850:w-20 850:h-1 ${style.line}`}></div>
           </div>
           <div className="content w-[80px]">
             <p className="text-gray-900 uppercase">start</p>
@@ -50,7 +45,7 @@ const Workflow = ({ steps }: Props) => {
 
         {/* All Steps Except Start Step ***** */}
         {steps?.map((step: Step) => (
-          <WorkflowItem key={step.step} step={step} />
+          <WorkflowItem key={step.step} step={step} id={id} />
         ))}
       </div>
     </>
@@ -58,5 +53,3 @@ const Workflow = ({ steps }: Props) => {
 };
 
 export default Workflow;
-
-
