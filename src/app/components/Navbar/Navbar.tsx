@@ -109,7 +109,7 @@ const Navbar = () => {
           />
 
           {/* Date Display */}
-          <div className="text-light ml-4">{currentDate}</div>
+          <div className="text-light ml-4 font-medium">{currentDate}</div>
         </div>
 
         {/* Icons */}
