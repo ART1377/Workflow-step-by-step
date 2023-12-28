@@ -39,9 +39,10 @@
   --reject: #d63d22;
   --success: #10b624;
   --upload: #00b0c7;
-  --primary-light: #3d81ff;
-  --primary-main: #0051e7;
-  --primary-dark: #003aa7;
+  --primary-light: #a8c1d1;
+  --primary-main: #6a87a5; 
+  /* #606c38 */
+  --primary-dark: #44709e;
   /* --gray-extra-light: #e4e4e4; */
   --gray-light: #d6d6d6;
   --gray-main: #999999;

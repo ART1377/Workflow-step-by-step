@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { MdPerson, MdNotifications } from "react-icons/md";
+import React, { useEffect, useState } from "react";
+import {
+  MdPerson,
+  MdNotifications,
+  MdLogout,
+  MdArrowDropDown,
+} from "react-icons/md";
 import DropDownItem from "../DropDownItem/DropDownItem";
 import Link from "next/link";
 
@@ -29,59 +34,115 @@ const Navbar = () => {
     setActiveTab(tab);
   };
 
+  const [currentDate, setCurrentDate] = useState("");
+
+  useEffect(() => {
+    const getCurrentDate = () => {
+      const options = {
+        weekday: "short",
+        year: "numeric",
+        month: "numeric",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        // second: "numeric",
+        hour12: false,
+      };
+
+      const formattedDate = new Date().toLocaleDateString(
+        "en-US",
+        options as any
+      );
+      setCurrentDate(formattedDate);
+    };
+
+    // Update the current date on component mount
+    getCurrentDate();
+
+    // Update the current date every minute
+    const interval = setInterval(getCurrentDate, 60000);
+
+    // Clear the interval on component unmount
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <nav className="bg-primary-dark shadow p-4 sticky top-0 z-10 h-[64px] flex border-none">
       <div className="flex justify-between items-center w-full">
         {/* Profile Icon */}
         <div className="relative mr-4">
-          <button onClick={toggleProfile} className="text-light">
+          <button onClick={toggleProfile} className="text-light flex items-end">
             {/* Your profile icon */}
             <MdPerson className="text-light text-2xl" />
+            <MdArrowDropDown className="text-light text-2xl -ms-1" />
           </button>
           {isProfileOpen && (
-            <div className="absolute left-0 mt-2 w-48 bg-white p-2 rounded-md shadow-md">
+            <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-md">
               <DropDownItem>
-                <Link href={"profile"}>Profile</Link>
+                <Link href={"profile"} className="flex items-center gap-1">
+                  <MdPerson />
+                  Profile
+                </Link>
               </DropDownItem>
               <DropDownItem>
-                <p onClick={() => console.log("Logout clicked")}>Logout</p>
+                <p
+                  onClick={() => console.log("Logout clicked")}
+                  className="flex items-center gap-1"
+                >
+                  <MdLogout />
+                  Logout
+                </p>
               </DropDownItem>
             </div>
           )}
         </div>
 
         {/* Search Bar */}
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchInput}
-          onChange={handleSearchInputChange}
-          className="p-2 border border-gray-main rounded-md focus:outline-none focus:border-primary-light max-w-[400px] sm:w-full"
-        />
+        <div className="flex items-center justify-center w-full">
+          {/* Input */}
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchInput}
+            onChange={handleSearchInputChange}
+            className="py-2 px-3 border border-primary-main rounded-full focus:outline-none focus:border-primary-light max-w-[300px] sm:w-full"
+          />
+
+          {/* Date Display */}
+          <div className="text-light ml-4">{currentDate}</div>
+        </div>
 
         {/* Icons */}
         <div className="flex items-center">
           {/* Notification Icon */}
           <div className="relative">
-            <button onClick={toggleNotifications} className="text-light">
+            <button
+              onClick={toggleNotifications}
+              className="text-light flex items-end"
+            >
               {/* Your notification icon */}
               <MdNotifications className="text-light text-2xl" />
+              <MdArrowDropDown className="text-light text-2xl -ms-1" />
             </button>
             {isNotificationsOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white p-2 rounded-md shadow">
                 {/* Notification Tabs */}
-                <div className="flex">
+                <div className="flex mb-2">
                   <button
-                    className={`w-1/2 py-1 text-center ${
-                      activeTab === "unread" ? "bg-primary-light" : ""
+                    className={`w-1/2 py-1 text-center text-light rounded-radius-main ${
+                      activeTab === "unread"
+                        ? "bg-primary-dark"
+                        : "text-primary-dark"
                     }`}
                     onClick={() => handleTabChange("unread")}
                   >
                     Unread
                   </button>
                   <button
-                    className={`w-1/2 py-1 text-center ${
-                      activeTab === "read" ? "bg-primary-light" : ""
+                    className={`w-1/2 py-1 text-center text-light rounded-radius-main ${
+                      activeTab === "read"
+                        ? "bg-primary-dark"
+                        : "text-primary-dark"
                     }`}
                     onClick={() => handleTabChange("read")}
                   >
@@ -92,14 +153,22 @@ const Navbar = () => {
                 {/* Your notification dropdown content */}
                 {activeTab === "unread" && (
                   <>
-                    <p>Unread Notification 1</p>
-                    <p>Unread Notification 2</p>
+                    <DropDownItem>
+                      <p>Unread Notification 1</p>
+                    </DropDownItem>
+                    <DropDownItem>
+                      <p>Unread Notification 2</p>
+                    </DropDownItem>
                   </>
                 )}
                 {activeTab === "read" && (
                   <>
-                    <p>Read Notification 1</p>
-                    <p>Read Notification 2</p>
+                    <DropDownItem>
+                      <p>Read Notification 1</p>
+                    </DropDownItem>
+                    <DropDownItem>
+                      <p>Read Notification 2</p>
+                    </DropDownItem>
                   </>
                 )}
               </div>

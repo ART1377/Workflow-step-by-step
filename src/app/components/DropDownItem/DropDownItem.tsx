@@ -7,7 +7,7 @@ type Props = {
 const DropDownItem = ({ children }: Props) => {
   return (
     <div
-      className={`mx-0.5 my-1.5 p-1 rounded-radius-main border-b-2 bg-light shadow-md transform hover:translate-x-px hover:bg-gray-light duration-300 text-dark cursor-pointer`}
+      className={`cursor-pointer flex gap-1 items-center p-2 transition-all duration-500 text-dark border-l-4 border-white opacity-90 shadow hover:border-l-4 hover:border-primary-main hover:opacity-100 `}
     >
       {children}
     </div>
