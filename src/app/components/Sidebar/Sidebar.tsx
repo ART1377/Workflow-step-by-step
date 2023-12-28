@@ -22,15 +22,20 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="fixed right-0 bg-primary-dark shadow-md text-light w-[200px] min-h-screen py-4 px-2">
+    <aside className="fixed right-0 bg-primary-dark shadow-md text-light w-[200px] min-h-screen py-4 px-2 ">
       <nav>
         <ul>
-          {sidebarItmes.map((item: SidebarItme) => {
+          {sidebarItmes.map((item: SidebarItme, index: number) => {
             return (
-              <li key={item.title} className="mb-2 transition-all duration-150 hover:border-s-4 hover:border-white rounded-radius-main">
+              <li
+                key={item.title}
+                className={`mb-2 transition-all duration-150 hover:border-s-4 hover:border-white px-2 py-1.5 capitalize font-medium ${
+                  index != sidebarItmes.length - 1 && "border-b-2"
+                }`}
+              >
                 <Link
                   href={item.path}
-                  className="flex items-center gap-2 text-lg bg-primary-main px-2 py-1.5 shadow rounded-radius-main capitalize font-medium"
+                  className="flex items-center gap-2 text-lg "
                 >
                   {item.icon}
                   {item.title}

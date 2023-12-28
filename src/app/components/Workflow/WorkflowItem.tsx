@@ -11,10 +11,10 @@ import toast from "react-hot-toast";
 
 type Props = {
   step: Step;
-  id:string;
+  id: string;
 };
 
-const WorkflowItem = ({ step,id }: Props) => {
+const WorkflowItem = ({ step, id }: Props) => {
   // const params = useParams();
   // const id = params?.productId?.toString();
 
@@ -91,7 +91,7 @@ const WorkflowItem = ({ step,id }: Props) => {
           )}
         </div>
         <div className="content w-[80px]">
-          <p className="text-gray-900 uppercase">step {step.step}</p>
+          <p className="text-dark uppercase">step {step.step}</p>
           <span
             className={`capitalize text-sm mt-1 font-bold flex items-center gap-0.5 ${
               style.status
@@ -117,7 +117,7 @@ const WorkflowItem = ({ step,id }: Props) => {
             {step.state}
           </span>
           {step.file && (
-            <p className="text-gray-500 text-xs my-1 font-bold flex items-center gap-px">
+            <p className="text-gray-main text-xs my-1 font-bold flex items-center gap-px">
               <MdPerson className="text-sm" />
               {step.person.personName}
             </p>

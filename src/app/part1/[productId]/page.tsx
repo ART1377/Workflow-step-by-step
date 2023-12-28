@@ -23,15 +23,15 @@
 
 //   if (!productData && productStatus === "failed"){
 //     return notFound();
-//   } 
+//   }
 
 //   return (
 //     <>
 //       {productData && (
 //         <div>
 //           <section className="flex flex-col justify-center text-center">
-//             <h3 className="text-gray-900">{productData?.productName}</h3>
-//             <p className="text-gray-500">{productData?.productDescription}</p>
+//             <h3 className="text-dark">{productData?.productName}</h3>
+//             <p className="text-gray-main">{productData?.productDescription}</p>
 //             <ul className="mt-4 text-left mx-auto lg:flex lg:gap-5 lg:mt-8">
 //               {productData?.steps?.map((step) => {
 //                 return (

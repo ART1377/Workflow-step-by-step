@@ -50,7 +50,7 @@ const WorkflowOperations = ({ step, id }: Props) => {
     <>
       <div
         key={step.step}
-        className={`w-full max-w-[600px] flex flex-col justify-between min-h-[130px] bg-white shadow rounded border-s-8 
+        className={`w-full max-w-[850px] flex flex-col justify-between min-h-[130px] bg-white shadow rounded border-s-8 
                 ${
                   step.state === "succeed"
                     ? "border-success shadow-success"

@@ -30,14 +30,14 @@ const Workflow = ({ steps, id }: Props) => {
             <div className={`w-1 h-20 850:w-20 850:h-1 ${style.line}`}></div>
           </div>
           <div className="content w-[80px]">
-            <p className="text-gray-900 uppercase">start</p>
+            <p className="text-dark uppercase">start</p>
             <span
               className={`capitalize text-sm mt-1 font-bold flex items-center gap-1 ${style.status}`}
             >
               <MdPlayArrow />
               start
             </span>
-            <p className="text-gray-500 text-xs my-1">Lorem ipsum dolor.</p>
+            <p className="text-gray-main text-xs my-1">Lorem ipsum dolor.</p>
           </div>
         </div>
 

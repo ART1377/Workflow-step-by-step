@@ -79,24 +79,8 @@ const ProductCard = ({
       </div>
       {isModalOpen && (
         <BaseModal isOpen={isModalOpen} onClose={closeModal}>
-          <div className="flex justify-center mb-4">
-            <button
-              className={`mr-4 ${activeTab === "workflow" ? "font-bold" : ""}`}
-              onClick={() => switchTab("workflow")}
-            >
-              Workflow
-            </button>
-            <button
-              className={activeTab === "operations" ? "font-bold" : ""}
-              onClick={() => switchTab("operations")}
-            >
-              Operations
-            </button>
-          </div>
-
-
           <div>
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-8 border-b-2 border-gray-light max-w-md mx-auto py-2">
               <button
                 className={`mr-4 ${
                   activeTab === "workflow" ? "font-bold" : ""
@@ -114,49 +98,56 @@ const ProductCard = ({
             </div>
             {activeTab === "workflow" && (
               <>
-              <section className="flex flex-col justify-center text-center">
-                <h3 className="text-gray-900">{productName}</h3>
-                <p className="text-gray-500">
-                  {productDescription}
-                </p>
-                <ul className="mt-4 text-left mx-auto lg:flex lg:gap-5 lg:mt-8">
-                  {steps?.map((step) => {
-                    return (
-                      <li
-                        key={step.step}
-                        className={`mb-1 ${
-                          step.state === "succeed"
-                            ? "text-success"
-                            : step.state === "rejected"
-                            ? "text-reject"
-                            : step.state === "uploaded"
-                            ? "text-upload"
-                            : "text-gray-main"
-                        }`}
-                      >
-                        Step {step.step} : {step.state}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </section>
+                <section className="flex flex-col justify-center text-center">
+                  <h4 className="text-dark">{productName}</h4>
+                  <p className="text-gray-main">{productDescription}</p>
+                  <ul className="mt-6 text-left mx-auto lg:flex lg:gap-5 lg:mt-8">
+                    {steps?.map((step) => {
+                      return (
+                        <li
+                          key={step.step}
+                          className={`mb-1 ${
+                            step.state === "succeed"
+                              ? "text-success"
+                              : step.state === "rejected"
+                              ? "text-reject"
+                              : step.state === "uploaded"
+                              ? "text-upload"
+                              : "text-gray-main"
+                          }`}
+                        >
+                          Step {step.step} : {step.state}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </section>
 
-              {/* workflow and steps */}
-              <section className="mt-10">
-                <Workflow steps={steps!} id={id} />
-              </section>
-            </>
+                {/* workflow and steps */}
+                <section className="mt-8">
+                  <Workflow steps={steps!} id={id} />
+                </section>
+              </>
             )}
             {activeTab === "operations" && (
               <div className="p-4 flex flex-col items-center gap-6">
-                <section className="my-10">
-                {/* workflow operations */}
-                <div className="p-4 flex flex-col items-center gap-6">
-                  {steps.map((step) => {
-                    return <WorkflowOperations key={step.step} step={step} id={id} />;
-                  })}
-                </div>
-              </section>
+                <section className="w-full">
+                  <div>
+
+                  </div>
+                  {/* workflow operations */}
+                  <div className="p-4 flex flex-col items-center gap-6">
+                    {steps.map((step) => {
+                      return (
+                        <WorkflowOperations
+                          key={step.step}
+                          step={step}
+                          id={id}
+                        />
+                      );
+                    })}
+                  </div>
+                </section>
               </div>
             )}
           </div>
