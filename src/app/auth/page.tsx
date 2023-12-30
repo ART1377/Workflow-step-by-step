@@ -3,8 +3,8 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Input from "../components/Input/Input";
 import Image from "next/image";
-import shoppingImage from '../../../public/images/shopping.jpg'
-
+import shoppingImage from "../../../public/images/shopping.jpg";
+import Button from "../components/Button/Button";
 
 type Props = {};
 
@@ -18,11 +18,11 @@ const page = (props: Props) => {
   };
 
   return (
-    <div className="bg-rose-400 flex justify-between gap-6 p-4 rounded-radius-large min-h-[400px]">
-      <div className="w-[40%]">
-        <div>
-          <h2>Login</h2>
-          <form>
+    <div className="bg-light flex justify-between items-center gap-6 p-4 rounded-radius-large min-h-[350px]">
+      <div className="w-[40%] h-full">
+        <div className="flex flex-col gap-6">
+          <h5 className="font-bold text-primary-main text-center">Login</h5>
+          <form className="flex flex-col gap-6">
             <Input
               label="Username"
               type="text"
@@ -35,19 +35,16 @@ const page = (props: Props) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="button" onClick={handleLogin}>
+
+            <Button type="button" variant="primary-main" onClick={handleLogin}>
               Login
-            </button>
+            </Button>
           </form>
         </div>
       </div>
       <div className="w-[60%]">
         <div className="relative w-full h-full rounded-radius-main overflow-hidden">
-          <Image
-            src={shoppingImage}
-            alt="login image"
-            fill
-          />
+          <Image src={shoppingImage} alt="login image" fill />
         </div>
       </div>
     </div>
