@@ -109,7 +109,7 @@ const Navbar = () => {
             placeholder="Search..."
             value={searchInput}
             onChange={handleSearchInputChange}
-            className="py-2 px-3 border border-primary-main rounded-full focus:outline-none focus:border-primary-light max-w-[320px] sm:w-full"
+            className="py-2 px-3 border border-primary-main rounded-radius-large focus:outline-none focus:border-primary-light max-w-[320px] sm:w-full"
           />
 
           {/* Date Display */}

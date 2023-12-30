@@ -29,9 +29,7 @@ const Sidebar = () => {
             return (
               <li
                 key={item.title}
-                className={`mb-2 transition-all duration-150 hover:border-s-4 hover:border-white px-2 py-1.5 capitalize font-medium ${
-                  index != sidebarItmes.length - 1 && "border-b-2"
-                }`}
+                className={`mb-2 transition-all duration-150 hover:border-s-2 hover:border-white px-2 py-1.5 capitalize font-medium rounded-radius-large rounded-ee-none border-b-2`}
               >
                 <Link
                   href={item.path}
