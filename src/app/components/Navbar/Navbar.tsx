@@ -4,6 +4,7 @@ import {
   MdNotifications,
   MdLogout,
   MdArrowDropDown,
+  MdSearch,
 } from "react-icons/md";
 import DropDownItem from "../DropDownItem/DropDownItem";
 import Link from "next/link";
@@ -11,7 +12,7 @@ import { AuthContext } from "@/app/context/AuthContext";
 
 const Navbar = () => {
   const [searchInput, setSearchInput] = useState("");
-  const authCtx=useContext(AuthContext)
+  const authCtx = useContext(AuthContext);
 
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
@@ -30,12 +31,16 @@ const Navbar = () => {
     setIsNotificationsOpen(false);
   };
 
+ 
+
+  // Set active tab
   const [activeTab, setActiveTab] = useState("unread");
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
   };
 
+  // Set current date
   const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
@@ -69,6 +74,16 @@ const Navbar = () => {
   }, []);
 
 
+
+  // Search Result
+  const handleSearchClick = () => {
+    if (!searchInput) {
+      return;
+    }
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.set("search", searchInput);
+    window.history.pushState({}, "", newUrl.toString());
+  };
 
   return (
     <nav className="bg-primary-dark shadow p-4 sticky top-0 z-10 h-[64px] flex border-none">
@@ -104,17 +119,28 @@ const Navbar = () => {
         {/* Search Bar */}
         <div className="flex items-center justify-center w-full">
           {/* Input */}
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchInput}
-            onChange={handleSearchInputChange}
-            className="py-2 px-3 border border-primary-main rounded-radius-large focus:outline-none focus:border-primary-light max-w-[320px] sm:w-full"
-          />
+          <div className="relative">
+            <div
+              onClick={handleSearchClick}
+              className="bg-primary-light absolute transform -translate-y-1/2 top-1/2 right-1 rounded-full h-8 w-8 flex justify-center items-center cursor-pointer"
+            >
+              <MdSearch className="text-2xl text-light" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchInput}
+              onChange={handleSearchInputChange}
+              className="py-2 pl-3 pr-12 border border-primary-main rounded-full focus:outline-none focus:border-primary-light max-w-[320px] sm:w-full"
+            />
+          </div>
 
           {/* Date Display */}
-          
-          <div className="text-light ml-4 font-medium px-3 py-2 bg-primary-light rounded-radius-large"><span className="text-dark">Today is : </span>{currentDate}</div>
+
+          <div className="text-light ml-4 font-medium px-3 py-2 bg-primary-light rounded-radius-large">
+            <span className="text-primary-dark">Today is : </span>
+            {currentDate}
+          </div>
         </div>
 
         {/* Icons */}

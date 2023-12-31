@@ -17,7 +17,7 @@ const Providers = ({ children }: Props) => {
       <Provider store={store}>
         <Navbar />
         <Sidebar/>
-        <main className="mt-8 mr-[212px]">{children}</main>
+        <main className="mt-8 mb-12 mr-[212px]">{children}</main>
         <Toaster position="top-center" reverseOrder={false} />
       </Provider>
     </AuthProvider>
