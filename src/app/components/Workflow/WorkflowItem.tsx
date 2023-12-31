@@ -12,11 +12,13 @@ import toast from "react-hot-toast";
 type Props = {
   step: Step;
   id: string;
+  length:number;
 };
 
-const WorkflowItem = ({ step, id }: Props) => {
+const WorkflowItem = ({ step, id,length }: Props) => {
   // const params = useParams();
   // const id = params?.productId?.toString();
+
 
   const [file, setFile] = useState<File | null>();
   const dispatch = useAppDispatch();
@@ -38,7 +40,7 @@ const WorkflowItem = ({ step, id }: Props) => {
     if (!file) {
       return;
     } else {
-      const test = dispatch(
+      dispatch(
         updateProduct({
           productId: id,
           updatedStep: {
@@ -86,7 +88,7 @@ const WorkflowItem = ({ step, id }: Props) => {
             <div className={style.bottomLeft}></div>
             <div className={style.bottomRight}></div>
           </div>
-          {step.step !== 5 && (
+          {step.step !== length && (
             <div className={`w-1 h-20 850:w-20 850:h-1 ${style.line}`}></div>
           )}
         </div>

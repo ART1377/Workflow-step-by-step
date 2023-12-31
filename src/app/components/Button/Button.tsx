@@ -32,11 +32,11 @@ const Button: React.FC<ButtonProps> = ({
       case "gray":
         return " bg-gray-main";
       case "primary-dark":
-        return " bg-primary-dark w-full !py-1.5";
+        return " bg-primary-dark w-full !py-2";
       case "primary-main":
-        return " bg-primary-main w-full !py-1.5";
+        return " bg-primary-main w-full !py-2";
       case "primary-light":
-        return " bg-primary-light w-full !py-1.5";
+        return " bg-primary-light w-full !py-2";
     }
   };
 

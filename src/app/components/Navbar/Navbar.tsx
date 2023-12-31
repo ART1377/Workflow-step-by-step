@@ -113,7 +113,8 @@ const Navbar = () => {
           />
 
           {/* Date Display */}
-          <div className="text-light ml-4 font-medium">{currentDate}</div>
+          
+          <div className="text-light ml-4 font-medium px-3 py-2 bg-primary-light rounded-radius-large"><span className="text-dark">Today is : </span>{currentDate}</div>
         </div>
 
         {/* Icons */}

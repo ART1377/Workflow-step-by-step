@@ -10,6 +10,7 @@ type Props = {
 };
 
 const Workflow = ({ steps, id }: Props) => {
+
   return (
     <>
       <div className="p-8 flex flex-wrap flex-col 850:!flex-row 850:justify-center 850:items-baseline 850:gap-5">
@@ -45,7 +46,7 @@ const Workflow = ({ steps, id }: Props) => {
 
         {/* All Steps Except Start Step ***** */}
         {steps?.map((step: Step) => (
-          <WorkflowItem key={step.step} step={step} id={id} />
+          <WorkflowItem key={step.step} step={step} id={id} length={steps.length} />
         ))}
       </div>
     </>
