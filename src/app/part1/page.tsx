@@ -37,7 +37,8 @@ export default function Home() {
   if (productState === "loading" || productState === "idle") {
     return <Loading />;
   }
-  console.log(filteredProducts);
+
+
   return (
     <>
       <div className="px-2 480:px-4">

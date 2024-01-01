@@ -31,7 +31,7 @@ const ProductCard = ({
   const closeModal = () => {
     setIsModalOpen(false);
   };
-console.log(columns)
+  
   const columnsNumber = () => {
     switch (columns) {
       case 1:

@@ -76,26 +76,26 @@ const Navbar = () => {
   }, []);
 
   // Set search query
-  useEffect(() => {
-    const setSearchInput = setTimeout(() => {
-      const searchParams = new URLSearchParams(window.location.search);
-      if (!searchInput) {
-        searchParams.delete("search");
-      } else {
-        searchParams.set("search", searchInput);
-      }
+  // useEffect(() => {
+  //   const setSearchInput = setTimeout(() => {
+  //     const searchParams = new URLSearchParams(window.location.search);
+  //     if (!searchInput) {
+  //       searchParams.delete("search");
+  //     } else {
+  //       searchParams.set("search", searchInput);
+  //     }
 
-      const newPathName = `${
-        window.location.pathname
-      }?${searchParams.toString()}`;
+  //     const newPathName = `${
+  //       window.location.pathname
+  //     }?${searchParams.toString()}`;
 
-      router.push(newPathName);
-    }, 1000);
+  //     router.push(newPathName);
+  //   }, 1000);
 
-    return () => {
-      clearTimeout(setSearchInput);
-    };
-  }, [searchInput]);
+  //   return () => {
+  //     clearTimeout(setSearchInput);
+  //   };
+  // }, [searchInput,router]);
 
   // Set search query
   // const handleSearchClick = () => {

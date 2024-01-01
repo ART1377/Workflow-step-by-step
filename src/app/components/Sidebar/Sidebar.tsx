@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { MdPerson } from "react-icons/md";
 
 const Sidebar = () => {
@@ -7,6 +9,14 @@ const Sidebar = () => {
     path: string;
     icon: React.ReactNode;
   }
+
+  const pathName = usePathname();
+
+  const isActiveLink = (path: string) => {
+    if (pathName.split("/")[1].toString() === path) {
+      return "!bg-primary-main";
+    }
+  };
 
   const sidebarItmes: SidebarItme[] = [
     { title: "part 1", path: "part1", icon: <MdPerson /> },
@@ -29,7 +39,7 @@ const Sidebar = () => {
             return (
               <li
                 key={item.title}
-                className={`mb-2 transition-all duration-150 hover:border-s-2 hover:border-white px-2 py-1.5 capitalize font-medium rounded-radius-large rounded-ee-none border-b-2`}
+                className={`mb-2 transition-all duration-150 hover:border-s-2 hover:border-white px-2 py-1.5 capitalize font-medium rounded-radius-large rounded-ee-none border-b-2 ${isActiveLink(item.path)}`}
               >
                 <Link
                   href={item.path}
