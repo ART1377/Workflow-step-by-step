@@ -1,5 +1,5 @@
+"use client";
 import React, { useEffect, useState } from "react";
-import DropDownItem from "../DropDownItem/DropDownItem";
 import {
   MdNotifications,
   MdArrowDropDown,
@@ -7,7 +7,6 @@ import {
 } from "react-icons/md";
 import {
   fetchNotifications,
-  markAsRead,
 } from "../../redux/slices/notificationSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { Notification } from "../../../../next-type-d";
@@ -19,6 +18,8 @@ const Notification = () => {
     (state) => state.notifications.notifications
   );
   const status = useAppSelector((state) => state.notifications.status);
+
+  console.log(status)
 
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("unread");
@@ -35,9 +36,7 @@ const Notification = () => {
     dispatch(fetchNotifications());
   }, [dispatch]);
 
-  const handleMarkAsRead = (notificationId: string) => {
-    dispatch(markAsRead(notificationId));
-  };
+ 
 
   const filteredNotifications =
     activeTab === "unread"
@@ -96,7 +95,11 @@ const Notification = () => {
                     <NotificationItem
                       key={notification.id}
                       notification={notification}
-                      last={true}
+                      last={
+                        filteredNotifications?.length > 10 && index === 10
+                          ? true
+                          : filteredNotifications?.length - 1 === index
+                      }
                     />
                   );
                 }

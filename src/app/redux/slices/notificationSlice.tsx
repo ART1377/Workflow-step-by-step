@@ -27,10 +27,17 @@ export const fetchNotifications = createAsyncThunk(
 export const markAsRead = createAsyncThunk(
   "notifications/markAsRead",
   async (notificationId: string) => {
-    const response = await axios.put(
+    const response = await axios.get(
       `${API_URL}/notifications/${notificationId}`
     );
-    return response.data;
+    const notification = response.data;
+
+    const updateNotification = { ...notification, read: true };
+
+    // Now, update the notification on the server
+    await axios.put(`${API_URL}/notifications/${notificationId}`, updateNotification);
+
+    return notification?.id;
   }
 );
 
@@ -50,6 +57,9 @@ const notificationsSlice = createSlice({
       .addCase(fetchNotifications.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "Failed to fetch notifications";
+      })
+      .addCase(markAsRead.pending, (state) => {
+        state.status = "loading";
       })
       .addCase(markAsRead.fulfilled, (state, action) => {
         const index = state.notifications.findIndex(
