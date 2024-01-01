@@ -13,7 +13,7 @@ import { AuthContext } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-  const router=useRouter()
+  const router = useRouter();
   const [searchInput, setSearchInput] = useState("");
   const authCtx = useContext(AuthContext);
 
@@ -74,21 +74,41 @@ const Navbar = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Set search query
+  useEffect(() => {
+    const setSearchInput = setTimeout(() => {
+      const searchParams = new URLSearchParams(window.location.search);
+      if (!searchInput) {
+        searchParams.delete("search");
+      } else {
+        searchParams.set("search", searchInput);
+      }
 
+      const newPathName = `${
+        window.location.pathname
+      }?${searchParams.toString()}`;
 
-  // Search Result
-  const handleSearchClick = () => {
-    const searchParams=new URLSearchParams(window.location.search)
-    if (!searchInput) {
-      searchParams.delete('search')
-    }else{
-      searchParams.set('search',searchInput)
-    }
+      router.push(newPathName);
+    }, 1000);
 
-    const newPathName=`${window.location.pathname}?${searchParams.toString()}`
+    return () => {
+      clearTimeout(setSearchInput);
+    };
+  }, [searchInput]);
 
-    router.push(newPathName)
-  };
+  // Set search query
+  // const handleSearchClick = () => {
+  //   const searchParams=new URLSearchParams(window.location.search)
+  //   if (!searchInput) {
+  //     searchParams.delete('search')
+  //   }else{
+  //     searchParams.set('search',searchInput)
+  //   }
+
+  //   const newPathName=`${window.location.pathname}?${searchParams.toString()}`
+
+  //   router.push(newPathName)
+  // };
 
   return (
     <nav className="bg-primary-dark shadow p-4 sticky top-0 z-10 h-[64px] flex border-none">
@@ -126,7 +146,7 @@ const Navbar = () => {
           {/* Input */}
           <div className="relative">
             <div
-              onClick={handleSearchClick}
+              // onClick={handleSearchClick}
               className="bg-primary-light absolute transform -translate-y-1/2 top-1/2 right-1 rounded-full h-8 w-8 flex justify-center items-center cursor-pointer"
             >
               <MdSearch className="text-2xl text-light" />
