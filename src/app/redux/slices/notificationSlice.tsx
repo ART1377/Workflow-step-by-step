@@ -35,7 +35,10 @@ export const markAsRead = createAsyncThunk(
     const updateNotification = { ...notification, read: true };
 
     // Now, update the notification on the server
-    await axios.put(`${API_URL}/notifications/${notificationId}`, updateNotification);
+    await axios.put(
+      `${API_URL}/notifications/${notificationId}`,
+      updateNotification
+    );
 
     return notification?.id;
   }
@@ -62,6 +65,7 @@ const notificationsSlice = createSlice({
         state.status = "loading";
       })
       .addCase(markAsRead.fulfilled, (state, action) => {
+        state.status = "succeeded";
         const index = state.notifications.findIndex(
           (n) => n.id === action.payload
         );

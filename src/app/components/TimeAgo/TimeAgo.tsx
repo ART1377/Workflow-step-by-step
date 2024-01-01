@@ -6,7 +6,6 @@ interface TimeAgoProps {
 }
 
 const TimeAgo: React.FC<TimeAgoProps> = ({ timestamp }) => {
-  
   const parsedTimestamp = parseISO(timestamp);
   const timeAgo = formatDistanceToNow(parsedTimestamp, { addSuffix: true });
 

@@ -5,9 +5,7 @@ import {
   MdArrowDropDown,
   MdArrowDropUp,
 } from "react-icons/md";
-import {
-  fetchNotifications,
-} from "../../redux/slices/notificationSlice";
+import { fetchNotifications } from "../../redux/slices/notificationSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { Notification } from "../../../../next-type-d";
 import NotificationItem from "../Notification/NotificationItem/NotificationItem";
@@ -19,7 +17,7 @@ const Notification = () => {
   );
   const status = useAppSelector((state) => state.notifications.status);
 
-  console.log(status)
+  console.log(status);
 
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("unread");
@@ -35,8 +33,6 @@ const Notification = () => {
   useEffect(() => {
     dispatch(fetchNotifications());
   }, [dispatch]);
-
- 
 
   const filteredNotifications =
     activeTab === "unread"
@@ -88,8 +84,13 @@ const Notification = () => {
 
           {/* Notification dropdown content */}
           <div className="mt-3">
-            {filteredNotifications?.map(
-              (notification: Notification, index: number) => {
+            {filteredNotifications
+              .sort(
+                (a, b) =>
+                  new Date(b.timestamp).getTime() -
+                  new Date(a.timestamp).getTime()
+              )
+              ?.map((notification: Notification, index: number) => {
                 if (index < 10) {
                   return (
                     <NotificationItem
@@ -103,8 +104,7 @@ const Notification = () => {
                     />
                   );
                 }
-              }
-            )}
+              })}
           </div>
         </div>
       )}
