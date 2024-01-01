@@ -11,10 +11,12 @@ import NotificationItem from "../NotificationItem/NotificationItem";
 
 type Props = {
   productData: Product;
+  columns: number;
 };
 
 const ProductCard = ({
   productData: { id, productName, productDescription, steps },
+  columns,
 }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("workflow");
@@ -29,10 +31,19 @@ const ProductCard = ({
   const closeModal = () => {
     setIsModalOpen(false);
   };
+console.log(columns)
+  const columnsNumber = () => {
+    switch (columns) {
+      case 1:
+        return "w-full";
+      case 2:
+        return "w-[46%]";
+    }
+  };
 
   return (
     <>
-      <div className="w-full lg:w-[47%] max-w-[800px]">
+      <div className={`w-full m-auto ${columnsNumber()}`}>
         <div className="flex-grow bg-white rounded-radius-main shadow-xl overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-[2px] border-primary-light border">
           <div className="p-4">
             <h3 className="text-lg font-medium text-dark">{productName}</h3>
@@ -133,9 +144,7 @@ const ProductCard = ({
             {activeTab === "operations" && (
               <div className="p-4 flex flex-col items-center gap-6">
                 <section className="w-full">
-                  <div>
-
-                  </div>
+                  <div></div>
                   {/* workflow operations */}
                   <div className="p-4 flex flex-col items-center gap-6">
                     {steps.map((step) => {
@@ -152,7 +161,6 @@ const ProductCard = ({
               </div>
             )}
           </div>
-       
         </BaseModal>
       )}
     </>

@@ -1,5 +1,6 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
+import style from './Navbar.module.css'
 import {
   MdPerson,
   MdNotifications,
@@ -111,7 +112,7 @@ const Navbar = () => {
   // };
 
   return (
-    <nav className="bg-primary-dark shadow p-4 sticky top-0 z-10 h-[64px] flex border-none">
+    <nav className={`bg-primary-dark shadow p-4 sticky top-0 z-10 h-[64px] flex border-none`}>
       <div className="flex justify-between items-center w-full">
         {/* Profile Icon */}
         <div className="relative mr-4">
@@ -147,9 +148,9 @@ const Navbar = () => {
           <div className="relative">
             <div
               // onClick={handleSearchClick}
-              className="bg-primary-light absolute transform -translate-y-1/2 top-1/2 right-1 rounded-full h-8 w-8 flex justify-center items-center cursor-pointer"
+              className={`${style.searchIcon} bg-primary-light absolute transform -translate-y-1/2 top-1/2 right-1 rounded-full h-8 w-8 flex justify-center items-center cursor-pointer`}
             >
-              <MdSearch className="text-2xl text-light" />
+              <MdSearch strokeWidth='1' className="text-2xl text-light" />
             </div>
             <input
               type="text"
