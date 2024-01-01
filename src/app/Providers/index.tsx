@@ -12,19 +12,19 @@ type Props = {
 };
 
 const Providers = ({ children }: Props) => {
-  const router = useRouter();
-  const pathName = usePathname();
-  const authCtx = useContext(AuthContext);
+  // const router = useRouter();
+  // const pathName = usePathname();
+  // const authCtx = useContext(AuthContext);
 
-  const user = authCtx?.user;
+  // const user = authCtx?.user;
 
   
-  useEffect(() => {
-    if (!user) {
-      router.push("/auth");
-    }
-    console.log(user)
-  }, [user, router]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push("/auth");
+  //   }
+  //   console.log(user)
+  // }, [user, router]);
 
   return (
     <AuthProvider>

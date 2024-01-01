@@ -14,9 +14,10 @@ const page = (props: Props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginHandler = () => {
+  const loginHandler = (e: React.FormEvent) => {
+    e.preventDefault();
     authCtx?.login({ username, password });
-    console.log('first')
+    console.log('login',authCtx?.user)
   };
 
   return (

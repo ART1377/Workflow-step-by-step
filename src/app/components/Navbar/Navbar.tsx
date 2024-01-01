@@ -29,7 +29,6 @@ const Navbar = () => {
     setIsProfileOpen(!isProfileOpen);
   };
 
-
   // Set current date
   const [currentDate, setCurrentDate] = useState("");
 
@@ -87,17 +86,25 @@ const Navbar = () => {
 
   // Set search query
   const handleSearchClick = () => {
-    const searchParams=new URLSearchParams(window.location.search)
+    const searchParams = new URLSearchParams(window.location.search);
     if (!searchInput) {
-      searchParams.delete('search')
-    }else{
-      searchParams.set('search',searchInput)
+      searchParams.delete("search");
+    } else {
+      searchParams.set("search", searchInput);
     }
 
-    const newPathName=`${window.location.pathname}?${searchParams.toString()}`
+    const newPathName = `${
+      window.location.pathname
+    }?${searchParams.toString()}`;
 
-    router.push(newPathName)
+    router.push(newPathName);
   };
+
+  const handleLogout = () => {
+    authCtx?.logout()
+    console.log(authCtx?.user)
+  };
+
 
 
   return (
@@ -121,10 +128,7 @@ const Navbar = () => {
                 </Link>
               </DropDownItem>
               <DropDownItem>
-                <p
-                  onClick={authCtx?.logout}
-                  className="flex items-center gap-1"
-                >
+                <p onClick={handleLogout} className="flex items-center gap-1">
                   <MdLogout />
                   Logout
                 </p>
