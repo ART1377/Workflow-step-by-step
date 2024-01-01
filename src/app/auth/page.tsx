@@ -16,6 +16,7 @@ const page = (props: Props) => {
 
   const loginHandler = () => {
     authCtx?.login({ username, password });
+    console.log('first')
   };
 
   return (

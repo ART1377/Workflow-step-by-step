@@ -86,18 +86,19 @@ const Navbar = () => {
   // }, [searchInput,router]);
 
   // Set search query
-  // const handleSearchClick = () => {
-  //   const searchParams=new URLSearchParams(window.location.search)
-  //   if (!searchInput) {
-  //     searchParams.delete('search')
-  //   }else{
-  //     searchParams.set('search',searchInput)
-  //   }
+  const handleSearchClick = () => {
+    const searchParams=new URLSearchParams(window.location.search)
+    if (!searchInput) {
+      searchParams.delete('search')
+    }else{
+      searchParams.set('search',searchInput)
+    }
 
-  //   const newPathName=`${window.location.pathname}?${searchParams.toString()}`
+    const newPathName=`${window.location.pathname}?${searchParams.toString()}`
 
-  //   router.push(newPathName)
-  // };
+    router.push(newPathName)
+  };
+
 
   return (
     <nav
@@ -137,7 +138,7 @@ const Navbar = () => {
           {/* Input */}
           <div className="relative">
             <div
-              // onClick={handleSearchClick}
+              onClick={handleSearchClick}
               className={`${style.searchIcon} bg-primary-light absolute transform -translate-y-1/2 top-1/2 right-1 rounded-full h-8 w-8 flex justify-center items-center cursor-pointer`}
             >
               <MdSearch strokeWidth="1" className="text-2xl text-light" />

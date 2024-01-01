@@ -17,8 +17,8 @@ const Notification = () => {
   );
   const status = useAppSelector((state) => state.notifications.status);
 
-  console.log(status);
 
+  
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("unread");
 
