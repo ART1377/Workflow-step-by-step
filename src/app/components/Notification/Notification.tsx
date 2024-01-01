@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import DropDownItem from "../DropDownItem/DropDownItem";
-import { MdNotifications, MdArrowDropDown } from "react-icons/md";
+import {
+  MdNotifications,
+  MdArrowDropDown,
+  MdArrowDropUp,
+} from "react-icons/md";
 import {
   fetchNotifications,
   markAsRead,
 } from "../../redux/slices/notificationSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { Notification } from "../../../../next-type-d";
-import NotificationItem from "../NotificationItem/NotificationItem";
+import NotificationItem from "../Notification/NotificationItem/NotificationItem";
 
 const Notification = () => {
   const dispatch = useAppDispatch();
@@ -47,19 +51,27 @@ const Notification = () => {
         className="text-light flex items-end"
       >
         <MdNotifications className="text-light text-2xl" />
-        <MdArrowDropDown className="text-light text-2xl -ms-1" />
+        {isNotificationsOpen ? (
+          <MdArrowDropUp className="text-light text-2xl -ms-1" />
+        ) : (
+          <MdArrowDropDown className="text-light text-2xl -ms-1" />
+        )}
       </button>
       {isNotificationsOpen && (
         <div
-          className={`absolute right-0 mt-2 w-48 bg-white p-2 rounded-md shadow ${
+          className={`max-h-[300px] overflow-y-scroll absolute right-0 mt-2 p-2 rounded-md shadow border-light border-2  ${
             isNotificationsOpen && "block"
-          }`}
+          }
+          ${activeTab === "unread" ? "bg-primary-dark" : " bg-light"}
+          `}
         >
           {/* Notification Tabs */}
           <div className="flex mb-2">
             <button
-              className={`w-1/2 py-1 text-center text-light rounded-radius-main ${
-                activeTab === "unread" ? "bg-primary-dark" : "text-primary-main"
+              className={`w-1/2 py-1 text-center  rounded-radius-main ${
+                activeTab === "unread"
+                  ? "bg-light text-primary-dark"
+                  : "text-primary-main"
               }`}
               onClick={() => handleTabChange("unread")}
             >
@@ -67,7 +79,7 @@ const Notification = () => {
             </button>
             <button
               className={`w-1/2 py-1 text-center text-light rounded-radius-main ${
-                activeTab === "read" ? "bg-primary-dark" : "text-primary-main"
+                activeTab === "read" ? "bg-primary-dark" : "text-light"
               }`}
               onClick={() => handleTabChange("read")}
             >
@@ -76,14 +88,21 @@ const Notification = () => {
           </div>
 
           {/* Notification dropdown content */}
-          {filteredNotifications?.map((notification: Notification) => {
-            return (
-              <NotificationItem
-                key={notification.id}
-                notification={notification}
-              />
-            );
-          })}
+          <div className="mt-3">
+            {filteredNotifications?.map(
+              (notification: Notification, index: number) => {
+                if (index < 10) {
+                  return (
+                    <NotificationItem
+                      key={notification.id}
+                      notification={notification}
+                      last={true}
+                    />
+                  );
+                }
+              }
+            )}
+          </div>
         </div>
       )}
     </div>
@@ -91,20 +110,3 @@ const Notification = () => {
 };
 
 export default Notification;
-
-// import React from 'react'
-// import { Notification } from '../../../../../next-type-d';
-
-// type Props = {
-//     notification:Notification;
-// }
-
-// const NotificationItem = ({notification}: Props) => {
-//   return (
-//     <>
-    
-//     </>
-//   )
-// }
-
-// export default NotificationItem
