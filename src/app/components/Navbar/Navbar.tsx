@@ -177,19 +177,22 @@ const Navbar = () => {
               onClick={toggleNotifications}
               className="text-light flex items-end"
             >
-              {/* Your notification icon */}
+
+
+              {/* Notification */}
               <MdNotifications className="text-light text-2xl" />
               <MdArrowDropDown className="text-light text-2xl -ms-1" />
             </button>
             {isNotificationsOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white p-2 rounded-md shadow">
+
                 {/* Notification Tabs */}
                 <div className="flex mb-2">
                   <button
                     className={`w-1/2 py-1 text-center text-light rounded-radius-main ${
                       activeTab === "unread"
                         ? "bg-primary-dark"
-                        : "text-primary-dark"
+                        : "text-primary-main"
                     }`}
                     onClick={() => handleTabChange("unread")}
                   >
@@ -199,7 +202,7 @@ const Navbar = () => {
                     className={`w-1/2 py-1 text-center text-light rounded-radius-main ${
                       activeTab === "read"
                         ? "bg-primary-dark"
-                        : "text-primary-dark"
+                        : "text-primary-main"
                     }`}
                     onClick={() => handleTabChange("read")}
                   >
@@ -207,7 +210,7 @@ const Navbar = () => {
                   </button>
                 </div>
 
-                {/* Your notification dropdown content */}
+                {/* Notification dropdown content */}
                 {activeTab === "unread" && (
                   <>
                     <DropDownItem>

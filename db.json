@@ -1068,5 +1068,117 @@
         }
       ]
     }
+  ],
+  "notifications": [
+    {
+      "id": "1",
+      "title": "Step Completion",
+      "message": "Step 2 for Product 1 completed by Fatima. File uploaded: Screenshot (2).png",
+      "sender": {
+        "senderName": "Fatima",
+        "senderId": "002"
+      },
+      "timestamp": "2024-01-01T12:30:00Z",
+      "read": true
+    },
+    {
+      "id": "2",
+      "title": "State Change",
+      "message": "State changed to 'rejected' for Step 3 in Product 3 by Ella.",
+      "sender": {
+        "senderName": "Ella",
+        "senderId": "003"
+      },
+      "timestamp": "2024-01-01T13:45:00Z",
+      "read": false
+    },
+    {
+      "id": "3",
+      "title": "File Upload",
+      "message": "File uploaded for Step 1 in Product 4 by Isaac. File: Screenshot (2).png",
+      "sender": {
+        "senderName": "Isaac",
+        "senderId": "006"
+      },
+      "timestamp": "2024-01-01T14:15:00Z",
+      "read": true
+    },
+    {
+      "id": "4",
+      "title": "Product Completion",
+      "message": "Product 5 completed. All steps are in 'default' state.",
+      "sender": {
+        "senderName": "Sophia",
+        "senderId": "007"
+      },
+      "timestamp": "2024-01-01T15:00:00Z",
+      "read": false
+    },
+    {
+      "id": "5",
+      "title": "Step Update",
+      "message": "Step 4 for Product 2 updated by Adam.",
+      "sender": {
+        "senderName": "Adam",
+        "senderId": "004"
+      },
+      "timestamp": "2024-01-01T16:30:00Z",
+      "read": true
+    },
+    {
+      "id": "6",
+      "title": "File Upload",
+      "message": "File uploaded for Step 1 in Product 6 by Emily. File: Screenshot (8).png",
+      "sender": {
+        "senderName": "Emily",
+        "senderId": "009"
+      },
+      "timestamp": "2024-01-01T17:45:00Z",
+      "read": false
+    },
+    {
+      "id": "7",
+      "title": "State Change",
+      "message": "State changed to 'succeed' for Step 2 in Product 7 by Robert.",
+      "sender": {
+        "senderName": "Robert",
+        "senderId": "010"
+      },
+      "timestamp": "2024-01-01T18:15:00Z",
+      "read": true
+    },
+    {
+      "id": "8",
+      "title": "Step Completion",
+      "message": "Step 3 for Product 8 completed by Greg. File uploaded: Document.pdf",
+      "sender": {
+        "senderName": "Greg",
+        "senderId": "012"
+      },
+      "timestamp": "2024-01-01T19:00:00Z",
+      "read": false
+    },
+    {
+      "id": "9",
+      "title": "Product Completion",
+      "message": "Product 9 completed. All steps are in 'default' state.",
+      "sender": {
+        "senderName": "Alex",
+        "senderId": "005"
+      },
+      "timestamp": "2024-01-01T20:30:00Z",
+      "read": true
+    },
+    {
+      "id": "10",
+      "title": "File Upload",
+      "message": "File uploaded for Step 1 in Product 10 by Ella. File: Screenshot (9).png",
+      "sender": {
+        "senderName": "Ella",
+        "senderId": "003"
+      },
+      "timestamp": "2024-01-01T21:45:00Z",
+      "read": false
+    }
   ]
 }
