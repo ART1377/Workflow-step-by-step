@@ -19,8 +19,6 @@ export default function Home() {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(searchParams.get("search"));
-    // Update the search query state when the URL changes
     const search = searchParams.get("search");
 
     setSearchQuery(search?.toString() || "");
@@ -33,7 +31,7 @@ export default function Home() {
   if (productState === "loading" || productState === "idle") {
     return <Loading />;
   }
-
+console.log(filteredProducts)
   return (
     <>
       <div className="px-2 480:px-4">
@@ -41,13 +39,13 @@ export default function Home() {
           <h5>Product List</h5>
         </div>
         <div className="flex flex-wrap gap-3">
-          {filteredProducts ? (
+          {filteredProducts.length ? (
             filteredProducts.map((product: Product) => (
               <ProductCard key={product.id} productData={product} />
             ))
           ) : (
             <div>
-              <p>There is no product with this information</p>
+              <p>There is no product with this information.</p>
             </div>
           )}
         </div>

@@ -1,3 +1,4 @@
+"use client";
 import React, { useContext, useEffect, useState } from "react";
 import {
   MdPerson,
@@ -9,8 +10,10 @@ import {
 import DropDownItem from "../DropDownItem/DropDownItem";
 import Link from "next/link";
 import { AuthContext } from "@/app/context/AuthContext";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const router=useRouter()
   const [searchInput, setSearchInput] = useState("");
   const authCtx = useContext(AuthContext);
 
@@ -30,8 +33,6 @@ const Navbar = () => {
     setIsProfileOpen(!isProfileOpen);
     setIsNotificationsOpen(false);
   };
-
- 
 
   // Set active tab
   const [activeTab, setActiveTab] = useState("unread");
@@ -77,12 +78,16 @@ const Navbar = () => {
 
   // Search Result
   const handleSearchClick = () => {
+    const searchParams=new URLSearchParams(window.location.search)
     if (!searchInput) {
-      return;
+      searchParams.delete('search')
+    }else{
+      searchParams.set('search',searchInput)
     }
-    const newUrl = new URL(window.location.href);
-    newUrl.searchParams.set("search", searchInput);
-    window.history.pushState({}, "", newUrl.toString());
+
+    const newPathName=`${window.location.pathname}?${searchParams.toString()}`
+
+    router.push(newPathName)
   };
 
   return (
