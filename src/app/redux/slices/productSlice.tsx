@@ -3,7 +3,7 @@ import axios from "axios";
 // import { RootState } from '../store';
 import { Product, Step } from "../../../../next-type-d";
 
-const API_URL = "http://127.0.0.1:3500";
+const API_URL = 'http://127.0.0.1:3500'; // Adjust the API URL based on your prot
 
 export interface InitialStateType {
   products: Product[];
