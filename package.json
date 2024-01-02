@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "cd app && npx json-server -w db.json -p 3500 -H 127.0.0.1 && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
