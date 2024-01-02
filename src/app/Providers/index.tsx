@@ -16,15 +16,13 @@ const Providers = ({ children }: Props) => {
   const authCtx = useContext(AuthContext);
   const user = authCtx?.user;
   const router = useRouter();
-  const pathName=usePathname()
+  const pathName = usePathname();
 
   useEffect(() => {
-    if (!user || !user?.username || !user?.password) {
-      router.push("/auth");
+    if (!localStorage.getItem("user")) {
+      router.push("/auth", { scroll: false });
     }
-  }, [pathName, user]);
-
-
+  }, [router]);
 
   return (
     <AuthProvider>
