@@ -6,25 +6,25 @@ import { Toaster } from "react-hot-toast";
 import { AuthContext, AuthProvider } from "../context/AuthContext";
 import Navbar from "../components/Navbar/Navbar";
 import Sidebar from "../components/Sidebar/Sidebar";
-import { usePathname, useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
+
 type Props = {
   children: React.ReactNode;
 };
 
 const Providers = ({ children }: Props) => {
-  // const router = useRouter();
-  // const pathName = usePathname();
-  // const authCtx = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
+  const user = authCtx?.user;
+  const router = useRouter();
+  const pathName=usePathname()
 
-  // const user = authCtx?.user;
+  useEffect(() => {
+    if (!user || !user?.username || !user?.password) {
+      router.push("/auth");
+    }
+  }, [pathName, user]);
 
-  
-  // useEffect(() => {
-  //   if (!user) {
-  //     router.push("/auth");
-  //   }
-  //   console.log(user)
-  // }, [user, router]);
+
 
   return (
     <AuthProvider>
