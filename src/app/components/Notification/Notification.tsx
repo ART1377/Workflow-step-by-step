@@ -17,8 +17,6 @@ const Notification = () => {
   );
   const status = useAppSelector((state) => state.notifications.status);
 
-
-  
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("unread");
 
@@ -43,7 +41,9 @@ const Notification = () => {
     <div className={`relative`}>
       <button
         onClick={toggleNotifications}
-        className="text-light flex items-end"
+        className={`text-light flex items-end ${
+          isNotificationsOpen && "bg-primary-light rounded-radius-main"
+        }`}
       >
         <MdNotifications className="text-light text-2xl" />
         {isNotificationsOpen ? (

@@ -7,6 +7,7 @@ import {
   MdLogout,
   MdArrowDropDown,
   MdSearch,
+  MdArrowDropUp,
 } from "react-icons/md";
 import DropDownItem from "../DropDownItem/DropDownItem";
 import Notification from "../Notification/Notification";
@@ -115,10 +116,14 @@ const Navbar = () => {
       <div className="flex justify-between items-center w-full">
         {/* Profile Icon */}
         <div className="relative mr-4">
-          <button onClick={toggleProfile} className="text-light flex items-end">
+          <button onClick={toggleProfile} className={`text-light flex items-end ${isProfileOpen&&'bg-primary-light rounded-radius-main'}`}>
             {/* Your profile icon */}
             <MdPerson className="text-light text-2xl" />
-            <MdArrowDropDown className="text-light text-2xl -ms-1" />
+            {isProfileOpen ? (
+              <MdArrowDropUp className="text-light text-2xl -ms-1" />
+            ) : (
+              <MdArrowDropDown className="text-light text-2xl -ms-1" />
+            )}
           </button>
           {isProfileOpen && (
             <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-md">
