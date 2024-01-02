@@ -18,12 +18,11 @@ const Providers = ({ children }: Props) => {
   const router = useRouter();
   const pathName = usePathname();
 
-
   useEffect(() => {
     if (!localStorage.getItem("user")) {
       router.push("/auth", { scroll: false });
     }
-  }, [router,pathName]);
+  }, [router, localStorage.getItem("user"), user, pathName]);
 
   return (
     <AuthProvider>

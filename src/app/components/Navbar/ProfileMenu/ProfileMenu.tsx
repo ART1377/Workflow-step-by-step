@@ -22,7 +22,7 @@ const ProfileMenu = () => {
   };
 
   const handleLogout = () => {
-    if (!authCtx?.user) {
+    if (!localStorage.getItem('user')) {
       return toast.error("Already Loged out!");
     }
     authCtx?.logout();
