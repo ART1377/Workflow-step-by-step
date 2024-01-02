@@ -29,6 +29,7 @@ const ProductCard = ({
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
   
   const columnsNumber = () => {
     switch (columns) {
@@ -41,7 +42,7 @@ const ProductCard = ({
 
   return (
     <>
-      <div className={`w-full m-auto ${columnsNumber()}`}>
+      <div className={`m-auto ${columnsNumber()}`}>
         <div className="flex-grow bg-white rounded-radius-main shadow-xl overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-[2px] border-primary-light border">
           <div className="p-4">
             <h3 className="text-lg font-medium text-dark">{productName}</h3>

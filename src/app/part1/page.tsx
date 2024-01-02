@@ -18,7 +18,7 @@ export default function Home() {
   const products = useAppSelector((state) => state.product.products);
   const productState = useAppSelector((state) => state.product.status);
   const [searchQuery, setSearchQuery] = useState("");
-  const [columnsNumber, setColumnsNumber] = useState(2);
+  const [columnsNumber, setColumnsNumber] = useState(1);
 
   useEffect(() => {
     dispatch(fetchProducts());
