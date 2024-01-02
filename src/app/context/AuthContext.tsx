@@ -1,6 +1,7 @@
 // AuthContext.tsx
 import { useRouter } from "next/navigation";
 import React, { createContext, useState, ReactNode } from "react";
+import toast from "react-hot-toast";
 
 interface User {
   username: string;
@@ -27,33 +28,34 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
-
   // Local Storage Set Item
-  const setUserData = (user:string) => {
+  const setUserData = (user: string) => {
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem(
       "expireTime",
       (new Date().getTime() + 60 * 60 * 24).toString()
-      );
-    };
-    
-    // Local Storage Remove Items
+    );
+  };
+
+  // Local Storage Remove Items
   const removeUserData = () => {
-    localStorage.clear()
+    localStorage.clear();
   };
 
   const login = (userData: User) => {
     // authentication API call
     setUser(userData);
-    setUserData(userData.username)
+    setUserData(userData.username);
     router.push("/", { scroll: false });
+    toast.success("Successfully Loged in!");
   };
 
   const logout = () => {
     // logout logic and clear user data
     setUser(null);
-    removeUserData()
+    removeUserData();
     router.push("/auth", { scroll: false });
+    toast.success("Successfully Loged out!");
   };
 
   const value: AuthContextType = {

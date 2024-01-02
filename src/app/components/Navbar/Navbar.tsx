@@ -13,6 +13,7 @@ import Notification from "../Notification/Notification";
 import Link from "next/link";
 import { AuthContext } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const router = useRouter();
@@ -101,11 +102,12 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    authCtx?.logout()
-    console.log(authCtx?.user)
+    if (!authCtx?.user) {
+      return toast.error("Already Loged out!");
+    }
+    authCtx?.logout();
+    console.log(authCtx?.user);
   };
-
-
 
   return (
     <nav
