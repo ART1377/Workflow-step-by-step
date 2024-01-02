@@ -39,7 +39,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // Local Storage Remove Items
   const removeUserData = () => {
-    localStorage.clear();
+    localStorage.removeItem('user')
+    localStorage.removeItem('expireTime')
+    // localStorage.clear();
   };
 
   const login = (userData: User) => {

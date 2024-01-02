@@ -6,6 +6,7 @@ import Image from "next/image";
 import shoppingImage from "../../../public/images/shopping.jpg";
 import Button from "../components/Button/Button";
 import { FaGoogle, FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 type Props = {};
 
@@ -16,8 +17,12 @@ const page = (props: Props) => {
 
   const loginHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    authCtx?.login({ username, password });
-    console.log('login',authCtx?.user)
+    if (!username || !password) {
+      toast.error("Fields must be filled!");
+      return;
+    } else {
+      authCtx?.login({ username, password });
+    }
   };
 
   return (
