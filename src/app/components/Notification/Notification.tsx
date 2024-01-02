@@ -10,12 +10,12 @@ import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { Notification } from "../../../../next-type-d";
 import NotificationItem from "../Notification/NotificationItem/NotificationItem";
 
+
 const Notification = () => {
   const dispatch = useAppDispatch();
   const notifications = useAppSelector(
     (state) => state.notifications.notifications
   );
-  const status = useAppSelector((state) => state.notifications.status);
 
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("unread");
@@ -30,7 +30,7 @@ const Notification = () => {
 
   useEffect(() => {
     dispatch(fetchNotifications());
-  }, [dispatch]);
+  }, [dispatch,isNotificationsOpen]);
 
   const filteredNotifications =
     activeTab === "unread"
