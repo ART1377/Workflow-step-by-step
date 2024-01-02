@@ -102,9 +102,9 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    // if (!authCtx?.user) {
-    //   return toast.error("Already Loged out!");
-    // }
+    if (!authCtx?.user) {
+      return toast.error("Already Loged out!");
+    }
     authCtx?.logout();
   };
 
