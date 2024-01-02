@@ -1156,7 +1156,7 @@
         "senderId": "012"
       },
       "timestamp": "2024-01-01T19:00:00Z",
-      "read": false
+      "read": true
     },
     {
       "id": "9",
@@ -1167,7 +1167,7 @@
         "senderId": "005"
       },
       "timestamp": "2024-01-01T20:30:00Z",
-      "read": true
+      "read": false
     },
     {
       "id": "10",
@@ -1178,7 +1178,7 @@
         "senderId": "003"
       },
       "timestamp": "2024-01-01T21:45:00Z",
-      "read": false
+      "read": true
     }
   ]
 }

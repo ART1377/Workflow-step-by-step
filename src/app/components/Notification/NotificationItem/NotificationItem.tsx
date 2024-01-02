@@ -1,11 +1,9 @@
 "use client";
 import React from "react";
 import { Notification } from "../../../../../next-type-d";
-import TimeAgo from "../../TimeAgo/TimeAgo";
+import TimeAgo from 'react-timeago'
 import { MdDoneAll } from "react-icons/md";
-import {
-  markAsRead,
-} from "../../../redux/slices/notificationSlice";
+import { markAsRead } from "../../../redux/slices/notificationSlice";
 import { useAppDispatch } from "@/app/redux/hooks/hooks";
 
 type Props = {
@@ -16,9 +14,7 @@ const NotificationItem = ({
   notification: { id, message, read, sender, timestamp, title },
   last,
 }: Props) => {
-  
   const dispatch = useAppDispatch();
-
 
   const handleMarkAsRead = (notificationId: string) => {
     dispatch(markAsRead(notificationId));
@@ -71,7 +67,7 @@ const NotificationItem = ({
               }`}
             >
               <span className={` ${read ? "text-light" : "text-primary-dark"}`}>
-                <TimeAgo timestamp={timestamp} />
+                <TimeAgo date={timestamp} />
               </span>
             </div>
           )}
@@ -79,8 +75,8 @@ const NotificationItem = ({
         <div className={`last w-1.6`}>
           {!read && (
             <div
-            onClick={()=>handleMarkAsRead(id)}
-              className={`text-xs px-1 py-0.5 absolute bottom-1 right-1 w-max rounded-radius-main bg-reject`}
+              onClick={() => handleMarkAsRead(id)}
+              className={`text-xs px-1 py-0.5 absolute bottom-1 right-1 w-max rounded-radius-main bg-reject cursor-pointer`}
             >
               <span className={`flex items-center gap-1 text-light`}>
                 mark as read

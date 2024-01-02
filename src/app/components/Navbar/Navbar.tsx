@@ -1,113 +1,57 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Navbar.module.css";
-import {
-  MdPerson,
-  MdNotifications,
-  MdLogout,
-  MdArrowDropDown,
-  MdSearch,
-  MdArrowDropUp,
-} from "react-icons/md";
-import DropDownItem from "../DropDownItem/DropDownItem";
+import { MdSearch } from "react-icons/md";
 import Notification from "../Notification/Notification";
-import Link from "next/link";
-import { AuthContext } from "@/app/context/AuthContext";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
+import CurrentDate from "@/app/components/Navbar/CurrentDate/CurrentDate";
+import ProfileMenu from "./ProfileMenu/ProfileMenu";
 
 const Navbar = () => {
   const router = useRouter();
   const [searchInput, setSearchInput] = useState("");
-  const authCtx = useContext(AuthContext);
-
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
 
-  const toggleProfile = () => {
-    setIsProfileOpen(!isProfileOpen);
-  };
-
-  // Set current date
-  const [currentDate, setCurrentDate] = useState("");
-
+  // Set search query
   useEffect(() => {
-    const getCurrentDate = () => {
-      const options = {
-        weekday: "short",
-        year: "numeric",
-        month: "numeric",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        // second: "numeric",
-        hour12: false,
-      };
+    const setSearchInput = setTimeout(() => {
+      const searchParams = new URLSearchParams(window.location.search);
+      if (!searchInput) {
+        searchParams.delete("search");
+      } else {
+        searchParams.set("search", searchInput);
+      }
 
-      const formattedDate = new Date().toLocaleDateString(
-        "en-US",
-        options as any
-      );
-      setCurrentDate(formattedDate);
+      const newPathName = `${
+        window.location.pathname
+      }?${searchParams.toString()}`;
+
+      router.push(newPathName);
+    }, 1000);
+
+    return () => {
+      clearTimeout(setSearchInput);
     };
-
-    // Update the current date on component mount
-    getCurrentDate();
-
-    // Update the current date every minute
-    const interval = setInterval(getCurrentDate, 60000);
-
-    // Clear the interval on component unmount
-    return () => clearInterval(interval);
-  }, []);
+  }, [searchInput, router]);
 
   // Set search query
-  // useEffect(() => {
-  //   const setSearchInput = setTimeout(() => {
-  //     const searchParams = new URLSearchParams(window.location.search);
-  //     if (!searchInput) {
-  //       searchParams.delete("search");
-  //     } else {
-  //       searchParams.set("search", searchInput);
-  //     }
+  // const handleSearchClick = () => {
+  //   const searchParams = new URLSearchParams(window.location.search);
+  //   if (!searchInput) {
+  //     searchParams.delete("search");
+  //   } else {
+  //     searchParams.set("search", searchInput);
+  //   }
 
-  //     const newPathName = `${
-  //       window.location.pathname
-  //     }?${searchParams.toString()}`;
+  //   const newPathName = `${
+  //     window.location.pathname
+  //   }?${searchParams.toString()}`;
 
-  //     router.push(newPathName);
-  //   }, 1000);
-
-  //   return () => {
-  //     clearTimeout(setSearchInput);
-  //   };
-  // }, [searchInput,router]);
-
-  // Set search query
-  const handleSearchClick = () => {
-    const searchParams = new URLSearchParams(window.location.search);
-    if (!searchInput) {
-      searchParams.delete("search");
-    } else {
-      searchParams.set("search", searchInput);
-    }
-
-    const newPathName = `${
-      window.location.pathname
-    }?${searchParams.toString()}`;
-
-    router.push(newPathName);
-  };
-
-  const handleLogout = () => {
-    if (!authCtx?.user) {
-      return toast.error("Already Loged out!");
-    }
-    authCtx?.logout();
-  };
+  //   router.push(newPathName);
+  // };
 
   return (
     <nav
@@ -115,52 +59,14 @@ const Navbar = () => {
     >
       <div className="flex justify-between items-center w-full">
         {/* Profile Icon */}
-        <div className="relative mr-4">
-          <div className="flex gap-1">
-            <button
-              onClick={toggleProfile}
-              className={`text-light flex items-end ${
-                isProfileOpen && "bg-primary-light rounded-radius-main"
-              }`}
-            >
-              {/* Your profile icon */}
-              <MdPerson className="text-light text-2xl" />
-              {isProfileOpen ? (
-                <MdArrowDropUp className="text-light text-2xl -ms-1" />
-              ) : (
-                <MdArrowDropDown className="text-light text-2xl -ms-1" />
-              )}
-            </button>
-            <div>
-              <p className="text-light font-bold">
-                {authCtx?.user?.username && authCtx?.user?.username}
-              </p>
-            </div>
-          </div>
-          {isProfileOpen && (
-            <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-md">
-              <DropDownItem>
-                <Link href={"profile"} className="flex items-center gap-1">
-                  <MdPerson />
-                  Profile
-                </Link>
-              </DropDownItem>
-              <DropDownItem>
-                <p onClick={handleLogout} className="flex items-center gap-1">
-                  <MdLogout />
-                  Logout
-                </p>
-              </DropDownItem>
-            </div>
-          )}
-        </div>
+        <ProfileMenu />
 
         {/* Search Bar */}
         <div className="flex items-center justify-center w-full">
           {/* Input */}
           <div className="relative">
             <div
-              onClick={handleSearchClick}
+              // onClick={handleSearchClick}
               className={`${style.searchIcon} bg-primary-light absolute transform -translate-y-1/2 top-1/2 right-1 rounded-full h-8 w-8 flex justify-center items-center cursor-pointer`}
             >
               <MdSearch strokeWidth="1" className="text-2xl text-light" />
@@ -175,11 +81,7 @@ const Navbar = () => {
           </div>
 
           {/* Date Display */}
-
-          <div className="text-light ml-4 font-medium px-3 py-2 bg-primary-light rounded-radius-large">
-            <span className="text-primary-dark">Today is : </span>
-            {currentDate}
-          </div>
+          <CurrentDate />
         </div>
 
         {/* Icons */}

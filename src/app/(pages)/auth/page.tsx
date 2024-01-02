@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import Input from "../components/Input/Input";
+import { AuthContext } from "../../context/AuthContext";
+import Input from "../../components/Input/Input";
 import Image from "next/image";
-import shoppingImage from "../../../public/images/shopping.jpg";
-import Button from "../components/Button/Button";
+import shoppingImage from "../../../../public/images/shopping.jpg";
+import Button from "../../components/Button/Button";
 import { FaGoogle, FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 import toast from "react-hot-toast";
 
