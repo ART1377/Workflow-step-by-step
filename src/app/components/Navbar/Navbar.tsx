@@ -116,15 +116,27 @@ const Navbar = () => {
       <div className="flex justify-between items-center w-full">
         {/* Profile Icon */}
         <div className="relative mr-4">
-          <button onClick={toggleProfile} className={`text-light flex items-end ${isProfileOpen&&'bg-primary-light rounded-radius-main'}`}>
-            {/* Your profile icon */}
-            <MdPerson className="text-light text-2xl" />
-            {isProfileOpen ? (
-              <MdArrowDropUp className="text-light text-2xl -ms-1" />
-            ) : (
-              <MdArrowDropDown className="text-light text-2xl -ms-1" />
-            )}
-          </button>
+          <div className="flex gap-1">
+            <button
+              onClick={toggleProfile}
+              className={`text-light flex items-end ${
+                isProfileOpen && "bg-primary-light rounded-radius-main"
+              }`}
+            >
+              {/* Your profile icon */}
+              <MdPerson className="text-light text-2xl" />
+              {isProfileOpen ? (
+                <MdArrowDropUp className="text-light text-2xl -ms-1" />
+              ) : (
+                <MdArrowDropDown className="text-light text-2xl -ms-1" />
+              )}
+            </button>
+            <div>
+              <p className="text-light font-bold">
+                {authCtx?.user?.username && authCtx?.user?.username}
+              </p>
+            </div>
+          </div>
           {isProfileOpen && (
             <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-md">
               <DropDownItem>
