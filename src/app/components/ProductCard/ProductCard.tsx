@@ -3,11 +3,9 @@ import React, { useState } from "react";
 import { Product, Step } from "../../../../next-type-d";
 import { MdAdd } from "react-icons/md";
 import style from "./ProductCard.module.css";
-import ProductDetailPage from "../ProductDetailPage/ProductDetailPage";
 import BaseModal from "../BaseModal/BaseModal";
 import Workflow from "../Workflow/Workflow";
 import WorkflowOperations from "../WrokflowOperations/WorkflowOperations";
-import NotificationItem from "../NotificationItem/NotificationItem";
 
 type Props = {
   productData: Product;

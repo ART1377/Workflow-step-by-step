@@ -106,7 +106,6 @@ const Navbar = () => {
       return toast.error("Already Loged out!");
     }
     authCtx?.logout();
-    console.log(authCtx?.user);
   };
 
   return (
