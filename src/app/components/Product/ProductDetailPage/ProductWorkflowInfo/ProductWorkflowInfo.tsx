@@ -1,11 +1,11 @@
 import React from "react";
 import { Product } from "../../../../../../next-type-d";
 
-type ProductInfoProps = {
+type Props = {
   productData: Product;
 };
 
-const ProductInfo: React.FC<ProductInfoProps> = ({ productData }) => (
+const ProductWorkflowInfo = ({ productData }: Props) => (
   <section className="flex flex-col justify-center text-center">
     <h3 className="text-dark">{productData?.productName}</h3>
     <p className="text-gray-main">{productData?.productDescription}</p>
@@ -30,4 +30,4 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ productData }) => (
   </section>
 );
 
-export default ProductInfo;
+export default ProductWorkflowInfo;

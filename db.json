@@ -97,37 +97,10 @@
       "steps": [
         {
           "person": {
-            "personName": "Alex",
-            "personId": "005"
-          },
-          "state": "rejected",
-          "step": 1,
-          "file": null
-        },
-        {
-          "person": {
             "personName": "Isaac",
             "personId": "006"
           },
-          "state": "rejected",
-          "step": 2,
-          "file": null
-        },
-        {
-          "person": {
-            "personName": "Sophia",
-            "personId": "007"
-          },
-          "state": "rejected",
-          "step": 3,
-          "file": null
-        },
-        {
-          "person": {
-            "personName": "Isaac",
-            "personId": "006"
-          },
-          "state": "default",
+          "state": "succeed",
           "step": 4,
           "file": null
         },
@@ -136,9 +109,13 @@
             "personName": "Adam",
             "personId": "004"
           },
-          "state": "default",
+          "state": "uploaded",
           "step": 5,
-          "file": null
+          "file": {
+            "name": "Screenshot (2).png",
+            "type": "image/png",
+            "size": 96304
+          }
         }
       ]
     },
@@ -177,19 +154,6 @@
           "state": "default",
           "step": 3,
           "file": null
-        },
-        {
-          "person": {
-            "personName": "Isaac",
-            "personId": "006"
-          },
-          "state": "uploaded",
-          "step": 4,
-          "file": {
-            "name": "Screenshot (3).png",
-            "type": "image/png",
-            "size": 345996
-          }
         },
         {
           "person": {
@@ -275,24 +239,6 @@
           },
           "state": "default",
           "step": 2,
-          "file": null
-        },
-        {
-          "person": {
-            "personName": "Harrison",
-            "personId": "008"
-          },
-          "state": "default",
-          "step": 3,
-          "file": null
-        },
-        {
-          "person": {
-            "personName": "Alex",
-            "personId": "005"
-          },
-          "state": "default",
-          "step": 4,
           "file": null
         },
         {

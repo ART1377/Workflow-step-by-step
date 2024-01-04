@@ -1,18 +1,17 @@
 import React from "react";
 import Workflow from "../../../Product/Workflow/Workflow";
 import { Product } from "../../../../../../next-type-d";
-import ProductInfo from "../ProductInfo/ProductInfo.tsx";
+import ProductWorkflowInfo from "../ProductWorkflowInfo/ProductWorkflowInfo";
 
-
-type WorkflowSectionProps = {
+type Props = {
   productData: Product;
   productId: string;
 };
 
-const ProductWorkflowSection: React.FC<WorkflowSectionProps> = ({ productData, productId }) => (
+const ProductWorkflowSection = ({ productData, productId }: Props) => (
   <>
     <section className="flex flex-col justify-center text-center">
-        <ProductInfo productData={productData} />
+      <ProductWorkflowInfo productData={productData} />
     </section>
     <section className="mt-10">
       <Workflow steps={productData?.steps!} id={productId} />
