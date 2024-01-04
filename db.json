@@ -14,28 +14,7 @@
           "step": 1,
           "file": null
         },
-        {
-          "person": {
-            "personName": "Fatima",
-            "personId": "002"
-          },
-          "state": "uploaded",
-          "step": 2,
-          "file": {
-            "name": "Screenshot (2).png",
-            "type": "image/png",
-            "size": 96304
-          }
-        },
-        {
-          "person": {
-            "personName": "Ella",
-            "personId": "003"
-          },
-          "state": "rejected",
-          "step": 3,
-          "file": null
-        },
+        
         {
           "person": {
             "personName": "Sophia",

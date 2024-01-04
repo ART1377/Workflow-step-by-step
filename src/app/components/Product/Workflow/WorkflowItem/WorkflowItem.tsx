@@ -12,11 +12,14 @@ type Props = {
   step: Step;
   id: string;
   length: number;
+  index:number;
 };
 
-const WorkflowItem = ({ step, id, length }: Props) => {
+const WorkflowItem = ({ step, id, length,index }: Props) => {
   // const params = useParams();
   // const id = params?.productId?.toString();
+
+  console.log('length',length)
 
   const [file, setFile] = useState<File | null>();
   const dispatch = useAppDispatch();
@@ -86,7 +89,7 @@ const WorkflowItem = ({ step, id, length }: Props) => {
             <div className={style.bottomLeft}></div>
             <div className={style.bottomRight}></div>
           </div>
-          {step.step !== length && (
+          {index !== length-1 && (
             <div className={`w-1 h-20 850:w-20 850:h-1 ${style.line}`}></div>
           )}
         </div>
