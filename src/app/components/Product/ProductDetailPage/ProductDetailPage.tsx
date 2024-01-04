@@ -1,105 +1,44 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Workflow from "@/app/components/Product/Workflow/Workflow";
-import WorkflowOperations from "@/app/components/Product/Workflow/WrokflowOperations/WorkflowOperations";
-import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
-import { fetchProductById } from "@/app/redux/slices/productSlice";
-import { notFound } from "next/navigation";
+import React from "react";
+import ProductTabs from "./ProductTabs/ProductTabs";
+import ProductWorkflowSection from "./ProductWorkflowSection/ProductWorkflowSection";
+import ProductOperationsSection from "./ProductOperationsSection/ProductOperationsSection";
+import { Product } from "../../../../../next-type-d";
+import BaseModal from "../../Gloabal/BaseModal/BaseModal";
 
-type Props = {
-  productId: string;
+type ProductDetailPageProps = {
+  activeTab: string;
+  switchTab: (tab: string) => void;
+  productData: Product;
+  isModalOpen: boolean;
+  closeModal: () => void;
 };
 
-const ProductDetailPage = ({ productId }: Props) => {
-  const dispatch = useAppDispatch();
-  const productData = useAppSelector((state) => state.product.products[0]);
-  const productStatus = useAppSelector((state) => state.product.status);
-
-  useEffect(() => {
-    dispatch(fetchProductById(productId));
-  }, [dispatch]);
-
-  const [activeTab, setActiveTab] = useState("workflow");
-
-  const switchTab = (tab: string) => {
-    setActiveTab(tab);
-  };
-
-  if (!productData && productStatus === "failed") {
-    return notFound();
-  }
-
+const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
+  activeTab,
+  switchTab,
+  productData,
+  isModalOpen,
+  closeModal,
+}) => {
   return (
     <>
-      {productData && (
+      <BaseModal isOpen={isModalOpen} onClose={closeModal}>
         <div>
-          <div className="flex justify-center mb-4">
-            <button
-              className={`mr-4 ${activeTab === "workflow" ? "font-bold" : ""}`}
-              onClick={() => switchTab("workflow")}
-            >
-              Workflow
-            </button>
-            <button
-              className={activeTab === "operations" ? "font-bold" : ""}
-              onClick={() => switchTab("operations")}
-            >
-              Operations
-            </button>
-          </div>
+          <ProductTabs activeTab={activeTab} switchTab={switchTab} />
           {activeTab === "workflow" && (
-            <>
-              <section className="flex flex-col justify-center text-center">
-                <h3 className="text-dark">{productData?.productName}</h3>
-                <p className="text-gray-main">
-                  {productData?.productDescription}
-                </p>
-                <ul className="mt-4 text-left mx-auto lg:flex lg:gap-5 lg:mt-8">
-                  {productData?.steps?.map((step) => {
-                    return (
-                      <li
-                        key={step.step}
-                        className={`mb-1 ${
-                          step.state === "succeed"
-                            ? "text-success"
-                            : step.state === "rejected"
-                            ? "text-reject"
-                            : step.state === "uploaded"
-                            ? "text-upload"
-                            : "text-gray-main"
-                        }`}
-                      >
-                        Step {step.step} : {step.state}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </section>
-
-              {/* workflow and steps */}
-              <section className="mt-10">
-                <Workflow steps={productData?.steps!} id={productId} />
-              </section>
-            </>
+            <ProductWorkflowSection
+              productData={productData}
+              productId={productData.id}
+            />
           )}
           {activeTab === "operations" && (
-            <section className="my-10">
-              {/* workflow operations */}
-              <div className="p-4 flex flex-col items-center gap-6">
-                {productData?.steps.map((step) => {
-                  return (
-                    <WorkflowOperations
-                      key={step.step}
-                      step={step}
-                      id={productId}
-                    />
-                  );
-                })}
-              </div>
-            </section>
+            <ProductOperationsSection
+              productData={productData}
+              productId={productData.id}
+            />
           )}
         </div>
-      )}
+      </BaseModal>
     </>
   );
 };
