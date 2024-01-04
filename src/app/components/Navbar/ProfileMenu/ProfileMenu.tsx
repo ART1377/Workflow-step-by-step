@@ -46,7 +46,7 @@ const ProfileMenu = () => {
           )}
         </button>
         <div>
-          <p className="text-light font-bold">
+          <p className="text-light font-bold whitespace-nowrap text-ellipsis overflow-hidden w-24">
             {authCtx?.user?.username && authCtx?.user?.username}
           </p>
         </div>

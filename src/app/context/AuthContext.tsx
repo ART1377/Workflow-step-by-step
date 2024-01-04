@@ -1,12 +1,11 @@
 // AuthContext.tsx
-import { useRouter } from "next/navigation";
-import React, { createContext, useState, ReactNode } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import React, { createContext, useState, useLayoutEffect } from "react";
 import toast from "react-hot-toast";
 
 interface User {
   username: string;
   password: string;
-  name?: string;
   // Add any properties
 }
 
@@ -21,14 +20,33 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 );
 
 interface AuthProviderProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
+  const pathName = usePathname();
 
-  // Local Storage Set Item
+  useLayoutEffect(() => {
+    // Retrieve user data from local storage
+    const storedUser = localStorage.getItem("user");
+
+    // Check if user data is available in local storage
+    if (!storedUser) {
+      // If not, redirect to the authentication page
+      handleUnauthorizedUser();
+    } else {
+      // If user data is available, set the user in the state
+      setUser({ username: JSON.parse(storedUser), password: "" });
+    }
+  }, [router, pathName]);
+
+
+  const handleUnauthorizedUser = () => {
+    router.push("/auth", { scroll: false });
+  };
+
   const setUserData = (user: string) => {
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem(
@@ -37,27 +55,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     );
   };
 
-  // Local Storage Remove Items
   const removeUserData = () => {
-    localStorage.removeItem('user')
-    localStorage.removeItem('expireTime')
+    localStorage.removeItem("user");
+    localStorage.removeItem("expireTime");
     // localStorage.clear();
   };
 
   const login = (userData: User) => {
-    // authentication API call
     setUser(userData);
     setUserData(userData.username);
     router.push("/", { scroll: false });
-    toast.success("Successfully Loged in!");
+    toast.success("Successfully Logged in!");
   };
 
   const logout = () => {
-    // logout logic and clear user data
     setUser(null);
     removeUserData();
     router.push("/auth", { scroll: false });
-    toast.success("Successfully Loged out!");
+    toast.success("Successfully Logged out!");
   };
 
   const value: AuthContextType = {
