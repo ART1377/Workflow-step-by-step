@@ -33,6 +33,22 @@ const SearchBar = () => {
     };
   }, [searchInput, router]);
 
+   // Set search query
+  // const handleSearchClick = () => {
+  //   const searchParams = new URLSearchParams(window.location.search);
+  //   if (!searchInput) {
+  //     searchParams.delete("search");
+  //   } else {
+  //     searchParams.set("search", searchInput);
+  //   }
+
+  //   const newPathName = `${
+  //     window.location.pathname
+  //   }?${searchParams.toString()}`;
+
+  //   router.push(newPathName);
+  // };
+
   return (
     <div className="relative">
       <div
