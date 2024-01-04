@@ -26,8 +26,8 @@ const page = (props: Props) => {
   };
 
   return (
-    <div className="h-screen max-h-[600px]  xl:max-h-[800px] 1800:max-h-[1000px] !ml-auto 1100:m-8">
-      <div className="bg-light flex justify-between items-center gap-6 p-4 shadow-md rounded-radius-large ml-3 1100:ml-8 min-h-auto h-[80%]">
+    <div className="h-screen m-auto flex pb-20">
+      <div className="bg-light flex justify-between items-center gap-6 p-4 shadow-md rounded-radius-large min-h-auto w-full h-full max-h-[450px] max-w-[900px] m-auto">
         <div className="w-[40%] h-full flex items-center justify-center relative">
           <div className="absolute top-0 left-0">
             <p className="capitalize text-primary-dark font-bold">
