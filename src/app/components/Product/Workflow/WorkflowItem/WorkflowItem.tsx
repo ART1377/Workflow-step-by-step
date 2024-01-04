@@ -1,24 +1,22 @@
 "use client";
 import React, { useState } from "react";
 import { MdDoneAll, MdClose, MdCircle, MdCheck } from "react-icons/md";
-import style from "./Workflow.module.css";
-import { Step } from "../../../../next-type-d";
+import style from "../Workflow.module.css";
+import { Step } from "../../../../../../next-type-d";
 import { MdPerson, MdOutlineFileUpload, MdDeleteOutline } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
-import { useParams } from "next/navigation";
 import { updateProduct } from "@/app/redux/slices/productSlice";
 import toast from "react-hot-toast";
 
 type Props = {
   step: Step;
   id: string;
-  length:number;
+  length: number;
 };
 
-const WorkflowItem = ({ step, id,length }: Props) => {
+const WorkflowItem = ({ step, id, length }: Props) => {
   // const params = useParams();
   // const id = params?.productId?.toString();
-
 
   const [file, setFile] = useState<File | null>();
   const dispatch = useAppDispatch();

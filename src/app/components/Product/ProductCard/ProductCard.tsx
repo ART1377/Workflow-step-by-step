@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { Product, Step } from "../../../../next-type-d";
+import { Product, Step } from "../../../../../next-type-d";
 import { MdAdd } from "react-icons/md";
 import style from "./ProductCard.module.css";
-import BaseModal from "../BaseModal/BaseModal";
+import BaseModal from "../../Gloabal/BaseModal/BaseModal";
 import Workflow from "../Workflow/Workflow";
-import WorkflowOperations from "../WrokflowOperations/WorkflowOperations";
+import WorkflowOperations from "../Workflow/WrokflowOperations/WorkflowOperations";
 
 type Props = {
   productData: Product;
@@ -30,7 +30,6 @@ const ProductCard = ({
     setIsModalOpen(false);
   };
 
-  
   const columnsNumber = () => {
     switch (columns) {
       case 1:

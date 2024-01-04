@@ -41,9 +41,13 @@
             "personName": "Sophia",
             "personId": "007"
           },
-          "state": "default",
+          "state": "rejected",
           "step": 4,
-          "file": null
+          "file": {
+            "name": "Screenshot (2).png",
+            "type": "image/png",
+            "size": 96304
+          }
         },
         {
           "person": {

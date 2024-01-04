@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { Notification } from "../../../../../next-type-d";
-import TimeAgo from 'react-timeago'
 import { MdDoneAll } from "react-icons/md";
 import { markAsRead } from "../../../redux/slices/notificationSlice";
 import { useAppDispatch } from "@/app/redux/hooks/hooks";
+import TimeAgoComponent from "../../Gloabal/TimeAgoComponent/TimeAgoComponent";
 
 type Props = {
   notification: Notification;
@@ -67,7 +67,7 @@ const NotificationItem = ({
               }`}
             >
               <span className={` ${read ? "text-light" : "text-primary-dark"}`}>
-                <TimeAgo date={timestamp} />
+                <TimeAgoComponent timestamp={timestamp} />
               </span>
             </div>
           )}

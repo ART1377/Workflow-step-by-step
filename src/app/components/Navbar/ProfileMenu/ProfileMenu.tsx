@@ -7,7 +7,7 @@ import {
   MdArrowDropDown,
   MdArrowDropUp,
 } from "react-icons/md";
-import DropDownItem from "../../DropDownItem/DropDownItem";
+import DropDownItem from "../../Gloabal/DropDownItem/DropDownItem";
 import Link from "next/link";
 
 type Props = {};

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Part1.module.css";
 import { Product } from "../../../../next-type-d";
-import ProductCard from "../../components/ProductCard/ProductCard";
+import ProductCard from "../../components/Product/ProductCard/ProductCard";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { fetchProducts } from "../../redux/slices/productSlice";
 import Loading from "../../loading";

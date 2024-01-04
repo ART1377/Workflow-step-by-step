@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Workflow from "@/app/components/Workflow/Workflow";
-import WorkflowOperations from "@/app/components/WrokflowOperations/WorkflowOperations";
+import Workflow from "@/app/components/Product/Workflow/Workflow";
+import WorkflowOperations from "@/app/components/Product/Workflow/WrokflowOperations/WorkflowOperations";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { fetchProductById } from "@/app/redux/slices/productSlice";
 import { notFound } from "next/navigation";

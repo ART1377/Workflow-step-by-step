@@ -1,9 +1,8 @@
 "use client";
 import React, { useCallback } from "react";
-import { Step } from "../../../../next-type-d";
-import Button from "../Button/Button";
+import { Step } from "../../../../../../next-type-d";
+import Button from "../../../Gloabal/Button/Button";
 import { MdDoneAll, MdClose, MdCircle, MdCheck } from "react-icons/md";
-import { useParams } from "next/navigation";
 import { MdPerson } from "react-icons/md";
 import { useAppDispatch } from "@/app/redux/hooks/hooks";
 import { updateProduct } from "@/app/redux/slices/productSlice";
