@@ -1,11 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import style from "./Navbar.module.css";
-import { MdSearch } from "react-icons/md";
 import Notification from "../Notification/Notification";
 import { useRouter } from "next/navigation";
 import CurrentDate from "@/app/components/Navbar/CurrentDate/CurrentDate";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
+import SearchBar from "./SearchBar/SearchBar";
 
 const Navbar = () => {
   const router = useRouter();
@@ -64,29 +63,14 @@ const Navbar = () => {
         {/* Search Bar */}
         <div className="flex items-center justify-center w-full">
           {/* Input */}
-          <div className="relative">
-            <div
-              // onClick={handleSearchClick}
-              className={`${style.searchIcon} bg-primary-light absolute transform -translate-y-1/2 top-1/2 right-1 rounded-full h-8 w-8 flex justify-center items-center cursor-pointer`}
-            >
-              <MdSearch strokeWidth="1" className="text-2xl text-light" />
-            </div>
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchInput}
-              onChange={handleSearchInputChange}
-              className="py-2 pl-3 pr-12 border border-primary-main rounded-full focus:outline-none focus:border-primary-light max-w-[320px] sm:w-full"
-            />
-          </div>
+          <SearchBar/>
 
           {/* Date Display */}
           <CurrentDate />
         </div>
 
-        {/* Icons */}
+        {/* Notification */}
         <div className="flex items-center">
-          {/* Notification Icon */}
           <Notification />
         </div>
       </div>

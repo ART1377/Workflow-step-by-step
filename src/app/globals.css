@@ -61,15 +61,17 @@
   --radius-large: 8px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-body);
 }
 
-
 h1,h2,h3,h4,h5,h6,p,small,span{
   color: var(--dark);
 }
-
 
 ::selection {
   background-color: var(--primary-dark); 
