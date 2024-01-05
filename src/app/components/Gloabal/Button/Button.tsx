@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-interface ButtonProps {
+type Props= {
   type?: "button" | "submit" | "reset" | undefined;
   variant:
     | "reject"
@@ -15,12 +15,12 @@ interface ButtonProps {
   children: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button = ({
   type,
   variant,
   onClick,
   children,
-}) => {
+}:Props) => {
   const getVariantClasses = () => {
     switch (variant) {
       case "reject":

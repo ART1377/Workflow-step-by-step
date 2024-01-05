@@ -2,13 +2,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdPerson } from "react-icons/md";
+import { SidebarItme } from "../../../../next-type-d";
 
 const Sidebar = () => {
-  interface SidebarItme {
-    title: string;
-    path: string;
-    icon: React.ReactNode;
-  }
+
+  
 
   const pathName = usePathname();
 

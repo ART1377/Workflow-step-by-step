@@ -36,3 +36,10 @@ export type Notification = {
 export type Notifications = {
   notifications: Notification[];
 };
+
+// SidebarItme type
+export type SidebarItme = {
+  title: string;
+  path: string;
+  icon: React.ReactNode;
+}
