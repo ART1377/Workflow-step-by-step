@@ -1,6 +1,6 @@
 "use client";
-import { Step } from "../../../../../next-type-d";
-import style from "./Workflow.module.css";
+import { Step } from "../../../../../../../next-type-d";
+import style from "./WorkflowItems.module.css";
 import { MdPlayArrow } from "react-icons/md";
 import WorkflowItem from "./WorkflowItem/WorkflowItem";
 
@@ -9,8 +9,7 @@ type Props = {
   id: string;
 };
 
-const Workflow = ({ steps, id }: Props) => {
-
+const WorkflowItems = ({ steps, id }: Props) => {
   return (
     <>
       <div className="p-8 flex flex-wrap flex-col 850:!flex-row 850:justify-center 850:items-baseline 850:gap-5">
@@ -45,7 +44,7 @@ const Workflow = ({ steps, id }: Props) => {
         {/* All Steps Except Start Step ********* */}
 
         {/* All Steps Except Start Step ***** */}
-        {steps?.map((step: Step,index:number) => (
+        {steps?.map((step: Step, index: number) => (
           <WorkflowItem
             key={step.step}
             step={step}
@@ -59,4 +58,4 @@ const Workflow = ({ steps, id }: Props) => {
   );
 };
 
-export default Workflow;
+export default WorkflowItems;

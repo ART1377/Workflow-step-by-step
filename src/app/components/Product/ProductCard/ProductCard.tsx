@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Product, Step } from "../../../../../next-type-d";
 import { MdAdd } from "react-icons/md";
 import style from "./ProductCard.module.css";
-import ProductDetailPage from "../ProductDetailPage/ProductDetailPage";
+import ProductDetailModal from "../ProductDetailModal/ProductDetailModal";
 import StepIndicator from "./StepsIndicator/StepsIndicator";
 import ProductCardInfo from "./ProductCardInfo/ProductCardInfo";
 
@@ -41,7 +41,7 @@ const ProductCard = ({ productData, columns }: Props) => {
         />
       </div>
       {isModalOpen && (
-        <ProductDetailPage
+        <ProductDetailModal
           activeTab={activeTab}
           switchTab={switchTab}
           productData={productData}

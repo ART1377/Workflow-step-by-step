@@ -1,5 +1,5 @@
 import React from "react";
-import Workflow from "../../../Product/Workflow/Workflow";
+import WorkflowItems from "./WorkflowItems/WorkflowItems";
 import { Product } from "../../../../../../next-type-d";
 import ProductWorkflowInfo from "../ProductWorkflowInfo/ProductWorkflowInfo";
 
@@ -14,7 +14,7 @@ const ProductWorkflowSection = ({ productData, productId }: Props) => (
       <ProductWorkflowInfo productData={productData} />
     </section>
     <section className="mt-10">
-      <Workflow steps={productData?.steps!} id={productId} />
+      <WorkflowItems steps={productData?.steps!} id={productId} />
     </section>
   </>
 );

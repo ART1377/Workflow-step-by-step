@@ -5,7 +5,7 @@ import ProductOperationsSection from "./ProductOperationsSection/ProductOperatio
 import { Product } from "../../../../../next-type-d";
 import BaseModal from "../../Gloabal/BaseModal/BaseModal";
 
-type ProductDetailPageProps = {
+type Props = {
   activeTab: string;
   switchTab: (tab: string) => void;
   productData: Product;
@@ -13,13 +13,13 @@ type ProductDetailPageProps = {
   closeModal: () => void;
 };
 
-const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
+const ProductDetailModal= ({
   activeTab,
   switchTab,
   productData,
   isModalOpen,
   closeModal,
-}) => {
+}:Props) => {
   return (
     <>
       <BaseModal isOpen={isModalOpen} onClose={closeModal}>
@@ -43,4 +43,4 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   );
 };
 
-export default ProductDetailPage;
+export default ProductDetailModal;

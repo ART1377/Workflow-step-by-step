@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { MdDoneAll, MdClose, MdCircle, MdCheck } from "react-icons/md";
-import style from "../Workflow.module.css";
-import { Step } from "../../../../../../next-type-d";
+import style from "../WorkflowItems.module.css";
+import { Step } from "../../../../../../../../next-type-d";
 import { MdPerson, MdOutlineFileUpload, MdDeleteOutline } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { updateProduct } from "@/app/redux/slices/productSlice";
@@ -19,7 +19,6 @@ const WorkflowItem = ({ step, id, length, index }: Props) => {
   // const params = useParams();
   // const id = params?.productId?.toString();
 
-  console.log("length", length);
 
   const [file, setFile] = useState<File | null>();
   const dispatch = useAppDispatch();
