@@ -3,13 +3,22 @@ import style from "./Input.module.css";
 
 type Props = {
   label?: string;
-  type: "text" | "checkbox" | "date" | "image" | "pdf" | "password";
+  type:
+    | "text"
+    | "checkbox"
+    | "date"
+    | "image"
+    | "pdf"
+    | "password"
+    | "number"
+    | "textarea";
   value: string | boolean | File | null; // Adjust this as needed for different input types
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onTextChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void; // New prop for textbox change
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; 
   isSearchBar?: boolean;
 };
 
-const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
+const Input = ({ label, type, value, onChange, isSearchBar,onTextChange = () => {} }: Props) => {
   const renderInput = () => {
     switch (type) {
       case "checkbox":
@@ -19,6 +28,15 @@ const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
             checked={value as boolean}
             onChange={onChange}
             className={`${style.checkbox} ${style.input} `}
+          />
+        );
+      case "number":
+        return (
+          <input
+            type="number"
+            value={value as string}
+            onChange={onChange}
+            className={`${style.input} bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
           />
         );
       case "date":
@@ -55,6 +73,14 @@ const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
             value={value as string}
             onChange={onChange}
             className={`${style.input} bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+          />
+        );
+      case "textarea":
+        return (
+          <textarea
+            value={value as string}
+            onChange={onTextChange} // Use onTextChange for textarea
+            className={`${style.input} ${style.textarea}`}
           />
         );
       default:
@@ -96,13 +122,6 @@ const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
 };
 
 export default Input;
-
-
-
-
-
-
-
 
 // import React from "react";
 // import style from "./Input.module.css";
