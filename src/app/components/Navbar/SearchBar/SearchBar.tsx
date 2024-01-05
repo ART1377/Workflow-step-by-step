@@ -50,7 +50,7 @@ const SearchBar = () => {
   // };
 
   return (
-    <div className="relative">
+    <div className="relative w-1/2 max-w-[360px]">
       <div
         className={`${style.searchIcon} bg-primary-light absolute transform -translate-y-1/2 top-1/2 right-1 rounded-full h-8 w-8 flex justify-center items-center cursor-pointer`}
       >

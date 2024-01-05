@@ -18,7 +18,7 @@ const Part2DetailPage = () => {
     if (selectedFile && selectedFile.type === "application/pdf") {
       setFile(selectedFile);
     } else {
-      // You can handle the invalid file type here, e.g., show a message or reset the input
+      // You can handle the invalid file type here
       console.error("Invalid file type. Please select a PDF file.");
       e.target.value = ""; // Reset the input to clear the invalid file
     }
@@ -34,7 +34,7 @@ const Part2DetailPage = () => {
     ) {
       setImage(selectedFile);
     } else {
-      // You can handle the invalid file type here, e.g., show a message or reset the input
+      // You can handle the invalid file type here
       console.error(
         "Invalid file type. Please select a PNG, JPG, JPEG, or GIF file."
       );
@@ -42,21 +42,34 @@ const Part2DetailPage = () => {
     }
   };
 
-  console.log("Name:", name);
-  console.log("Image:", image);
-  console.log("File:", file);
-  console.log("Date:", date);
-  console.log("Number:", number);
-  console.log("Check:", check);
-  console.log("TextArea:", textArea);
+  console.log(number);
+
+  const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+
+    // Check if the input value is a valid positive number
+    if (+inputValue > 0) {
+      setNumber(inputValue);
+    } else {
+      // You can handle the invalid number here
+      console.error("Invalid number. Please enter a positive number.");
+      e.target.value = ""; // Reset the input to clear the invalid number
+    }
+  };
 
   return (
-    <div>
+    <div className="p-20 flex flex-col gap-8">
       <Input
         label="Name"
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
+      />
+      <Input
+        label="Date"
+        type="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
       />
       <Input
         label="Image"
@@ -71,16 +84,10 @@ const Part2DetailPage = () => {
         onChange={(e) => handlePdfChange(e)}
       />
       <Input
-        label="Date"
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-      />
-      <Input
         label="Number"
         type="number"
         value={number}
-        onChange={(e) => setNumber(e.target.value)}
+        onChange={(e) => handleNumberChange(e)}
       />
       <Input
         label="Check"
@@ -88,14 +95,28 @@ const Part2DetailPage = () => {
         value={check}
         onChange={() => setCheck(!check)}
       />
-      <Input
-        label="text"
-        type="textarea"
-        value={textArea}
-        onTextChange={(e) => setTextArea(e.target.value)}
-      />
+      {check ? (
+        Array.from({ length: +number }, (_, index) => (
+          <Input
+            key={index}
+            label={`Textarea ${index + 1}`}
+            type="textarea"
+            value={textArea}
+            onTextChange={(e) => setTextArea(e.target.value)}
+          />
+        ))
+      ) : (
+        <Input
+          label="text"
+          type="textarea"
+          value={textArea}
+          onTextChange={(e) => setTextArea(e.target.value)}
+        />
+      )}
     </div>
   );
 };
 
 export default Part2DetailPage;
+
+// this is my code so far i want you to update code so that when checkbox is true generate textarea to the number of number state else just generate one textarea and do it in part2detailpage componenet

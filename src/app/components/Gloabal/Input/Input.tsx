@@ -80,7 +80,7 @@ const Input = ({ label, type, value, onChange, isSearchBar,onTextChange = () => 
           <textarea
             value={value as string}
             onChange={onTextChange} // Use onTextChange for textarea
-            className={`${style.input} ${style.textarea}`}
+            className={`${style.textarea} ${style.input} bg-light text-primary-dark w-full px-3 pb-2 pt-5 focus:shadow-none focus:outline-0`}
           />
         );
       default:
@@ -114,7 +114,7 @@ const Input = ({ label, type, value, onChange, isSearchBar,onTextChange = () => 
           placeholder="Search..."
           value={value as string}
           onChange={onChange}
-          className="py-2 pl-3 pr-12 border border-primary-main rounded-full focus:outline-none focus:border-primary-light max-w-[320px] sm:w-full"
+          className="py-2 pl-3 pr-12 border border-primary-main rounded-full focus:outline-none focus:border-primary-light w-full"
         />
       )}
     </>
