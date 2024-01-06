@@ -1,13 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import Input from "../../Gloabal/Input/Input"; // Adjust the path as needed
+import TextArea from "../../Gloabal/TextArea/TextArea";
+import CheckBox from "../../Gloabal/CheckBox/CheckBox";
 
 const Part2DetailPage = () => {
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [date, setDate] = useState<string>("");
-  const [number, setNumber] = useState<string>("");
+  const [number, setNumber] = useState<string>("1");
   const [check, setCheck] = useState<boolean>(false);
   const [textArea, setTextArea] = useState<string>("");
 
@@ -89,28 +91,23 @@ const Part2DetailPage = () => {
         value={number}
         onChange={(e) => handleNumberChange(e)}
       />
-      <Input
-        label="Check"
-        type="checkbox"
-        value={check}
-        onChange={() => setCheck(!check)}
-      />
+      <CheckBox label="Check" value={check} onChange={() => setCheck(!check)} />
       {check ? (
         Array.from({ length: +number }, (_, index) => (
-          <Input
+          <TextArea
             key={index}
             label={`Textarea ${index + 1}`}
-            type="textarea"
+            placeHolder='product code'
             value={textArea}
-            onTextChange={(e) => setTextArea(e.target.value)}
+            onChange={(e) => setTextArea(e.target.value)}
           />
         ))
       ) : (
-        <Input
+        <TextArea
           label="text"
-          type="textarea"
+          placeHolder='product code'
           value={textArea}
-          onTextChange={(e) => setTextArea(e.target.value)}
+          onChange={(e) => setTextArea(e.target.value)}
         />
       )}
     </div>
@@ -118,5 +115,3 @@ const Part2DetailPage = () => {
 };
 
 export default Part2DetailPage;
-
-// this is my code so far i want you to update code so that when checkbox is true generate textarea to the number of number state else just generate one textarea and do it in part2detailpage componenet

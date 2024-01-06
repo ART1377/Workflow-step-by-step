@@ -1,42 +1,23 @@
 import React from "react";
-import style from "./Input.module.css";
 
 type Props = {
   label?: string;
-  type:
-    | "text"
-    | "checkbox"
-    | "date"
-    | "image"
-    | "pdf"
-    | "password"
-    | "number"
-    | "textarea";
-  value: string | boolean | File | null; // Adjust this as needed for different input types
-  onTextChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void; // New prop for textbox change
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; 
+  type: "text" | "date" | "image" | "pdf" | "password" | "number";
+  value: string | File | null; // Adjust this as needed for different input types
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isSearchBar?: boolean;
 };
 
-const Input = ({ label, type, value, onChange, isSearchBar,onTextChange = () => {} }: Props) => {
+const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
   const renderInput = () => {
     switch (type) {
-      case "checkbox":
-        return (
-          <input
-            type="checkbox"
-            checked={value as boolean}
-            onChange={onChange}
-            className={`${style.checkbox} ${style.input} `}
-          />
-        );
       case "number":
         return (
           <input
             type="number"
             value={value as string}
             onChange={onChange}
-            className={`${style.input} bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-3 focus:shadow-none focus:outline-0`}
           />
         );
       case "date":
@@ -45,7 +26,7 @@ const Input = ({ label, type, value, onChange, isSearchBar,onTextChange = () => 
             type="date"
             value={value as string}
             onChange={onChange}
-            className={`${style.input} bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-3 focus:shadow-none focus:outline-0`}
           />
         );
       case "image":
@@ -54,7 +35,8 @@ const Input = ({ label, type, value, onChange, isSearchBar,onTextChange = () => 
             type="file"
             accept=".jpg, .jpeg, .png, .gif"
             onChange={onChange}
-            className={`${style.input} bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            placeholder="some text"
+            className={`bg-light text-primary-dark w-full px-3 py-3 focus:shadow-none focus:outline-0`}
           />
         );
       case "pdf":
@@ -63,7 +45,7 @@ const Input = ({ label, type, value, onChange, isSearchBar,onTextChange = () => 
             type="file"
             accept=".pdf"
             onChange={onChange}
-            className={`${style.input} bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-3 focus:shadow-none focus:outline-0`}
           />
         );
       case "password":
@@ -72,15 +54,7 @@ const Input = ({ label, type, value, onChange, isSearchBar,onTextChange = () => 
             type="password"
             value={value as string}
             onChange={onChange}
-            className={`${style.input} bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
-          />
-        );
-      case "textarea":
-        return (
-          <textarea
-            value={value as string}
-            onChange={onTextChange} // Use onTextChange for textarea
-            className={`${style.textarea} ${style.input} bg-light text-primary-dark w-full px-3 pb-2 pt-5 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-3 focus:shadow-none focus:outline-0`}
           />
         );
       default:
@@ -89,7 +63,7 @@ const Input = ({ label, type, value, onChange, isSearchBar,onTextChange = () => 
             type="text"
             value={value as string}
             onChange={onChange}
-            className={`${style.input} bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-3 focus:shadow-none focus:outline-0`}
           />
         );
     }
@@ -99,10 +73,10 @@ const Input = ({ label, type, value, onChange, isSearchBar,onTextChange = () => 
     <>
       {!isSearchBar ? (
         <div
-          className={`${style.container} border-primary-main border-2 rounded-radius-large relative`}
+          className={`border-primary-main border-2 rounded-radius-large relative`}
         >
           <label
-            className={`absolute text-primary-main bg-light bottom-[65%] left-[5%] p-1 ${style.label}`}
+            className={`absolute text-primary-main bg-light bottom-[85%] left-[3%] px-1`}
           >
             {label}
           </label>
@@ -139,10 +113,10 @@ export default Input;
 //     <>
 //       {!isSearchBar ? (
 //         <div
-//           className={`${style.container} border-primary-main border-2 rounded-radius-large relative`}
+//           className={`border-primary-main border-2 rounded-radius-large relative`}
 //         >
 //           <label
-//             className={`absolute text-primary-main bg-light bottom-[65%] left-[5%] p-1 ${style.label}`}
+//             className={`absolute text-primary-main bg-light bottom-[65%] left-[5%] p-1`}
 //           >
 //             {label}
 //           </label>
@@ -150,7 +124,7 @@ export default Input;
 //             type={type}
 //             value={value}
 //             onChange={onChange}
-//             className={`${style.input} bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+//             className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
 //           />
 //         </div>
 //       ) : (
