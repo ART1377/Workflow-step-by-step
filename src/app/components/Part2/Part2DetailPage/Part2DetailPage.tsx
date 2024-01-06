@@ -125,6 +125,8 @@ const Part2DetailPage = () => {
           />
         </div>
       </div>
+      <div className="">
+
       {check ? (
         Array.from({ length: +number }, (_, index) => (
           <TextArea
@@ -141,10 +143,11 @@ const Part2DetailPage = () => {
           placeHolder="product code"
           value={textArea}
           onChange={(e) => setTextArea(e.target.value)}
-        />
-      )}
+          />
+          )}
+          </div>
       <div className="w-56 mx-auto">
-        <Button variant="primary-dark">submit</Button>
+        <Button variant="primary-dark" size="large">submit</Button>
       </div>
     </form>
   );

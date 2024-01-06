@@ -109,13 +109,13 @@ const WorkflowOperations = ({ step, id }: Props) => {
           </div>
 
           <div className="flex gap-2">
-            <Button variant="gray" onClick={defaultHandler}>
+            <Button variant="gray" size="medium" onClick={defaultHandler}>
               Default
             </Button>
-            <Button variant="reject" onClick={rejectHandler}>
+            <Button variant="reject" size="medium" onClick={rejectHandler}>
               Reject
             </Button>
-            <Button variant="success" onClick={successHandler}>
+            <Button variant="success" size="medium" onClick={successHandler}>
               Success
             </Button>
           </div>

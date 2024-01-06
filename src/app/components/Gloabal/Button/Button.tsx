@@ -14,48 +14,62 @@ type Props = {
   onClick?: () => void;
   children: React.ReactNode;
   outline?: boolean; // Added outline prop
+  size: "small" | "medium" | "large"; // Added size prop
 };
 
-const Button = ({ type, variant, onClick, children, outline }: Props) => {
+const Button = ({ type, variant, onClick, children, outline, size }: Props) => {
+  const getSizeClasses = () => {
+    switch (size) {
+      case "small":
+        return "text-xs px-1 py-1";
+      case "medium":
+        return "text-sm px-2 py-1";
+      case "large":
+        return "text-lg px-4 py-1.5";
+      default:
+        return "";
+    }
+  };
+
   const getVariantClasses = () => {
     switch (variant) {
       case "reject":
         return outline
-          ? "text-reject outline outline-2 outline-reject"
-          : "bg-reject";
+          ? `text-reject outline outline-2 outline-reject ${getSizeClasses()}`
+          : `bg-reject ${getSizeClasses()}`;
       case "success":
         return outline
-          ? "text-success outline outline-2 outline-success"
-          : "bg-success";
+          ? `text-success outline outline-2 outline-success ${getSizeClasses()}`
+          : `bg-success ${getSizeClasses()}`;
       case "upload":
         return outline
-          ? "text-upload outline outline-2 outline-upload"
-          : "bg-upload";
+          ? `text-upload outline outline-2 outline-upload ${getSizeClasses()}`
+          : `bg-upload ${getSizeClasses()}`;
       case "gray":
         return outline
-          ? "text-gray-main outline outline-2 outline-gray-main"
-          : "bg-gray-main";
+          ? `text-gray-main outline outline-2 outline-gray-main ${getSizeClasses()}`
+          : `bg-gray-main ${getSizeClasses()}`;
       case "primary-dark":
-        return `w-full !py-2 ${
-          outline
-            ? "text-primary-dark outline outline-2 outline-primary-dark"
-            : "bg-primary-dark"
-        }`;
+        return outline
+          ? `text-primary-dark outline outline-2 outline-primary-dark ${getSizeClasses()}`
+          : `bg-primary-dark ${getSizeClasses()}`;
       case "primary-main":
-        return `w-full !py-2 ${outline
-          ? "text-primary-main outline outline-2 outline-primary-main"
-          : "bg-primary-main"}`;
+        return outline
+          ? `text-primary-main outline outline-2 outline-primary-main ${getSizeClasses()}`
+          : `bg-primary-main ${getSizeClasses()}`;
       case "primary-light":
-        return `w-full !py-2 ${outline
-          ? "text-primary-light outline outline-2 outline-primary-light"
-          : "bg-primary-light"}`;
+        return outline
+          ? `text-primary-light outline outline-2 outline-primary-light ${getSizeClasses()}`
+          : `bg-primary-light ${getSizeClasses()}`;
+      default:
+        return "";
     }
   };
-  
+
   return (
     <button
       type={`${type ? type : "button"}`}
-      className={`rounded-radius-large transition-all duration-500 hover:opacity-80 text-light px-2 py-1 capitalize text-sm ${getVariantClasses()}`}
+      className={`rounded-radius-large transition-all duration-500 hover:opacity-80 text-light capitalize  ${getVariantClasses()}`}
       onClick={onClick}
     >
       {children}

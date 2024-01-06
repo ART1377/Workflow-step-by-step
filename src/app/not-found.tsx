@@ -8,7 +8,7 @@ export default function NotFound() {
       <h5>Not Found</h5>
       <p className="mb-4 capitalize">not find page</p>
       <Link href="/">
-        <Button variant="upload">Back to Home</Button>
+        <Button variant="primary-main" size="medium">Back to Home</Button>
       </Link>
     </div>
   );

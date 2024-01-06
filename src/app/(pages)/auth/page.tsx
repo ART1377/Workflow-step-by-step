@@ -50,7 +50,7 @@ const page = (props: Props) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
 
-              <Button type="submit" variant="primary-main">
+              <Button type="submit" variant="primary-main" size="large">
                 Login
               </Button>
             </form>

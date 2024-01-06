@@ -14,7 +14,9 @@ export default function Error({
       <h5>something went wrong</h5>
       <p className="mb-4">{error.message}</p>
       <Link href="/">
-        <Button variant="upload">Back to Home</Button>
+        <Button variant="primary-main" size="medium">
+          Back to Home
+        </Button>
       </Link>
     </div>
   );

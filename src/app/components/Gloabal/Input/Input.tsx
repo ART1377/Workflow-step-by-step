@@ -17,7 +17,7 @@ const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
             type="number"
             value={value as string}
             onChange={onChange}
-            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
           />
         );
       case "date":
@@ -26,7 +26,7 @@ const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
             type="date"
             value={value as string}
             onChange={onChange}
-            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
           />
         );
       case "image":
@@ -36,7 +36,7 @@ const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
             accept=".jpg, .jpeg, .png, .gif"
             onChange={onChange}
             placeholder="some text"
-            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large hidden`}
           />
         );
       case "pdf":
@@ -45,7 +45,7 @@ const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
             type="file"
             accept=".pdf"
             onChange={onChange}
-            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large hidden`}
           />
         );
       case "password":
@@ -54,7 +54,7 @@ const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
             type="password"
             value={value as string}
             onChange={onChange}
-            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
           />
         );
       default:
@@ -63,7 +63,7 @@ const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
             type="text"
             value={value as string}
             onChange={onChange}
-            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
+            className={`bg-light text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
           />
         );
     }
@@ -72,15 +72,35 @@ const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
   return (
     <>
       {!isSearchBar ? (
-        <div
-          className={`border-primary-main border-2 rounded-radius-large relative`}
-        >
-          <label
-            className={`absolute text-primary-main bg-light bottom-[85%] left-3 px-1`}
+        <div className={`relative`}>
+          {type === "image" || type === "pdf" ? (
+            <>
+              <label
+                className={`absolute text-primary-main bg-light bottom-[80%] left-3 px-1`}
+              >
+                {label}
+              </label>
+              <label className="inline-block w-full px-3 py-2 border-primary-main border-2 rounded-radius-large">
+                {renderInput()}
+                <div>hiii</div>
+              </label>
+            </>
+          ) : (
+            <>
+              <label
+                className={`absolute text-primary-main bg-light bottom-[80%] left-3 px-1`}
+              >
+                {label}
+              </label>
+              {renderInput()}
+            </>
+          )}
+          {/* <label
+            className={`absolute text-primary-main bg-light bottom-[80%] left-3 px-1`}
           >
             {label}
           </label>
-          {renderInput()}
+          {renderInput()} */}
         </div>
       ) : (
         <input
