@@ -9,6 +9,8 @@ import { fetchProducts } from "../../../redux/slices/productSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import DropDownItem from "../../Gloabal/DropDownItem/DropDownItem";
 import BaseModal from "../../Gloabal/BaseModal/BaseModal";
+import { MdDeleteOutline,MdDoneOutline  } from "react-icons/md";
+
 
 const Part2DetailPage = () => {
 
@@ -236,15 +238,20 @@ const Part2DetailPage = () => {
         )}
       </div>
       <div className="w-full mx-auto grid grid-flow-col gap-4 max-w-[400px]">
-        <Button type="submit" variant="primary-main" size="large">
+        <Button type="submit" variant="primary-main" size="large"
+          classes="flex items-center justify-center gap-1"
+          >
+            <MdDoneOutline  />
           Submit
         </Button>
         <Button
-          variant="primary-main"
+          variant="reject"
           size="large"
-          outline
           onClick={resetFormHandler}
+          classes="flex items-center justify-center gap-1"
         >
+          <MdDeleteOutline />
+
           Reset
         </Button>
       </div>
