@@ -15,10 +15,18 @@ type Props = {
   children: React.ReactNode;
   outline?: boolean; // Added outline prop
   size: "small" | "medium" | "large"; // Added size prop
-  classes?:string;
+  classes?: string;
 };
 
-const Button = ({ type, variant, onClick, children, outline, size,classes }: Props) => {
+const Button = ({
+  type,
+  variant,
+  onClick,
+  children,
+  outline,
+  size,
+  classes,
+}: Props) => {
   const getSizeClasses = () => {
     switch (size) {
       case "small":
@@ -70,7 +78,7 @@ const Button = ({ type, variant, onClick, children, outline, size,classes }: Pro
   return (
     <button
       type={`${type ? type : "button"}`}
-      className={`rounded-radius-large transition-all duration-500 hover:opacity-70 text-light capitalize  ${getVariantClasses()} ${classes}`}
+      className={`rounded-radius-large transition-all duration-300 hover:opacity-70 text-light capitalize  ${getVariantClasses()} ${classes}`}
       onClick={onClick}
     >
       {children}

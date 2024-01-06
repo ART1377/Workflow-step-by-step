@@ -2,7 +2,7 @@ import React from "react";
 import { Step } from "../../../../../../next-type-d";
 import StepIndicator from "../StepsIndicator/StepsIndicator";
 import { MdAdd } from "react-icons/md";
-import style from './ProductCard.module.css'
+import style from "./ProductCard.module.css";
 
 type Props = {
   productName: string;
@@ -17,10 +17,8 @@ const ProductCardInfo = ({
   productName,
   steps,
 }: Props) => {
-
-    
   return (
-    <div className="flex-grow bg-white rounded-radius-main shadow-xl overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-[2px] border-primary-light border">
+    <div className="flex-grow bg-white rounded-radius-main shadow-xl overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-[2px] border-primary-light border">
       <div className="p-4">
         <h3 className="text-lg font-medium text-dark">{productName}</h3>
         <p className="mt-1 text-sm text-gray-main">{productDescription}</p>

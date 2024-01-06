@@ -106,7 +106,7 @@ const Input = ({
               </label>
               <label className="inline-block w-full px-3 py-2 border-primary-main border-2 rounded-radius-large">
                 {renderInput()}
-                <div className="text-base bg-primary-main rounded-radius-main text-light px-2 w-fit flex items-center gap-1">
+                <div className="text-base cursor-pointer hover:opacity-70 transition-all duration-300 border-2 border-primary-main rounded-radius-main text-primary-main px-2 w-fit flex items-center gap-1">
                 <MdOutlineFileUpload className='text-lg' />
                   Upload your {type}
                   </div>
