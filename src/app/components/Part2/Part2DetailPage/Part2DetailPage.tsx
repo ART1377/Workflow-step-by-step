@@ -4,6 +4,7 @@ import Input from "../../Gloabal/Input/Input"; // Adjust the path as needed
 import TextArea from "../../Gloabal/TextArea/TextArea";
 import CheckBox from "../../Gloabal/CheckBox/CheckBox";
 import SelectOption from "../../Gloabal/SelectOption/SelectOption";
+import Button from "../../Gloabal/Button/Button";
 
 const Part2DetailPage = () => {
   const [name, setName] = useState<string>("");
@@ -62,44 +63,68 @@ const Part2DetailPage = () => {
   };
 
   return (
-    <div className="p-8 flex flex-col gap-8 bg-light">
-      <Input
-        label="Name"
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <Input
-        label="Date"
-        type="date"
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-      />
-      <Input
-        label="Image"
-        type="image"
-        value={image}
-        onChange={(e) => handleImageChange(e)}
-      />
-      <Input
-        label="File"
-        type="pdf"
-        value={file}
-        onChange={(e) => handlePdfChange(e)}
-      />
-      <SelectOption
-        label="Category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        options={["Category 1", "Category 2", "Category 3"]}
-      />
-      <Input
-        label="Number"
-        type="number"
-        value={number}
-        onChange={(e) => handleNumberChange(e)}
-      />
-      <CheckBox label="Check" value={check} onChange={() => setCheck(!check)} />
+    <form onSubmit={()=>console.log('first')} className="p-8 flex flex-col gap-8 bg-light">
+      <div className="flex gap-4">
+        <div className="w-1/2">
+          <Input
+            label="Name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="w-1/2">
+          <Input
+            label="Date"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </div>
+      </div>
+      <div className="flex gap-4">
+        <div className="w-1/2">
+          <Input
+            label="Image"
+            type="image"
+            value={image}
+            onChange={(e) => handleImageChange(e)}
+          />
+        </div>
+        <div className="w-1/2">
+          <Input
+            label="File"
+            type="pdf"
+            value={file}
+            onChange={(e) => handlePdfChange(e)}
+          />
+        </div>
+      </div>
+      <div className="flex gap-4">
+        <div className="w-1/2">
+          <SelectOption
+            label="Category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            options={["Category 1", "Category 2", "Category 3"]}
+          />
+        </div>
+        <div className="w-1/2 flex gap-2">
+          <div className="w-full">
+            <Input
+              label="Number"
+              type="number"
+              value={number}
+              onChange={(e) => handleNumberChange(e)}
+            />
+          </div>
+          <CheckBox
+            label="Check"
+            value={check}
+            onChange={() => setCheck(!check)}
+          />
+        </div>
+      </div>
       {check ? (
         Array.from({ length: +number }, (_, index) => (
           <TextArea
@@ -118,7 +143,10 @@ const Part2DetailPage = () => {
           onChange={(e) => setTextArea(e.target.value)}
         />
       )}
-    </div>
+      <div className="w-56 mx-auto">
+        <Button variant="primary-dark">submit</Button>
+      </div>
+    </form>
   );
 };
 
