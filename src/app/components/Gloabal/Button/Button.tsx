@@ -34,33 +34,33 @@ const Button = ({ type, variant, onClick, children, outline, size }: Props) => {
   const getVariantClasses = () => {
     switch (variant) {
       case "reject":
-        return outline
-          ? `text-reject outline outline-2 outline-reject ${getSizeClasses()}`
-          : `bg-reject ${getSizeClasses()}`;
+        return `${
+          outline ? `text-reject` : `bg-reject`
+        }  outline outline-1 outline-reject ${getSizeClasses()}`;
       case "success":
-        return outline
-          ? `text-success outline outline-2 outline-success ${getSizeClasses()}`
-          : `bg-success ${getSizeClasses()}`;
+        return `${
+          outline ? `text-success` : `bg-success`
+        }  outline outline-1 outline-success ${getSizeClasses()}`;
       case "upload":
-        return outline
-          ? `text-upload outline outline-2 outline-upload ${getSizeClasses()}`
-          : `bg-upload ${getSizeClasses()}`;
+        return `${
+          outline ? `text-upload` : `bg-upload`
+        }  outline outline-1 outline-upload ${getSizeClasses()}`;
       case "gray":
-        return outline
-          ? `text-gray-main outline outline-2 outline-gray-main ${getSizeClasses()}`
-          : `bg-gray-main ${getSizeClasses()}`;
+        return `${
+          outline ? `text-gray-main` : `bg-gray-main`
+        }  outline outline-1 outline-gray-main ${getSizeClasses()}`;
       case "primary-dark":
-        return outline
-          ? `text-primary-dark outline outline-2 outline-primary-dark ${getSizeClasses()}`
-          : `bg-primary-dark ${getSizeClasses()}`;
+        return `${
+          outline ? `text-primary-dark` : `bg-primary-dark`
+        }  outline outline-1 outline-primary-dark ${getSizeClasses()}`;
       case "primary-main":
-        return outline
-          ? `text-primary-main outline outline-2 outline-primary-main ${getSizeClasses()}`
-          : `bg-primary-main ${getSizeClasses()}`;
+        return `${
+          outline ? `text-primary-main` : `bg-primary-main`
+        }  outline outline-1 outline-primary-main ${getSizeClasses()}`;
       case "primary-light":
-        return outline
-          ? `text-primary-light outline outline-2 outline-primary-light ${getSizeClasses()}`
-          : `bg-primary-light ${getSizeClasses()}`;
+        return `${
+          outline ? `text-primary-light` : `bg-primary-light`
+        }  outline outline-1 outline-primary-light ${getSizeClasses()}`;
       default:
         return "";
     }
@@ -69,7 +69,7 @@ const Button = ({ type, variant, onClick, children, outline, size }: Props) => {
   return (
     <button
       type={`${type ? type : "button"}`}
-      className={`rounded-radius-large transition-all duration-500 hover:opacity-80 text-light capitalize  ${getVariantClasses()}`}
+      className={`rounded-radius-large transition-all duration-500 hover:opacity-70 text-light capitalize  ${getVariantClasses()}`}
       onClick={onClick}
     >
       {children}

@@ -62,9 +62,24 @@ const Part2DetailPage = () => {
     }
   };
 
+  const submitFormHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("submit");
+  };
+  const resetFormHandler = () => {
+    setName("");
+    setImage(null);
+    setFile(null);
+    setDate("");
+    setNumber("1");
+    setCheck(false);
+    setTextArea("");
+    setCategory("");
+  };
+
   return (
     <form
-      onSubmit={() => console.log("first")}
+      onSubmit={submitFormHandler}
       className="p-8 flex flex-col gap-8 bg-white"
     >
       <div className="flex gap-4">
@@ -134,7 +149,7 @@ const Part2DetailPage = () => {
           />
         </div>
       </div>
-      <div className="">
+      <div className="flex flex-col gap-4">
         {check ? (
           Array.from({ length: +number }, (_, index) => (
             <TextArea
@@ -156,9 +171,17 @@ const Part2DetailPage = () => {
           />
         )}
       </div>
-      <div className="w-56 mx-auto">
-        <Button variant="primary-dark" size="large">
-          submit
+      <div className="w-full mx-auto grid grid-flow-col gap-4 max-w-[400px]">
+        <Button type="submit" variant="primary-main" size="large">
+          Submit
+        </Button>
+        <Button
+          variant="primary-main"
+          size="large"
+          outline
+          onClick={resetFormHandler}
+        >
+          Reset
         </Button>
       </div>
     </form>

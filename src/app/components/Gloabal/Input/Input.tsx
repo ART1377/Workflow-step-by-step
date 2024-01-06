@@ -1,4 +1,5 @@
 import React from "react";
+import { MdOutlineFileUpload } from "react-icons/md";
 
 type Props = {
   label?: string;
@@ -6,7 +7,9 @@ type Props = {
   value: string | File | null; // Adjust this as needed for different input types
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isSearchBar?: boolean;
+  placeHolder?: string;
   bgColor?: string;
+  required?: boolean;
 };
 
 const Input = ({
@@ -15,6 +18,8 @@ const Input = ({
   value,
   onChange,
   isSearchBar,
+  placeHolder,
+  required = true,
   bgColor = "bg-light",
 }: Props) => {
   const renderInput = () => {
@@ -23,6 +28,8 @@ const Input = ({
         return (
           <input
             type="number"
+            required={required}
+            placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
@@ -32,6 +39,8 @@ const Input = ({
         return (
           <input
             type="date"
+            required={required}
+            placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
@@ -41,9 +50,10 @@ const Input = ({
         return (
           <input
             type="file"
+            required={required}
+            placeholder={placeHolder ? placeHolder : ""}
             accept=".jpg, .jpeg, .png, .gif"
             onChange={onChange}
-            placeholder="some text"
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large hidden`}
           />
         );
@@ -51,6 +61,8 @@ const Input = ({
         return (
           <input
             type="file"
+            required={required}
+            placeholder={placeHolder ? placeHolder : ""}
             accept=".pdf"
             onChange={onChange}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large hidden`}
@@ -60,6 +72,8 @@ const Input = ({
         return (
           <input
             type="password"
+            required={required}
+            placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
@@ -69,6 +83,8 @@ const Input = ({
         return (
           <input
             type="text"
+            required={required}
+            placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
@@ -90,7 +106,10 @@ const Input = ({
               </label>
               <label className="inline-block w-full px-3 py-2 border-primary-main border-2 rounded-radius-large">
                 {renderInput()}
-                <div>hiii</div>
+                <div className="text-base bg-primary-main rounded-radius-main text-light px-2 w-fit flex items-center gap-1">
+                <MdOutlineFileUpload className='text-lg' />
+                  Upload your {type}
+                  </div>
               </label>
             </>
           ) : (
@@ -124,48 +143,3 @@ const Input = ({
 };
 
 export default Input;
-
-// import React from "react";
-// import style from "./Input.module.css";
-
-// type Props = {
-//   label?: string;
-//   type: string;
-//   value: string;
-//   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-//   isSearchBar?: boolean;
-// };
-
-// const Input = ({ label, type, value, onChange, isSearchBar }: Props) => {
-//   return (
-//     <>
-//       {!isSearchBar ? (
-//         <div
-//           className={`border-primary-main border-2 rounded-radius-large relative`}
-//         >
-//           <label
-//             className={`absolute text-primary-main ${bgColor} bottom-[65%] left-[5%] p-1`}
-//           >
-//             {label}
-//           </label>
-//           <input
-//             type={type}
-//             value={value}
-//             onChange={onChange}
-//             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0`}
-//           />
-//         </div>
-//       ) : (
-//         <input
-//           type="text"
-//           placeholder="Search..."
-//           value={value}
-//           onChange={onChange}
-//           className="py-2 pl-3 pr-12 border border-primary-main rounded-full focus:outline-none focus:border-primary-light max-w-[320px] sm:w-full"
-//         />
-//       )}
-//     </>
-//   );
-// };
-
-// export default Input;
