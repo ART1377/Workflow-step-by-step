@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-type Props= {
+type Props = {
   type?: "button" | "submit" | "reset" | undefined;
   variant:
     | "reject"
@@ -13,36 +13,47 @@ type Props= {
     | "primary-light";
   onClick?: () => void;
   children: React.ReactNode;
-}
+  outline?: boolean; // Added outline prop
+};
 
-const Button = ({
-  type,
-  variant,
-  onClick,
-  children,
-}:Props) => {
+const Button = ({ type, variant, onClick, children, outline }: Props) => {
   const getVariantClasses = () => {
     switch (variant) {
       case "reject":
-        return "bg-reject";
+        return outline
+          ? "text-reject outline outline-2 outline-reject"
+          : "bg-reject";
       case "success":
-        return "bg-success";
+        return outline
+          ? "text-success outline outline-2 outline-success"
+          : "bg-success";
       case "upload":
-        return " bg-cyan-600";
+        return outline
+          ? "text-upload outline outline-2 outline-upload"
+          : "bg-upload";
       case "gray":
-        return " bg-gray-main";
+        return outline
+          ? "text-gray-main outline outline-2 outline-gray-main"
+          : "bg-gray-main";
       case "primary-dark":
-        return " bg-primary-dark w-full !py-2";
+        return `w-full !py-2 ${
+          outline
+            ? "text-primary-dark outline outline-2 outline-primary-dark"
+            : "bg-primary-dark"
+        }`;
       case "primary-main":
-        return " bg-primary-main w-full !py-2";
+        return `w-full !py-2 ${outline
+          ? "text-primary-main outline outline-2 outline-primary-main"
+          : "bg-primary-main"}`;
       case "primary-light":
-        return " bg-primary-light w-full !py-2";
+        return `w-full !py-2 ${outline
+          ? "text-primary-light outline outline-2 outline-primary-light"
+          : "bg-primary-light"}`;
     }
   };
-
+  
   return (
     <button
-
       type={`${type ? type : "button"}`}
       className={`rounded-radius-large transition-all duration-500 hover:opacity-80 text-light px-2 py-1 capitalize text-sm ${getVariantClasses()}`}
       onClick={onClick}
