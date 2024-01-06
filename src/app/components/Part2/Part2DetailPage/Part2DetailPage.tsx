@@ -63,10 +63,14 @@ const Part2DetailPage = () => {
   };
 
   return (
-    <form onSubmit={()=>console.log('first')} className="p-8 flex flex-col gap-8 bg-light">
+    <form
+      onSubmit={() => console.log("first")}
+      className="p-8 flex flex-col gap-8 bg-white"
+    >
       <div className="flex gap-4">
         <div className="w-1/2">
           <Input
+            bgColor="bg-white"
             label="Name"
             type="text"
             value={name}
@@ -75,6 +79,7 @@ const Part2DetailPage = () => {
         </div>
         <div className="w-1/2">
           <Input
+            bgColor="bg-white"
             label="Date"
             type="date"
             value={date}
@@ -85,6 +90,7 @@ const Part2DetailPage = () => {
       <div className="flex gap-4">
         <div className="w-1/2">
           <Input
+            bgColor="bg-white"
             label="Image"
             type="image"
             value={image}
@@ -93,6 +99,7 @@ const Part2DetailPage = () => {
         </div>
         <div className="w-1/2">
           <Input
+            bgColor="bg-white"
             label="File"
             type="pdf"
             value={file}
@@ -103,6 +110,7 @@ const Part2DetailPage = () => {
       <div className="flex gap-4">
         <div className="w-1/2">
           <SelectOption
+            bgColor="bg-white"
             label="Category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -112,6 +120,7 @@ const Part2DetailPage = () => {
         <div className="w-1/2 flex gap-2">
           <div className="w-full">
             <Input
+              bgColor="bg-white"
               label="Number"
               type="number"
               value={number}
@@ -126,28 +135,31 @@ const Part2DetailPage = () => {
         </div>
       </div>
       <div className="">
-
-      {check ? (
-        Array.from({ length: +number }, (_, index) => (
+        {check ? (
+          Array.from({ length: +number }, (_, index) => (
+            <TextArea
+              bgColor="bg-white"
+              key={index}
+              label={`Textarea ${index + 1}`}
+              placeHolder="product code"
+              value={textArea}
+              onChange={(e) => setTextArea(e.target.value)}
+            />
+          ))
+        ) : (
           <TextArea
-            key={index}
-            label={`Textarea ${index + 1}`}
+            bgColor="bg-white"
+            label="text"
             placeHolder="product code"
             value={textArea}
             onChange={(e) => setTextArea(e.target.value)}
           />
-        ))
-      ) : (
-        <TextArea
-          label="text"
-          placeHolder="product code"
-          value={textArea}
-          onChange={(e) => setTextArea(e.target.value)}
-          />
-          )}
-          </div>
+        )}
+      </div>
       <div className="w-56 mx-auto">
-        <Button variant="primary-dark" size="large">submit</Button>
+        <Button variant="primary-dark" size="large">
+          submit
+        </Button>
       </div>
     </form>
   );
