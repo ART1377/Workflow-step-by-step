@@ -52,9 +52,9 @@ const SearchBar = () => {
   return (
     <div className="relative w-1/2 max-w-[360px]">
       <div
-        className={`${style.searchIcon} bg-primary-light absolute transform -translate-y-1/2 top-1/2 right-1 rounded-full h-8 w-8 flex justify-center items-center cursor-pointer`}
+        className={`${style.searchIcon} bg-primary-light absolute transform -translate-y-1/2 top-1/2 right-1 rounded-full h-10 w-10 flex justify-center items-center cursor-pointer`}
       >
-        <MdSearch strokeWidth="1" className="text-2xl text-light" />
+        <MdSearch strokeWidth="1" className="text-3xl text-light" />
       </div>
       <Input type="text" value={searchInput} onChange={handleSearchInputChange} isSearchBar />
       {/* <input

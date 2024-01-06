@@ -30,7 +30,7 @@ const ProfileMenu = () => {
 
   return (
     <div className="relative mr-4">
-      <div className="flex gap-1">
+      <div className="flex items-center gap-1">
         <button
           onClick={toggleProfile}
           className={`text-light flex items-end ${
@@ -38,15 +38,15 @@ const ProfileMenu = () => {
           }`}
         >
           {/* Your profile icon */}
-          <MdPerson className="text-light text-2xl" />
+          <MdPerson className="text-light text-3xl" />
           {isProfileOpen ? (
-            <MdArrowDropUp className="text-light text-2xl -ms-1" />
+            <MdArrowDropUp className="text-light text-3xl -ms-1" />
           ) : (
-            <MdArrowDropDown className="text-light text-2xl -ms-1" />
+            <MdArrowDropDown className="text-light text-3xl -ms-1" />
           )}
         </button>
         <div>
-          <p className="text-light font-bold whitespace-nowrap text-ellipsis overflow-hidden w-24">
+          <p className="text-light text-xl font-bold whitespace-nowrap text-ellipsis overflow-hidden w-24">
             {authCtx?.user?.username && authCtx?.user?.username}
           </p>
         </div>

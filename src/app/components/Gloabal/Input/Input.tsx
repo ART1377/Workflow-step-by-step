@@ -135,7 +135,7 @@ const Input = ({
           placeholder="Search..."
           value={value as string}
           onChange={onChange}
-          className="py-2 pl-3 pr-12 border border-primary-main rounded-full focus:outline-none focus:border-primary-light w-full"
+          className="py-2 pl-3 pr-12 h-12 border border-primary-main rounded-full focus:outline-none focus:border-primary-light w-full text-primary-dark"
         />
       )}
     </>

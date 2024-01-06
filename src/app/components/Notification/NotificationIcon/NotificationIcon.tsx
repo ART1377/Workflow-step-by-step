@@ -11,11 +11,11 @@ const NotificationIcon= ({ isOpen, onClick }:Props) => (
     onClick={onClick}
     className={`text-light flex items-end ${isOpen && "bg-primary-light rounded-radius-main"}`}
   >
-    <MdNotifications className="text-light text-2xl" />
+    <MdNotifications className="text-light text-3xl" />
     {isOpen ? (
-      <MdArrowDropUp className="text-light text-2xl -ms-1" />
+      <MdArrowDropUp className="text-light text-3xl -ms-1" />
     ) : (
-      <MdArrowDropDown className="text-light text-2xl -ms-1" />
+      <MdArrowDropDown className="text-light text-3xl -ms-1" />
     )}
   </button>
 );

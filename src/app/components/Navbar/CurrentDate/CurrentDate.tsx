@@ -38,8 +38,8 @@ const CurrentDate = () => {
 
 
   return (
-    <div className="text-light ml-4 font-medium px-3 py-2 bg-primary-light rounded-radius-large">
-      <span className="text-primary-dark">Today is : </span>
+    <div className="text-light text-lg h-12 flex items-center justify-center ml-4 font-medium px-3 py-2 bg-primary-light rounded-radius-large">
+      <span className="text-primary-dark mr-1">Today is : </span>
       {currentDate}
     </div>
   );
