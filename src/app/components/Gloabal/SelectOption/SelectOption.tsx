@@ -13,7 +13,7 @@ const SelectOption = ({ label, value, onChange, options }: Props) => {
       className={`border-primary-main border-2 rounded-radius-large relative`}
     >
       <label
-        className={`absolute text-primary-main bg-light bottom-[85%] left-[3%] px-1`}
+        className={`absolute text-primary-main bg-light bottom-[85%] left-3 px-1`}
       >
         {label}
       </label>

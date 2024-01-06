@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Input from "../../Gloabal/Input/Input"; // Adjust the path as needed
 import TextArea from "../../Gloabal/TextArea/TextArea";
 import CheckBox from "../../Gloabal/CheckBox/CheckBox";
+import SelectOption from "../../Gloabal/SelectOption/SelectOption";
 
 const Part2DetailPage = () => {
   const [name, setName] = useState<string>("");
@@ -12,6 +13,7 @@ const Part2DetailPage = () => {
   const [number, setNumber] = useState<string>("1");
   const [check, setCheck] = useState<boolean>(false);
   const [textArea, setTextArea] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
 
   const handlePdfChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -60,7 +62,7 @@ const Part2DetailPage = () => {
   };
 
   return (
-    <div className="p-20 flex flex-col gap-8">
+    <div className="p-8 flex flex-col gap-8 bg-light">
       <Input
         label="Name"
         type="text"
@@ -85,6 +87,12 @@ const Part2DetailPage = () => {
         value={file}
         onChange={(e) => handlePdfChange(e)}
       />
+      <SelectOption
+        label="Category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        options={["Category 1", "Category 2", "Category 3"]}
+      />
       <Input
         label="Number"
         type="number"
@@ -97,7 +105,7 @@ const Part2DetailPage = () => {
           <TextArea
             key={index}
             label={`Textarea ${index + 1}`}
-            placeHolder='product code'
+            placeHolder="product code"
             value={textArea}
             onChange={(e) => setTextArea(e.target.value)}
           />
@@ -105,7 +113,7 @@ const Part2DetailPage = () => {
       ) : (
         <TextArea
           label="text"
-          placeHolder='product code'
+          placeHolder="product code"
           value={textArea}
           onChange={(e) => setTextArea(e.target.value)}
         />

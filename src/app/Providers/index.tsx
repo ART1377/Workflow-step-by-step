@@ -25,7 +25,7 @@ const Providers = ({ children }: Props) => {
             <Sidebar />
           </>
         )}
-        <main className={`mt-8 mb-12 ${isAuthPage ? "mr-3" : "mr-[212px]"}`}>
+        <main className={`mt-8 mb-12 ml-3 ${isAuthPage ? "mr-3" : "mr-[212px]"}`}>
           {children}
         </main>
         <Toaster position="top-center" reverseOrder={false} />
