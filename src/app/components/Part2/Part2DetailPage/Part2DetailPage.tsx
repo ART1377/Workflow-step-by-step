@@ -1,12 +1,29 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../Gloabal/Input/Input"; // Adjust the path as needed
 import TextArea from "../../Gloabal/TextArea/TextArea";
 import CheckBox from "../../Gloabal/CheckBox/CheckBox";
 import SelectOption from "../../Gloabal/SelectOption/SelectOption";
 import Button from "../../Gloabal/Button/Button";
+import { fetchProducts } from "../../../redux/slices/productSlice";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
+import DropDownItem from "../../Gloabal/DropDownItem/DropDownItem";
+import BaseModal from "../../Gloabal/BaseModal/BaseModal";
 
 const Part2DetailPage = () => {
+
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+
+  const [productSuggestions, setProductSuggestions] = useState<string[]>([]);
+
+  const dispatch = useAppDispatch();
+  const products = useAppSelector((state) => state.product.products);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -15,6 +32,30 @@ const Part2DetailPage = () => {
   const [check, setCheck] = useState<boolean>(false);
   const [textArea, setTextArea] = useState<string>("");
   const [category, setCategory] = useState<string>("");
+
+  const filterProductNames = (inputValue: string) => {
+    const filteredProducts = products.filter((product) =>
+      product.productName.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    return filteredProducts.slice(0, 5).map((product) => product.productName);
+  };
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    setName(inputValue);
+
+    if (inputValue.length >= 3) {
+      const suggestions = filterProductNames(inputValue);
+      setProductSuggestions(suggestions);
+    } else {
+      setProductSuggestions([]);
+    }
+  };
+
+  const handleProductSuggestionClick = (suggestion: string) => {
+    setName(suggestion);
+    setProductSuggestions([]);
+  };
 
   const handlePdfChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -47,7 +88,6 @@ const Part2DetailPage = () => {
     }
   };
 
-  console.log(number);
 
   const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -64,8 +104,9 @@ const Part2DetailPage = () => {
 
   const submitFormHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("submit");
+    setModalOpen(true);
   };
+
   const resetFormHandler = () => {
     setName("");
     setImage(null);
@@ -76,6 +117,13 @@ const Part2DetailPage = () => {
     setTextArea("");
     setCategory("");
   };
+
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+
 
   return (
     <form
@@ -89,8 +137,24 @@ const Part2DetailPage = () => {
             label="Name"
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => handleNameChange(e)}
           />
+          {productSuggestions.length > 0 && (
+            <ul className="absolute bg-white border border-primary-light z-10 ml-1 mt-0.5 rounded-radius-small">
+              {productSuggestions.map((suggestion, index) => (
+                <li
+                  key={index}
+                  className=""
+                  onClick={() => handleProductSuggestionClick(suggestion)}
+                >
+                  <DropDownItem classes="px-4">
+
+                  {suggestion}
+                  </DropDownItem>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
         <div className="w-1/2">
           <Input
@@ -184,6 +248,12 @@ const Part2DetailPage = () => {
           Reset
         </Button>
       </div>
+         {/* Modal for displaying submission result */}
+         <BaseModal isOpen={modalOpen} onClose={closeModal}>
+        <div className="p-4">
+          <h2 className="text-lg font-semibold mb-4">Form Submission Result</h2>
+        </div>
+      </BaseModal>
     </form>
   );
 };
