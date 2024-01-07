@@ -141,7 +141,7 @@ const Part2Page = () => {
   return (
     <form
       onSubmit={submitFormHandler}
-      className="p-8 flex flex-col gap-8 bg-white"
+      className="p-8 flex flex-col gap-8 bg-white mx-auto max-w-[1200px] 1400:mt-10"
     >
       <div className="flex gap-4">
         <div className="w-1/2">
