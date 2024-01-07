@@ -34,6 +34,9 @@ const Part2Page = () => {
   const [textArea, setTextArea] = useState<string>("");
   const [category, setCategory] = useState<string>("");
 
+  const [textAreaValues, setTextAreaValues] = useState<string[]>([]);
+
+
   const filterProductNames = (inputValue: string) => {
     const filteredProducts = products.filter((product) =>
       product.productName.toLowerCase().includes(inputValue.toLowerCase())
@@ -94,12 +97,21 @@ const Part2Page = () => {
 
     // Check if the input value is a valid positive number
     if (+inputValue > 0) {
+      setTextAreaValues(Array.from({ length: +inputValue }, () => ""));
+
       setNumber(inputValue);
     } else {
       // You can handle the invalid number here
       console.error("Invalid number. Please enter a positive number.");
       e.target.value = ""; // Reset the input to clear the invalid number
     }
+  };
+
+  const textareaChangeHandler = (index: number, value: string) => {
+    // Update the specific textarea value in the array
+    const updatedTextAreaValues = [...textAreaValues];
+    updatedTextAreaValues[index] = value;
+    setTextAreaValues(updatedTextAreaValues);
   };
 
   const submitFormHandler = (e: React.FormEvent) => {
@@ -121,6 +133,10 @@ const Part2Page = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+
+  
+
 
   return (
     <form
@@ -209,18 +225,18 @@ const Part2Page = () => {
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        {check ? (
-          Array.from({ length: +number }, (_, index) => (
-            <TextArea
-              bgColor="bg-white"
-              key={index}
-              label={`Textarea ${index + 1}`}
-              placeHolder="product code"
-              value={textArea}
-              onChange={(e) => setTextArea(e.target.value)}
-            />
-          ))
-        ) : (
+      {check
+      ? textAreaValues.map((value, index) => (
+          <TextArea
+            key={index}
+            bgColor="bg-white"
+            label={`Textarea ${index + 1}`}
+            placeHolder="product code"
+            value={value}
+            onChange={(e) => textareaChangeHandler(index, e.target.value)}
+          />
+        ))
+      : (
           <TextArea
             bgColor="bg-white"
             label="text"
@@ -228,7 +244,8 @@ const Part2Page = () => {
             value={textArea}
             onChange={(e) => setTextArea(e.target.value)}
           />
-        )}
+        )
+    }
       </div>
       <div className="w-full mx-auto grid grid-flow-col gap-4 max-w-[400px]">
         <Button
@@ -252,27 +269,44 @@ const Part2Page = () => {
       </div>
       {/* Modal for displaying submission result */}
       <BaseModal isOpen={modalOpen} onClose={closeModal}>
-        <div className="p-4">
-          <h2 className="text-lg font-semibold mb-4">Form Submission Result</h2>
-          {/* Display form values here */}
-          <p>Name: {name}</p>
-          <p>Date: {date}</p>
-          <p>Image: {image ? image.name : "Not provided"}</p>
-          <p>PDF File: {file ? file.name : "Not provided"}</p>
-          <p>Category: {category}</p>
-          <p>Number: {number}</p>
-          <p>Check: {check ? "Checked" : "Not checked"}</p>
-          {check ? (
-            // Display multiple text areas if the check is true
-            Array.from({ length: +number }, (_, index) => (
-              <p key={index}>{`Textarea ${index + 1}: ${textArea}`}</p>
-            ))
-          ) : (
-            // Display single text area if the check is false
-            <p>Textarea: {textArea}</p>
-          )}
-        </div>
-      </BaseModal>
+  <div className="p-4">
+    <h2 className="text-lg font-semibold mb-4">Form Submission Result</h2>
+
+    <div className="grid grid-cols-2 gap-4">
+      <p className="text-sm">Name:</p>
+      <p className="text-sm">{name}</p>
+
+      <p className="text-sm">Date:</p>
+      <p className="text-sm">{date}</p>
+
+      <p className="text-sm">Image:</p>
+      <p className="text-sm">{image ? image.name : "Not provided"}</p>
+
+      <p className="text-sm">PDF File:</p>
+      <p className="text-sm">{file ? file.name : "Not provided"}</p>
+
+      <p className="text-sm">Category:</p>
+      <p className="text-sm">{category}</p>
+
+      <p className="text-sm">Number:</p>
+      <p className="text-sm">{number}</p>
+
+      <p className="text-sm">Check:</p>
+      <p className="text-sm">{check ? "Checked" : "Not checked"}</p>
+    </div>
+
+    {/* {check ? (
+      <div className="grid grid-cols-2 gap-4">
+        {Array.from({ length: +number }, (_, index) => (
+          <p key={index} className="text-sm">{`Textarea ${index + 1}: ${textAreaValues[index]}`}</p>
+        ))}
+      </div>
+    ) : (
+      <p className="text-sm">Textarea: {textArea}</p>
+    )} */}
+  </div>
+</BaseModal>
+
     </form>
   );
 };
