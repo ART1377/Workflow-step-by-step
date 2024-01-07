@@ -18,7 +18,7 @@ const SelectOption = ({
   required = true,
 }: Props) => {
   return (
-    <div className={`relative`}>
+    <div className={`relative h-full`}>
       <label
         className={`${bgColor} absolute text-primary-main bottom-[80%] left-3 px-1`}
       >
@@ -28,7 +28,7 @@ const SelectOption = ({
         required={required}
         value={value}
         onChange={onChange}
-        className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
+        className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main h-full`}
       >
         {options.map((option, index) => (
           <option key={index} value={option}>

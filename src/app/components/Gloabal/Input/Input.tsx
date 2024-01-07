@@ -22,8 +22,6 @@ const Input = ({
   required = true,
   bgColor = "bg-light",
 }: Props) => {
-
-  
   const renderInput = () => {
     switch (type) {
       case "number":
@@ -34,7 +32,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
           />
         );
       case "date":
@@ -45,7 +43,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
           />
         );
       case "image":
@@ -56,7 +54,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             accept=".jpg, .jpeg, .png, .gif"
             onChange={onChange}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large hidden`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main hidden`}
           />
         );
       case "pdf":
@@ -67,7 +65,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             accept=".pdf"
             onChange={onChange}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large hidden`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main hidden`}
           />
         );
       case "password":
@@ -78,7 +76,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
           />
         );
       default:
@@ -89,7 +87,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
           />
         );
     }
@@ -106,12 +104,12 @@ const Input = ({
               >
                 {label}
               </label>
-              <label className="inline-block w-full px-3 py-2 border-primary-main border-2 rounded-radius-large">
+              <label className="inline-block w-full px-3 py-2 border-primary-main border-2 rounded-radius-main">
                 {renderInput()}
                 <div className="text-base cursor-pointer hover:opacity-70 transition-all duration-300 border-2 border-primary-main rounded-radius-main text-primary-main px-2 w-fit flex items-center gap-1">
-                <MdOutlineFileUpload className='text-lg' />
+                  <MdOutlineFileUpload className="text-lg" />
                   Upload your {type}
-                  </div>
+                </div>
               </label>
             </>
           ) : (

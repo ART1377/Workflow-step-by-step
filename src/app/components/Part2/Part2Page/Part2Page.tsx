@@ -12,6 +12,7 @@ import BaseModal from "../../Gloabal/BaseModal/BaseModal";
 
 import { fetchProducts } from "../../../redux/slices/productSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
+import Part2SubmissionResult from "./Part2SubmissionResult/Part2SubmissionResult";
 
 const Part2Page = () => {
   const dispatch = useAppDispatch();
@@ -32,10 +33,9 @@ const Part2Page = () => {
   const [number, setNumber] = useState<string>("1");
   const [check, setCheck] = useState<boolean>(false);
   const [textArea, setTextArea] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
+  const [category, setCategory] = useState<string>("Category 1");
 
   const [textAreaValues, setTextAreaValues] = useState<string[]>([]);
-
 
   const filterProductNames = (inputValue: string) => {
     const filteredProducts = products.filter((product) =>
@@ -127,16 +127,12 @@ const Part2Page = () => {
     setNumber("1");
     setCheck(false);
     setTextArea("");
-    setCategory("");
+    setCategory("Category 1");
   };
 
   const closeModal = () => {
     setModalOpen(false);
   };
-
-
-  
-
 
   return (
     <form
@@ -204,6 +200,7 @@ const Part2Page = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             options={["Category 1", "Category 2", "Category 3"]}
+            required={true}
           />
         </div>
         <div className="w-1/2 flex gap-2">
@@ -225,18 +222,18 @@ const Part2Page = () => {
         </div>
       </div>
       <div className="flex flex-col gap-4">
-      {check
-      ? textAreaValues.map((value, index) => (
-          <TextArea
-            key={index}
-            bgColor="bg-white"
-            label={`Textarea ${index + 1}`}
-            placeHolder="product code"
-            value={value}
-            onChange={(e) => textareaChangeHandler(index, e.target.value)}
-          />
-        ))
-      : (
+        {check ? (
+          textAreaValues.map((value, index) => (
+            <TextArea
+              key={index}
+              bgColor="bg-white"
+              label={`Textarea ${index + 1}`}
+              placeHolder="product code"
+              value={value}
+              onChange={(e) => textareaChangeHandler(index, e.target.value)}
+            />
+          ))
+        ) : (
           <TextArea
             bgColor="bg-white"
             label="text"
@@ -244,8 +241,7 @@ const Part2Page = () => {
             value={textArea}
             onChange={(e) => setTextArea(e.target.value)}
           />
-        )
-    }
+        )}
       </div>
       <div className="w-full mx-auto grid grid-flow-col gap-4 max-w-[400px]">
         <Button
@@ -268,34 +264,58 @@ const Part2Page = () => {
         </Button>
       </div>
       {/* Modal for displaying submission result */}
+      <Part2SubmissionResult
+        isOpen={modalOpen}
+        onClose={closeModal}
+        formValues={{
+          name,
+          date,
+          image,
+          file,
+          category,
+          number,
+          check,
+          textAreaValues,
+          textArea,
+        }}
+      />
+      {/* 
       <BaseModal isOpen={modalOpen} onClose={closeModal}>
-  <div className="p-4">
-    <h2 className="text-lg font-semibold mb-4">Form Submission Result</h2>
+        <div className="p-4">
+          <h2 className="text-lg font-semibold mb-8 max-w-fit-content bg-gray-dark text-light py-1 px-2">Form Submission Result</h2>
 
-    <div className="grid grid-cols-2 gap-4">
-      <p className="text-sm">Name:</p>
-      <p className="text-sm">{name}</p>
+          <ul className="grid grid-cols-2 gap-5">
+            <li className="text-base flex gap-4 line-clamp-1">
+              <p>Name:</p>
+              <p className="font-bold">{name}</p>
+            </li>
+            <li className="text-base flex gap-4 line-clamp-1">
+              <p>Date:</p>
+              <p className="font-bold">{date}</p>
+            </li>
+            <li className="text-base flex gap-4 line-clamp-1">
+              <p>Image:</p>
+              <p className="font-bold">{image ? image.name : "Not provided"}</p>
+            </li>
+            <li className="text-base flex gap-4 line-clamp-1">
+              <p>PDF File:</p>
+              <p className="font-bold">{file ? file.name : "Not provided"}</p>
+            </li>
+            <li className="text-base flex gap-4 line-clamp-1">
+              <p>Category:</p>
+              <p className="font-bold">{category}</p>
+            </li>
+            <li className="text-base flex gap-4 line-clamp-1">
+              <p>Number:</p>
+              <p className="font-bold">{number}</p>
+            </li>
+            <li className="text-base flex gap-4 line-clamp-1">
+              <p>Check:</p>
+              <p className="font-bold">{check ? "Checked" : "Not checked"}</p>
+            </li>
+          </ul>
 
-      <p className="text-sm">Date:</p>
-      <p className="text-sm">{date}</p>
-
-      <p className="text-sm">Image:</p>
-      <p className="text-sm">{image ? image.name : "Not provided"}</p>
-
-      <p className="text-sm">PDF File:</p>
-      <p className="text-sm">{file ? file.name : "Not provided"}</p>
-
-      <p className="text-sm">Category:</p>
-      <p className="text-sm">{category}</p>
-
-      <p className="text-sm">Number:</p>
-      <p className="text-sm">{number}</p>
-
-      <p className="text-sm">Check:</p>
-      <p className="text-sm">{check ? "Checked" : "Not checked"}</p>
-    </div>
-
-    {/* {check ? (
+          {/* {check ? (
       <div className="grid grid-cols-2 gap-4">
         {Array.from({ length: +number }, (_, index) => (
           <p key={index} className="text-sm">{`Textarea ${index + 1}: ${textAreaValues[index]}`}</p>
@@ -304,9 +324,8 @@ const Part2Page = () => {
     ) : (
       <p className="text-sm">Textarea: {textArea}</p>
     )} */}
-  </div>
-</BaseModal>
-
+      {/* </div>
+      </BaseModal> */}
     </form>
   );
 };
