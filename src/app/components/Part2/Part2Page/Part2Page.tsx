@@ -1,27 +1,29 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Input from "../../Gloabal/Input/Input"; // Adjust the path as needed
+import { MdDeleteOutline, MdDoneOutline } from "react-icons/md";
+
+import Input from "../../Gloabal/Input/Input";
 import TextArea from "../../Gloabal/TextArea/TextArea";
 import CheckBox from "../../Gloabal/CheckBox/CheckBox";
 import SelectOption from "../../Gloabal/SelectOption/SelectOption";
 import Button from "../../Gloabal/Button/Button";
-import { fetchProducts } from "../../../redux/slices/productSlice";
-import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import DropDownItem from "../../Gloabal/DropDownItem/DropDownItem";
 import BaseModal from "../../Gloabal/BaseModal/BaseModal";
-import { MdDeleteOutline, MdDoneOutline } from "react-icons/md";
+
+import { fetchProducts } from "../../../redux/slices/productSlice";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 
 const Part2Page = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-
-  const [productSuggestions, setProductSuggestions] = useState<string[]>([]);
-
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.product.products);
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
+
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+  const [productSuggestions, setProductSuggestions] = useState<string[]>([]);
 
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
@@ -202,6 +204,7 @@ const Part2Page = () => {
             label="Check"
             value={check}
             onChange={() => setCheck(!check)}
+            required={false}
           />
         </div>
       </div>
@@ -251,6 +254,23 @@ const Part2Page = () => {
       <BaseModal isOpen={modalOpen} onClose={closeModal}>
         <div className="p-4">
           <h2 className="text-lg font-semibold mb-4">Form Submission Result</h2>
+          {/* Display form values here */}
+          <p>Name: {name}</p>
+          <p>Date: {date}</p>
+          <p>Image: {image ? image.name : "Not provided"}</p>
+          <p>PDF File: {file ? file.name : "Not provided"}</p>
+          <p>Category: {category}</p>
+          <p>Number: {number}</p>
+          <p>Check: {check ? "Checked" : "Not checked"}</p>
+          {check ? (
+            // Display multiple text areas if the check is true
+            Array.from({ length: +number }, (_, index) => (
+              <p key={index}>{`Textarea ${index + 1}: ${textArea}`}</p>
+            ))
+          ) : (
+            // Display single text area if the check is false
+            <p>Textarea: {textArea}</p>
+          )}
         </div>
       </BaseModal>
     </form>

@@ -6,6 +6,7 @@ type Props = {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   options: string[];
   bgColor?: string;
+  required?: boolean;
 };
 
 const SelectOption = ({
@@ -14,6 +15,7 @@ const SelectOption = ({
   onChange,
   options,
   bgColor = "bg-light",
+  required = true,
 }: Props) => {
   return (
     <div className={`relative`}>
@@ -23,6 +25,7 @@ const SelectOption = ({
         {label}
       </label>
       <select
+        required={required}
         value={value}
         onChange={onChange}
         className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-large`}
