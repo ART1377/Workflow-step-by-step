@@ -1,12 +1,10 @@
-import Part2DetailPage from '@/app/components/Part2/Part2DetailPage/Part2DetailPage'
-import React from 'react'
+import Part2Page from "@/app/components/Part2/Part2Page/Part2Page";
+import React from "react";
 
-type Props = {}
+type Props = {};
 
 const page = (props: Props) => {
-  return (
-    <Part2DetailPage/>
-  )
-}
+  return <Part2Page />;
+};
 
-export default page
+export default page;

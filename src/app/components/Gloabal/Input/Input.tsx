@@ -22,6 +22,8 @@ const Input = ({
   required = true,
   bgColor = "bg-light",
 }: Props) => {
+
+  
   const renderInput = () => {
     switch (type) {
       case "number":

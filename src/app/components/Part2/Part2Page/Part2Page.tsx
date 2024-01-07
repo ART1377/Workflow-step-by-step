@@ -9,13 +9,10 @@ import { fetchProducts } from "../../../redux/slices/productSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import DropDownItem from "../../Gloabal/DropDownItem/DropDownItem";
 import BaseModal from "../../Gloabal/BaseModal/BaseModal";
-import { MdDeleteOutline,MdDoneOutline  } from "react-icons/md";
+import { MdDeleteOutline, MdDoneOutline } from "react-icons/md";
 
-
-const Part2DetailPage = () => {
-
+const Part2Page = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
-
 
   const [productSuggestions, setProductSuggestions] = useState<string[]>([]);
 
@@ -90,7 +87,6 @@ const Part2DetailPage = () => {
     }
   };
 
-
   const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
 
@@ -120,12 +116,9 @@ const Part2DetailPage = () => {
     setCategory("");
   };
 
-
   const closeModal = () => {
     setModalOpen(false);
   };
-
-
 
   return (
     <form
@@ -149,10 +142,7 @@ const Part2DetailPage = () => {
                   className=""
                   onClick={() => handleProductSuggestionClick(suggestion)}
                 >
-                  <DropDownItem classes="px-4">
-
-                  {suggestion}
-                  </DropDownItem>
+                  <DropDownItem classes="px-4">{suggestion}</DropDownItem>
                 </li>
               ))}
             </ul>
@@ -238,10 +228,13 @@ const Part2DetailPage = () => {
         )}
       </div>
       <div className="w-full mx-auto grid grid-flow-col gap-4 max-w-[400px]">
-        <Button type="submit" variant="primary-main" size="large"
+        <Button
+          type="submit"
+          variant="primary-main"
+          size="large"
           classes="flex items-center justify-center gap-1"
-          >
-            <MdDoneOutline  />
+        >
+          <MdDoneOutline />
           Submit
         </Button>
         <Button
@@ -251,12 +244,11 @@ const Part2DetailPage = () => {
           classes="flex items-center justify-center gap-1"
         >
           <MdDeleteOutline />
-
           Reset
         </Button>
       </div>
-         {/* Modal for displaying submission result */}
-         <BaseModal isOpen={modalOpen} onClose={closeModal}>
+      {/* Modal for displaying submission result */}
+      <BaseModal isOpen={modalOpen} onClose={closeModal}>
         <div className="p-4">
           <h2 className="text-lg font-semibold mb-4">Form Submission Result</h2>
         </div>
@@ -265,4 +257,4 @@ const Part2DetailPage = () => {
   );
 };
 
-export default Part2DetailPage;
+export default Part2Page;
