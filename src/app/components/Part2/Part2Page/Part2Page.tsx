@@ -17,6 +17,7 @@ import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 // import type{Value} from "react-multi-date-picker"
 
 const Part2Page = () => {
+
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.product.products);
 

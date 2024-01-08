@@ -2,38 +2,32 @@
 import React, { useEffect, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import style from "./SearchBar.module.css";
-import { useRouter } from "next/navigation";
 import Input from "../../Gloabal/Input/Input";
+import useSearchParamsInteraction from "@/app/hooks/useSearchParamsInteraction/useSearchParamsInteraction";
 
 const SearchBar = () => {
-  const router = useRouter();
   const [searchInput, setSearchInput] = useState("");
+
+  // Custom hook
+  const { setSearchParams } = useSearchParamsInteraction();
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
   };
 
+  // Set search params using custom hook
   useEffect(() => {
-    const setSearchInputTimeout = setTimeout(() => {
-      const searchParams = new URLSearchParams(window.location.search);
-      if (!searchInput) {
-        searchParams.delete("search");
-      } else {
-        searchParams.set("search", searchInput);
-      }
-
-      const newPathName = `${
-        window.location.pathname
-      }?${searchParams.toString()}`;
-      router.push(newPathName);
-    }, 1000);
+    const setSearchInputTimeout = setTimeout(
+      () => setSearchParams(searchInput, "search"),
+      1000
+    );
 
     return () => {
       clearTimeout(setSearchInputTimeout);
     };
-  }, [searchInput, router]);
+  }, [searchInput]);
 
-   // Set search query
+  // Set search query
   // const handleSearchClick = () => {
   //   const searchParams = new URLSearchParams(window.location.search);
   //   if (!searchInput) {
@@ -56,7 +50,12 @@ const SearchBar = () => {
       >
         <MdSearch strokeWidth="1" className="text-3xl text-light" />
       </div>
-      <Input type="text" value={searchInput} onChange={handleSearchInputChange} isSearchBar />
+      <Input
+        type="text"
+        value={searchInput}
+        onChange={handleSearchInputChange}
+        isSearchBar
+      />
       {/* <input
         type="text"
         placeholder="Search..."
