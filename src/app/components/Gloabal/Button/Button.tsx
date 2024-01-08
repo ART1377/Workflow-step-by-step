@@ -78,7 +78,7 @@ const Button = ({
   return (
     <button
       type={`${type ? type : "button"}`}
-      className={`rounded-radius-large transition-all duration-300 hover:opacity-70 text-light capitalize  ${getVariantClasses()} ${classes}`}
+      className={`rounded-radius-main transition-all duration-300 hover:opacity-70 text-light capitalize  ${getVariantClasses()} ${classes}`}
       onClick={onClick}
     >
       {children}

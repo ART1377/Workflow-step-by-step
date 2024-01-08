@@ -13,7 +13,7 @@ type Props = {
     number: string;
     check: boolean;
     textAreaValues: string[];
-    textArea: string;
+    // textArea: string;
   };
 };
 
@@ -27,7 +27,7 @@ const Part2SubmissionResult = ({ formValues, isOpen, onClose }: Props) => {
     number,
     check,
     textAreaValues,
-    textArea,
+    // textArea,
   } = formValues;
 
   return (

@@ -32,10 +32,10 @@ const Part2Page = () => {
   const [date, setDate] = useState<string>("");
   const [number, setNumber] = useState<string>("1");
   const [check, setCheck] = useState<boolean>(false);
-  const [textArea, setTextArea] = useState<string>("");
+  // const [textArea, setTextArea] = useState<string>("");
   const [category, setCategory] = useState<string>("Category 1");
 
-  const [textAreaValues, setTextAreaValues] = useState<string[]>([]);
+  const [textAreaValues, setTextAreaValues] = useState<string[]>([""]);
 
   const filterProductNames = (inputValue: string) => {
     const filteredProducts = products.filter((product) =>
@@ -126,13 +126,17 @@ const Part2Page = () => {
     setDate("");
     setNumber("1");
     setCheck(false);
-    setTextArea("");
+    // setTextArea("");
     setCategory("Category 1");
+    setTextAreaValues([""]);
   };
 
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  console.log(typeof image);
+  console.log(typeof file);
 
   return (
     <form
@@ -181,6 +185,9 @@ const Part2Page = () => {
             value={image}
             onChange={(e) => handleImageChange(e)}
           />
+          {image?.name && <small className="text-dark line-clamp-1 max-w-[90%]">
+            {image?.name}
+            </small>}
         </div>
         <div className="w-1/2">
           <Input
@@ -190,6 +197,7 @@ const Part2Page = () => {
             value={file}
             onChange={(e) => handlePdfChange(e)}
           />
+          {file?.name && <small className="text-dark line-clamp-1 max-w-[90%]">{file?.name}</small>}
         </div>
       </div>
       <div className="flex gap-4">
@@ -238,8 +246,8 @@ const Part2Page = () => {
             bgColor="bg-white"
             label="text"
             placeHolder="product code"
-            value={textArea}
-            onChange={(e) => setTextArea(e.target.value)}
+            value={textAreaValues[0]}
+            onChange={(e) => textareaChangeHandler(0, e.target.value)}
           />
         )}
       </div>
@@ -276,56 +284,9 @@ const Part2Page = () => {
           number,
           check,
           textAreaValues,
-          textArea,
+          // textArea,
         }}
       />
-      {/* 
-      <BaseModal isOpen={modalOpen} onClose={closeModal}>
-        <div className="p-4">
-          <h2 className="text-lg font-semibold mb-8 max-w-fit-content bg-gray-dark text-light py-1 px-2">Form Submission Result</h2>
-
-          <ul className="grid grid-cols-2 gap-5">
-            <li className="text-base flex gap-4 line-clamp-1">
-              <p>Name:</p>
-              <p className="font-bold">{name}</p>
-            </li>
-            <li className="text-base flex gap-4 line-clamp-1">
-              <p>Date:</p>
-              <p className="font-bold">{date}</p>
-            </li>
-            <li className="text-base flex gap-4 line-clamp-1">
-              <p>Image:</p>
-              <p className="font-bold">{image ? image.name : "Not provided"}</p>
-            </li>
-            <li className="text-base flex gap-4 line-clamp-1">
-              <p>PDF File:</p>
-              <p className="font-bold">{file ? file.name : "Not provided"}</p>
-            </li>
-            <li className="text-base flex gap-4 line-clamp-1">
-              <p>Category:</p>
-              <p className="font-bold">{category}</p>
-            </li>
-            <li className="text-base flex gap-4 line-clamp-1">
-              <p>Number:</p>
-              <p className="font-bold">{number}</p>
-            </li>
-            <li className="text-base flex gap-4 line-clamp-1">
-              <p>Check:</p>
-              <p className="font-bold">{check ? "Checked" : "Not checked"}</p>
-            </li>
-          </ul>
-
-          {/* {check ? (
-      <div className="grid grid-cols-2 gap-4">
-        {Array.from({ length: +number }, (_, index) => (
-          <p key={index} className="text-sm">{`Textarea ${index + 1}: ${textAreaValues[index]}`}</p>
-        ))}
-      </div>
-    ) : (
-      <p className="text-sm">Textarea: {textArea}</p>
-    )} */}
-      {/* </div>
-      </BaseModal> */}
     </form>
   );
 };
