@@ -25,10 +25,7 @@ const Part2Page = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-
-  const [productSuggestions, setProductSuggestions] = useState<string[]>([]);
-
+  
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -41,6 +38,13 @@ const Part2Page = () => {
 
   const [textAreaValues, setTextAreaValues] = useState<string[]>([""]);
 
+
+
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+  const [productSuggestions, setProductSuggestions] = useState<string[]>([]);
+  
+  
   const filterProductNames = (inputValue: string) => {
     const filteredProducts = products.filter((product) =>
       product.productName.toLowerCase().includes(inputValue.toLowerCase())
@@ -149,6 +153,7 @@ const Part2Page = () => {
           onChange={handleNameChange}
           suggestions={productSuggestions}
           onSuggestionClick={handleProductSuggestionClick}
+          setProductSuggestions={setProductSuggestions}
         />
         <Part2DateInput
           value={date}

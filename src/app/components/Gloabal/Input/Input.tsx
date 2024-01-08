@@ -6,6 +6,7 @@ type Props = {
   type: "text" | "date" | "image" | "pdf" | "password" | "number";
   value: string | File | null; // Adjust this as needed for different input types
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: () => void;
   isSearchBar?: boolean;
   placeHolder?: string;
   bgColor?: string;
@@ -17,6 +18,7 @@ const Input = ({
   type,
   value,
   onChange,
+  onBlur,
   isSearchBar,
   placeHolder,
   required = true,
@@ -32,6 +34,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
+            onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
           />
         );
@@ -43,6 +46,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
+            onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
           />
         );
@@ -54,6 +58,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             accept=".jpg, .jpeg, .png, .gif"
             onChange={onChange}
+            onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main hidden`}
           />
         );
@@ -65,6 +70,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             accept=".pdf"
             onChange={onChange}
+            onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main hidden`}
           />
         );
@@ -76,6 +82,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
+            onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
           />
         );
@@ -87,6 +94,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
+            onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
           />
         );
@@ -108,7 +116,7 @@ const Input = ({
                 {renderInput()}
                 <div className="text-base cursor-pointer hover:opacity-70 transition-all duration-300 border-2 border-primary-main rounded-radius-main text-primary-main px-2 w-fit flex items-center gap-1 line-clamp-1">
                   <MdOutlineFileUpload className="text-lg" />
-                  Upload your {type} 
+                  Upload your {type}
                 </div>
               </label>
             </>
@@ -135,6 +143,7 @@ const Input = ({
           placeholder="Search..."
           value={value as string}
           onChange={onChange}
+          onBlur={onBlur}
           className="py-2 pl-3 pr-12 h-12 border border-primary-main rounded-full focus:outline-none focus:border-primary-light w-full text-primary-dark"
         />
       )}
