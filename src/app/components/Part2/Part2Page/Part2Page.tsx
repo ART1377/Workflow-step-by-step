@@ -14,6 +14,8 @@ import Part2SubmissionResult from "./Part2SubmissionResult/Part2SubmissionResult
 import { fetchProducts } from "../../../redux/slices/productSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 
+// import type{Value} from "react-multi-date-picker"
+
 const Part2Page = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.product.products);
@@ -29,7 +31,8 @@ const Part2Page = () => {
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
   const [file, setFile] = useState<File | null>(null);
-  const [date, setDate] = useState<string>("");
+  // const [date, setDate] = useState<Value>(new Date());
+  const [date, setDate] = useState('');
   const [number, setNumber] = useState<string>("1");
   const [check, setCheck] = useState<boolean>(false);
   // const [textArea, setTextArea] = useState<string>("");
