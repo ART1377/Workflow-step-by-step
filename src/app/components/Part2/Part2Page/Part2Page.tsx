@@ -2,17 +2,17 @@
 import React, { useEffect, useState } from "react";
 import { MdDeleteOutline, MdDoneOutline } from "react-icons/md";
 
-import Input from "../../Gloabal/Input/Input";
-import TextArea from "../../Gloabal/TextArea/TextArea";
-import CheckBox from "../../Gloabal/CheckBox/CheckBox";
-import SelectOption from "../../Gloabal/SelectOption/SelectOption";
+import Part2NameInput from "./Part2NameInput/Part2NameInput";
+import Part2DateInput from "./Part2DateInput/Part2DateInput";
+import Part2FileInput from "./Part2FileInput/Part2FileInput";
+import Part2CategorySelect from "./Part2CategorySelect/Part2CategorySelect";
+import Part2NumberAndCheckbox from "./Part2NumberAndCheckbox/Part2NumberAndCheckbox";
+import Part2TextAreaSection from "./Part2TextAreaSection/Part2TextAreaSection";
 import Button from "../../Gloabal/Button/Button";
-import DropDownItem from "../../Gloabal/DropDownItem/DropDownItem";
-import BaseModal from "../../Gloabal/BaseModal/BaseModal";
+import Part2SubmissionResult from "./Part2SubmissionResult/Part2SubmissionResult";
 
 import { fetchProducts } from "../../../redux/slices/productSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
-import Part2SubmissionResult from "./Part2SubmissionResult/Part2SubmissionResult";
 
 const Part2Page = () => {
   const dispatch = useAppDispatch();
@@ -98,7 +98,6 @@ const Part2Page = () => {
     // Check if the input value is a valid positive number
     if (+inputValue > 0) {
       setTextAreaValues(Array.from({ length: +inputValue }, () => ""));
-
       setNumber(inputValue);
     } else {
       // You can handle the invalid number here
@@ -135,122 +134,55 @@ const Part2Page = () => {
     setModalOpen(false);
   };
 
-  console.log(typeof image);
-  console.log(typeof file);
-
   return (
     <form
       onSubmit={submitFormHandler}
       className="p-8 flex flex-col gap-8 bg-white mx-auto max-w-[1200px] 1400:mt-10"
     >
       <div className="flex gap-4">
-        <div className="w-1/2">
-          <Input
-            bgColor="bg-white"
-            label="Name"
-            type="text"
-            value={name}
-            onChange={(e) => handleNameChange(e)}
-          />
-          {productSuggestions.length > 0 && (
-            <ul className="absolute bg-white border border-primary-light z-10 ml-1 mt-0.5 rounded-radius-small">
-              {productSuggestions.map((suggestion, index) => (
-                <li
-                  key={index}
-                  className=""
-                  onClick={() => handleProductSuggestionClick(suggestion)}
-                >
-                  <DropDownItem classes="px-4">{suggestion}</DropDownItem>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <div className="w-1/2">
-          <Input
-            bgColor="bg-white"
-            label="Date"
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </div>
+        <Part2NameInput
+          value={name}
+          onChange={handleNameChange}
+          suggestions={productSuggestions}
+          onSuggestionClick={handleProductSuggestionClick}
+        />
+        <Part2DateInput
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        />
       </div>
       <div className="flex gap-4">
-        <div className="w-1/2">
-          <Input
-            bgColor="bg-white"
-            label="Image"
-            type="image"
-            value={image}
-            onChange={(e) => handleImageChange(e)}
-          />
-          {image?.name && <small className="text-dark line-clamp-1 max-w-[90%]">
-            {image?.name}
-            </small>}
-        </div>
-        <div className="w-1/2">
-          <Input
-            bgColor="bg-white"
-            label="File"
-            type="pdf"
-            value={file}
-            onChange={(e) => handlePdfChange(e)}
-          />
-          {file?.name && <small className="text-dark line-clamp-1 max-w-[90%]">{file?.name}</small>}
-        </div>
+        <Part2FileInput
+          label="Image"
+          type="image"
+          value={image}
+          onChange={handleImageChange}
+        />
+        <Part2FileInput
+          label="File"
+          type="pdf"
+          value={file}
+          onChange={handlePdfChange}
+        />
       </div>
       <div className="flex gap-4">
-        <div className="w-1/2">
-          <SelectOption
-            bgColor="bg-white"
-            label="Category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            options={["Category 1", "Category 2", "Category 3"]}
-            required={true}
-          />
-        </div>
-        <div className="w-1/2 flex gap-2">
-          <div className="w-full">
-            <Input
-              bgColor="bg-white"
-              label="Number"
-              type="number"
-              value={number}
-              onChange={(e) => handleNumberChange(e)}
-            />
-          </div>
-          <CheckBox
-            label="Check"
-            value={check}
-            onChange={() => setCheck(!check)}
-            required={false}
-          />
-        </div>
+        <Part2CategorySelect
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          options={["Category 1", "Category 2", "Category 3"]}
+        />
+        <Part2NumberAndCheckbox
+          number={number}
+          check={check}
+          onNumberChange={handleNumberChange}
+          onCheckboxChange={() => setCheck(!check)}
+        />
       </div>
-      <div className="flex flex-col gap-4">
-        {check ? (
-          textAreaValues.map((value, index) => (
-            <TextArea
-              key={index}
-              bgColor="bg-white"
-              label={`Textarea ${index + 1}`}
-              placeHolder="product code"
-              value={value}
-              onChange={(e) => textareaChangeHandler(index, e.target.value)}
-            />
-          ))
-        ) : (
-          <TextArea
-            bgColor="bg-white"
-            label="text"
-            placeHolder="product code"
-            value={textAreaValues[0]}
-            onChange={(e) => textareaChangeHandler(0, e.target.value)}
-          />
-        )}
-      </div>
+      <Part2TextAreaSection
+        check={check}
+        textAreaValues={textAreaValues}
+        onTextAreaChange={textareaChangeHandler}
+      />
       <div className="w-full mx-auto grid grid-flow-col gap-4 max-w-[400px]">
         <Button
           type="submit"
