@@ -14,10 +14,9 @@ import Part2SubmissionResult from "./Part2SubmissionResult/Part2SubmissionResult
 import { fetchProducts } from "../../../redux/slices/productSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 
-// import type{Value} from "react-multi-date-picker"
+import { DateObject } from "react-multi-date-picker";
 
 const Part2Page = () => {
-
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.product.products);
 
@@ -25,12 +24,11 @@ const Part2Page = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  
   const [name, setName] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
   const [file, setFile] = useState<File | null>(null);
-  // const [date, setDate] = useState<Value>(new Date());
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState<DateObject | null>(null);
+  // const [date, setDate] = useState('');
   const [number, setNumber] = useState<string>("1");
   const [check, setCheck] = useState<boolean>(false);
   // const [textArea, setTextArea] = useState<string>("");
@@ -38,13 +36,10 @@ const Part2Page = () => {
 
   const [textAreaValues, setTextAreaValues] = useState<string[]>([""]);
 
-
-
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const [productSuggestions, setProductSuggestions] = useState<string[]>([]);
-  
-  
+
   const filterProductNames = (inputValue: string) => {
     const filteredProducts = products.filter((product) =>
       product.productName.toLowerCase().includes(inputValue.toLowerCase())
@@ -130,7 +125,7 @@ const Part2Page = () => {
     setName("");
     setImage(null);
     setFile(null);
-    setDate("");
+    setDate(null);
     setNumber("1");
     setCheck(false);
     // setTextArea("");
@@ -140,6 +135,12 @@ const Part2Page = () => {
 
   const closeModal = () => {
     setModalOpen(false);
+  };
+
+
+  const handleDateChange = (date: DateObject | null) => {
+    setDate(date);
+    // console.log(date.format("DD MM YYYY"));
   };
 
   return (
@@ -157,7 +158,7 @@ const Part2Page = () => {
         />
         <Part2DateInput
           value={date}
-          onChange={(e) => setDate(e.target.value)}
+          onDateChange={handleDateChange}
         />
       </div>
       <div className="flex gap-4">

@@ -1,7 +1,7 @@
 import BaseModal from "@/app/components/Gloabal/BaseModal/BaseModal";
 import React from "react";
 
-// import type{Value} from "react-multi-date-picker"
+import type{Value} from "react-multi-date-picker"
 
 
 type Props = {
@@ -9,8 +9,8 @@ type Props = {
   onClose: () => void;
   formValues: {
     name: string;
-    // date: Value;
-    date: string;
+    date: Value;
+    // date: string;
     image: File | null;
     file: File | null;
     category: string;
@@ -48,8 +48,8 @@ const Part2SubmissionResult = ({ formValues, isOpen, onClose }: Props) => {
           </li>
           <li className="text-base flex gap-4 line-clamp-1">
             <p>Date:</p>
-            {/* <p className="font-bold">{date?.toString()}</p> */}
-            <p className="font-bold">{date}</p>
+            <p className="font-bold">{date?.toString()}</p>
+            {/* <p className="font-bold">{date}</p> */}
           </li>
           <li className="text-base flex gap-4 line-clamp-1">
             <p>Image:</p>
