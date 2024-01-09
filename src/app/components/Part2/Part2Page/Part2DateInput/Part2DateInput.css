@@ -1,0 +1,23 @@
+.rmdp-container{
+    width: 100%;
+    height: 100%!important;
+}
+
+.rmdp-input{
+    background-color: white;
+    color: var(--primary-dark);
+    width: 100%;
+    height: 100%!important;
+    padding: 8px 12px!important;
+    margin: 0!important;
+    outline: 1px solid var(--primary-main);
+    border-radius: var(--radius-main);
+    -webkit-border-radius: var(--radius-main);
+    -moz-border-radius: var(--radius-main);
+    -ms-border-radius: var(--radius-main);
+    -o-border-radius: var(--radius-main);
+}
+.rmdp-input:focus{
+    box-shadow: none;
+    outline: 3px solid var(--primary-main)!important;
+}
