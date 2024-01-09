@@ -20,7 +20,7 @@ const SelectOption = ({
   return (
     <div className={`relative h-full`}>
       <label
-        className={`${bgColor} absolute text-primary-main bottom-[80%] left-3 px-1`}
+        className={`${bgColor} absolute text-primary-main bottom-[83%] left-3 px-1`}
       >
         {label}
       </label>

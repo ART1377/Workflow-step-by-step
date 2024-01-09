@@ -19,7 +19,7 @@ const TextArea = ({
 }: Props) => {
   return (
     <div className={``}>
-      {/* <label  className={`absolute text-primary-main bg-light bottom-[80%] left-3 px-1`}>
+      {/* <label  className={`absolute text-primary-main bg-light bottom-[83%] left-3 px-1`}>
         {label}
       </label> */}
       <textarea

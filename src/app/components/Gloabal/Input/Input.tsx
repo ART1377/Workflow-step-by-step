@@ -7,6 +7,7 @@ type Props = {
   value: string | File | null; // Adjust this as needed for different input types
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: () => void;
+  onFocus?: () => void;
   isSearchBar?: boolean;
   placeHolder?: string;
   bgColor?: string;
@@ -19,6 +20,7 @@ const Input = ({
   value,
   onChange,
   onBlur,
+  onFocus,
   isSearchBar,
   placeHolder,
   required = true,
@@ -34,6 +36,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
+            onFocus={onFocus}
             onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
@@ -46,6 +49,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
+            onFocus={onFocus}
             onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
@@ -58,6 +62,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             accept=".jpg, .jpeg, .png, .gif"
             onChange={onChange}
+            onFocus={onFocus}
             onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main hidden`}
           />
@@ -70,6 +75,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             accept=".pdf"
             onChange={onChange}
+            onFocus={onFocus}
             onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main hidden`}
           />
@@ -82,6 +88,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
+            onFocus={onFocus}
             onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
@@ -94,6 +101,7 @@ const Input = ({
             placeholder={placeHolder ? placeHolder : ""}
             value={value as string}
             onChange={onChange}
+            onFocus={onFocus}
             onBlur={onBlur}
             className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
@@ -108,7 +116,7 @@ const Input = ({
           {type === "image" || type === "pdf" ? (
             <>
               <label
-                className={`absolute text-primary-main ${bgColor} bottom-[80%] left-3 px-1`}
+                className={`absolute text-primary-main ${bgColor} bottom-[83%] left-3 px-1`}
               >
                 {label}
               </label>
@@ -123,7 +131,7 @@ const Input = ({
           ) : (
             <>
               <label
-                className={`absolute text-primary-main ${bgColor} bottom-[80%] left-3 px-1`}
+                className={`absolute text-primary-main ${bgColor} bottom-[83%] left-3 px-1`}
               >
                 {label}
               </label>
@@ -131,7 +139,7 @@ const Input = ({
             </>
           )}
           {/* <label
-            className={`absolute text-primary-main ${bgColor} bottom-[80%] left-3 px-1`}
+            className={`absolute text-primary-main ${bgColor} bottom-[83%] left-3 px-1`}
           >
             {label}
           </label>
@@ -143,6 +151,7 @@ const Input = ({
           placeholder="Search..."
           value={value as string}
           onChange={onChange}
+          onFocus={onFocus}
           onBlur={onBlur}
           className="py-2 pl-3 pr-12 h-12 border border-primary-main rounded-full focus:outline-none focus:border-primary-light w-full text-primary-dark"
         />
