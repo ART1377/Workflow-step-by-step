@@ -27,7 +27,7 @@ const AuthPage = () => {
               hello again!
             </p>
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 mt-2">
             <h5 className="font-bold text-primary-main text-center">Login</h5>
             {/* AuthPageLoginForm component */}
             <AuthPageLoginForm onLogin={handleLogin} />

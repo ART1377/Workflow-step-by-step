@@ -27,7 +27,7 @@ const TextArea = ({
         value={value}
         onChange={onChange}
         required={required}
-        className={`${bgColor} p-2 w-full h-full focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main placeholder:text-primary-light min-h-[100px] text-primary-dark`}
+        className={`${bgColor} p-2 w-full h-full focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main placeholder:text-primary-light min-h-[100px] text-primary-dark`}
       />
     </div>
   );

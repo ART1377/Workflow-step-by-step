@@ -35,7 +35,7 @@ const Input = ({
             value={value as string}
             onChange={onChange}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
         );
       case "date":
@@ -47,7 +47,7 @@ const Input = ({
             value={value as string}
             onChange={onChange}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
         );
       case "image":
@@ -59,7 +59,7 @@ const Input = ({
             accept=".jpg, .jpeg, .png, .gif"
             onChange={onChange}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main hidden`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main hidden`}
           />
         );
       case "pdf":
@@ -71,7 +71,7 @@ const Input = ({
             accept=".pdf"
             onChange={onChange}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main hidden`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main hidden`}
           />
         );
       case "password":
@@ -83,7 +83,7 @@ const Input = ({
             value={value as string}
             onChange={onChange}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
         );
       default:
@@ -95,7 +95,7 @@ const Input = ({
             value={value as string}
             onChange={onChange}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none focus:outline-0 border-primary-main border-2 rounded-radius-main`}
+            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
         );
     }
@@ -112,7 +112,7 @@ const Input = ({
               >
                 {label}
               </label>
-              <label className="inline-block w-full px-3 py-2 border-primary-main border-2 rounded-radius-main">
+              <label className="inline-block w-full px-3 py-2 outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main">
                 {renderInput()}
                 <div className="text-base cursor-pointer hover:opacity-70 transition-all duration-300 border-2 border-primary-main rounded-radius-main text-primary-main px-2 w-fit flex items-center gap-1 line-clamp-1">
                   <MdOutlineFileUpload className="text-lg" />
