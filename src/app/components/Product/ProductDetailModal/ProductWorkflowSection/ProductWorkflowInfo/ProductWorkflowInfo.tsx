@@ -1,5 +1,5 @@
 import React from "react";
-import { Product } from "../../../../../../next-type-d";
+import { Product } from "../../../../../../../next-type-d";
 
 type Props = {
   productData: Product;

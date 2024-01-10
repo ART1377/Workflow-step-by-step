@@ -10,7 +10,7 @@
             "personName": "John",
             "personId": "001"
           },
-          "state": "dafault",
+          "state": "succeed",
           "step": 1,
           "file": null
         },
@@ -1044,7 +1044,7 @@
         "senderId": "007"
       },
       "timestamp": "2024-01-01T15:00:00Z",
-      "read": false
+      "read": true
     },
     {
       "id": "5",

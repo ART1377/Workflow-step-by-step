@@ -11,7 +11,7 @@ const Part1Page = () => {
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.product.products);
-  const productState = useAppSelector((state) => state.product.status);
+  // const productState = useAppSelector((state) => state.product.status);
   const [searchQuery, setSearchQuery] = useState("");
   const [columnsNumber, setColumnsNumber] = useState(1);
 
@@ -28,9 +28,7 @@ const Part1Page = () => {
     product.productName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  if (productState === "loading" || productState === "idle") {
-    return <Loading />;
-  }
+
 
   return (
     <>

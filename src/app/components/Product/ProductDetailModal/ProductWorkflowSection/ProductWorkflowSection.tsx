@@ -1,7 +1,7 @@
 import React from "react";
 import WorkflowItems from "./WorkflowItems/WorkflowItems";
 import { Product } from "../../../../../../next-type-d";
-import ProductWorkflowInfo from "../ProductWorkflowInfo/ProductWorkflowInfo";
+import ProductWorkflowInfo from "./ProductWorkflowInfo/ProductWorkflowInfo";
 
 type Props = {
   productData: Product;

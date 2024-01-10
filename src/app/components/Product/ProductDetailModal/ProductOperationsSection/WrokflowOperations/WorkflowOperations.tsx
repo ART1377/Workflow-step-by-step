@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback } from "react";
+import React from "react";
 import { Step } from "../../../../../../../next-type-d";
 import Button from "../../../../Gloabal/Button/Button";
 import { MdDoneAll, MdClose, MdCircle, MdCheck } from "react-icons/md";
@@ -18,32 +18,32 @@ const WorkflowOperations = ({ step, id }: Props) => {
 
   const dispatch = useAppDispatch();
 
-  const rejectHandler = useCallback(() => {
+  const rejectHandler = () => {
     dispatch(
       updateProduct({
         productId: id,
         updatedStep: { ...step, state: "rejected" },
       })
     );
-  }, [dispatch, id, step]);
+  };
 
-  const successHandler = useCallback(() => {
+  const successHandler = () => {
     dispatch(
       updateProduct({
         productId: id,
         updatedStep: { ...step, state: "succeed" },
       })
     );
-  }, [dispatch, id, step]);
+  };
 
-  const defaultHandler = useCallback(() => {
+  const defaultHandler = () => {
     dispatch(
       updateProduct({
         productId: id,
         updatedStep: { ...step, state: "dafault", file: null },
       })
     );
-  }, [dispatch, id, step]);
+  };
 
   return (
     <>
