@@ -28,7 +28,10 @@ const Part1Page = () => {
     product.productName.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-
+  // Makes redundent reload
+  // if (productState === "loading" || productState === "idle") {
+  //   return <Loading />;
+  // }
 
   return (
     <>

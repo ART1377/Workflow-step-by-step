@@ -137,7 +137,6 @@ const Part2Page = () => {
     setModalOpen(false);
   };
 
-
   const handleDateChange = (date: DateObject | null) => {
     setDate(date);
     // console.log(date.format("DD MM YYYY"));
@@ -156,10 +155,7 @@ const Part2Page = () => {
           onSuggestionClick={handleProductSuggestionClick}
           setProductSuggestions={setProductSuggestions}
         />
-        <Part2DateInput
-          value={date}
-          onDateChange={handleDateChange}
-        />
+        <Part2DateInput value={date} onDateChange={handleDateChange} />
       </div>
       <div className="flex gap-4">
         <Part2FileInput

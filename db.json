@@ -19,7 +19,7 @@
             "personName": "Sophia",
             "personId": "007"
           },
-          "state": "succeed",
+          "state": "uploaded",
           "step": 4,
           "file": {
             "name": "Screenshot (2).png",
@@ -32,13 +32,9 @@
             "personName": "Ella",
             "personId": "003"
           },
-          "state": "uploaded",
+          "state": "rejected",
           "step": 5,
-          "file": {
-            "name": "Screenshot (3).png",
-            "type": "image/png",
-            "size": 345996
-          }
+          "file": null
         }
       ]
     },
