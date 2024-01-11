@@ -10,13 +10,12 @@ export interface Step {
   person: Person;
   state: string;
   step: number;
-  file:File|null|string;
+  file: File | null | string;
 }
 export interface Person {
   personName: string;
   personId: string;
 }
-
 
 // Notification types
 export type NotificationSender = {
@@ -31,6 +30,7 @@ export type Notification = {
   sender: NotificationSender;
   timestamp: string;
   read: boolean;
+  productId: string;
 };
 
 export type Notifications = {
@@ -42,4 +42,4 @@ export type SidebarItme = {
   title: string;
   path: string;
   icon: React.ReactNode;
-}
+};

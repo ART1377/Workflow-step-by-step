@@ -44,6 +44,14 @@ export const markAsRead = createAsyncThunk(
   }
 );
 
+export const addNotification = createAsyncThunk(
+  "notifications/addNotification",
+  async (newNotification) => {
+    const response = await axios.post(`${API_URL}/notifications`, newNotification);
+    return response.data;
+  }
+);
+
 const notificationsSlice = createSlice({
   name: "notifications",
   initialState,
@@ -76,6 +84,18 @@ const notificationsSlice = createSlice({
         if (index !== -1) {
           state.notifications[index] = { ...notification!, read: true };
         }
+      })
+      .addCase(addNotification.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addNotification.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        // Assuming the response contains the newly added notification
+        state.notifications.push(action.payload);
+      })
+      .addCase(addNotification.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Failed to add notification";
       });
   },
 });

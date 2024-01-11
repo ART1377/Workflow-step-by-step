@@ -474,7 +474,7 @@
             "personName": "Sophia",
             "personId": "007"
           },
-          "state": "uploaded",
+          "state": "rejected",
           "step": 1,
           "file": {
             "name": "Screenshot (4).png",
@@ -1011,7 +1011,8 @@
         "senderId": "002"
       },
       "timestamp": "2024-01-03T12:30:00Z",
-      "read": false
+      "read": false,
+      "productId": "1"
     },
     {
       "id": "2",
@@ -1022,7 +1023,8 @@
         "senderId": "003"
       },
       "timestamp": "2024-01-02T13:45:00Z",
-      "read": false
+      "read": false,
+      "productId": "4"
     },
     {
       "id": "3",
@@ -1033,7 +1035,8 @@
         "senderId": "006"
       },
       "timestamp": "2024-01-03T14:15:00Z",
-      "read": false
+      "read": false,
+      "productId": "3"
     },
     {
       "id": "4",
@@ -1044,7 +1047,8 @@
         "senderId": "007"
       },
       "timestamp": "2024-01-01T15:00:00Z",
-      "read": true
+      "read": true,
+      "productId": "1"
     },
     {
       "id": "5",
@@ -1055,7 +1059,8 @@
         "senderId": "004"
       },
       "timestamp": "2024-01-02T16:30:00Z",
-      "read": true
+      "read": true,
+      "productId": "14"
     },
     {
       "id": "6",
@@ -1066,7 +1071,8 @@
         "senderId": "009"
       },
       "timestamp": "2024-01-03T17:45:00Z",
-      "read": false
+      "read": false,
+      "productId": "11"
     },
     {
       "id": "7",
@@ -1077,7 +1083,8 @@
         "senderId": "010"
       },
       "timestamp": "2024-01-01T18:15:00Z",
-      "read": true
+      "read": true,
+      "productId": "6"
     },
     {
       "id": "8",
@@ -1088,7 +1095,8 @@
         "senderId": "012"
       },
       "timestamp": "2024-01-01T19:00:00Z",
-      "read": true
+      "read": true,
+      "productId": "19"
     },
     {
       "id": "9",
@@ -1099,7 +1107,8 @@
         "senderId": "005"
       },
       "timestamp": "2024-01-01T20:30:00Z",
-      "read": true
+      "read": true,
+      "productId": "4"
     },
     {
       "id": "10",
@@ -1110,7 +1119,8 @@
         "senderId": "003"
       },
       "timestamp": "2024-01-01T21:45:00Z",
-      "read": true
+      "read": true,
+      "productId": "18"
     }
   ]
 }

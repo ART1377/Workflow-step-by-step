@@ -1,23 +1,42 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Notification } from "../../../../../next-type-d";
-import { MdDoneAll } from "react-icons/md";
+import { MdMoreVert, MdDoneAll } from "react-icons/md";
 import { markAsRead } from "../../../redux/slices/notificationSlice";
-import { useAppDispatch } from "@/app/redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import TimeAgoComponent from "../../Gloabal/TimeAgoComponent/TimeAgoComponent";
+import ProductDetailModal from "../../Products/ProductDetailModal/ProductDetailModal";
 
 type Props = {
   notification: Notification;
   last: boolean;
 };
 const NotificationItem = ({
-  notification: { id, message, read, sender, timestamp, title },
+  notification: { id, message, read, sender, timestamp, title,productId },
   last,
 }: Props) => {
   const dispatch = useAppDispatch();
+  const productData=useAppSelector(state=>state.product.products.find(item=>item.id===productId))
+
+
+
 
   const handleMarkAsRead = (notificationId: string) => {
     dispatch(markAsRead(notificationId));
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState("workflow");
+
+  const switchTab = (tab: string) => {
+    setActiveTab(tab);
+  };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -25,7 +44,7 @@ const NotificationItem = ({
       <div
         className={`flex relative mb-3 ${
           !last && "border-b"
-        } p-1 gap-2 w-[320px] h-[90px] ${
+        } px-1 py-3 gap-2 w-[320px]  ${
           read
             ? "bg-light border-gray-dark"
             : "bg-primary-dark border-gray-light"
@@ -62,30 +81,47 @@ const NotificationItem = ({
           </div>
           {timestamp && (
             <div
-              className={`text-xs px-1 py-0.5 mt-2 w-max rounded-radius-main ${
-                read ? "bg-primary-dark" : "bg-light"
-              }`}
+              className={`text-xs px-1 py-0.5 mt-2 w-max rounded-radius-main bg-primary-light`}
             >
-              <span className={` ${read ? "text-light" : "text-primary-dark"}`}>
+              <span className={`text-light`}>
                 <TimeAgoComponent timestamp={timestamp} />
               </span>
             </div>
           )}
         </div>
-        <div className={`last w-1.6`}>
+        <div className={`absolute top-1 right-1 flex flex-col gap-2`}>
           {!read && (
             <div
               onClick={() => handleMarkAsRead(id)}
-              className={`text-xs px-1 py-0.5 absolute bottom-1 right-1 w-max rounded-radius-main bg-reject cursor-pointer`}
+              className={`bg-light p-1 rounded-radius-main cursor-pointer`}
             >
-              <span className={`flex items-center gap-1 text-light`}>
-                mark as read
+              <span className={`flex items-center gap-1 text-primary-dark`}>
                 <MdDoneAll className="text-lg" />
               </span>
             </div>
           )}
+          <div
+            onClick={openModal}
+            className={`${
+              read ? "bg-primary-dark" : "bg-light"
+            } p-1 rounded-radius-main cursor-pointer`}
+          >
+            <span className={`flex items-center gap-1 ${!read ? "text-primary-dark" : "text-light"}`}>
+              <MdMoreVert className="text-lg" />
+            </span>
+          </div>
         </div>
       </div>
+
+      {isModalOpen && (
+        <ProductDetailModal
+          activeTab={activeTab}
+          switchTab={switchTab}
+          productData={productData!}
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
+        />
+      )}
     </>
   );
 };
