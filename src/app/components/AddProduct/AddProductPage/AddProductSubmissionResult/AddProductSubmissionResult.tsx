@@ -21,7 +21,7 @@ type Props = {
   };
 };
 
-const Part2SubmissionResult = ({ formValues, isOpen, onClose }: Props) => {
+const AddProductSubmissionResult = ({ formValues, isOpen, onClose }: Props) => {
   const {
     name,
     date,
@@ -88,4 +88,4 @@ const Part2SubmissionResult = ({ formValues, isOpen, onClose }: Props) => {
   );
 };
 
-export default Part2SubmissionResult;
+export default AddProductSubmissionResult;

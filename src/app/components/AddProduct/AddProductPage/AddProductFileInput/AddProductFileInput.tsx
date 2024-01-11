@@ -1,4 +1,3 @@
-// Part2FileInput.tsx
 import React from "react";
 import Input from "../../../Gloabal/Input/Input";
 
@@ -9,7 +8,7 @@ type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Part2FileInput = ({ label, type, value, onChange }: Props) => (
+const AddProductFileInput = ({ label, type, value, onChange }: Props) => (
   <div className="w-1/2">
     <Input
       bgColor="bg-white"
@@ -26,4 +25,4 @@ const Part2FileInput = ({ label, type, value, onChange }: Props) => (
   </div>
 );
 
-export default Part2FileInput;
+export default AddProductFileInput;

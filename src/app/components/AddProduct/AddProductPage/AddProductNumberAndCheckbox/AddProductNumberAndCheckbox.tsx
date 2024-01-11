@@ -9,7 +9,7 @@ type Props = {
   onCheckboxChange: () => void;
 };
 
-const Part2NumberAndCheckbox = ({ number, check, onNumberChange, onCheckboxChange }:Props) => (
+const AddProductNumberAndCheckbox = ({ number, check, onNumberChange, onCheckboxChange }:Props) => (
   <div className="w-1/2 flex gap-2">
     <div className="w-full">
       <Input bgColor="bg-white" label="Number" type="number" value={number} onChange={onNumberChange} />
@@ -18,4 +18,4 @@ const Part2NumberAndCheckbox = ({ number, check, onNumberChange, onCheckboxChang
   </div>
 );
 
-export default Part2NumberAndCheckbox;
+export default AddProductNumberAndCheckbox;

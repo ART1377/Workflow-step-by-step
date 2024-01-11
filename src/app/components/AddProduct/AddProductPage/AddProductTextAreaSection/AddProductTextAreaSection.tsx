@@ -7,7 +7,7 @@ type Props = {
   onTextAreaChange: (index: number, value: string) => void;
 };
 
-const Part2TextAreaSection= ({ check, textAreaValues, onTextAreaChange }:Props) => (
+const AddProductTextAreaSection= ({ check, textAreaValues, onTextAreaChange }:Props) => (
   <div className="flex flex-col gap-4">
     {check
       ? textAreaValues.map((value, index) => (
@@ -32,4 +32,4 @@ const Part2TextAreaSection= ({ check, textAreaValues, onTextAreaChange }:Props) 
   </div>
 );
 
-export default Part2TextAreaSection;
+export default AddProductTextAreaSection;

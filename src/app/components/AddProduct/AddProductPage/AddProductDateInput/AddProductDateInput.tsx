@@ -3,14 +3,14 @@ import DatePicker, { DateObject } from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 
-import './Part2DateInput.css'
+import './AddProductDateInput.css'
 
 type Props = {
   value: DateObject | null;
   onDateChange: (date: DateObject | null) => void;
 };
 
-const Part2DateInput = ({ value, onDateChange }: Props) => {
+const AddProductDateInput = ({ value, onDateChange }: Props) => {
   const handleDateChange = (e: any) => {
     const date = new DateObject({
       year: e.year,
@@ -54,7 +54,7 @@ const Part2DateInput = ({ value, onDateChange }: Props) => {
   );
 };
 
-export default Part2DateInput;
+export default AddProductDateInput;
 
 // import React from "react";
 // import Input from "../../../Gloabal/Input/Input";
@@ -64,10 +64,10 @@ export default Part2DateInput;
 //   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 // };
 
-// const Part2DateInput = ({ value, onChange }:Props) => (
+// const AddProductDateInput = ({ value, onChange }:Props) => (
 //   <div className="w-1/2">
 //     <Input bgColor="bg-white" label="Date" type="date" value={value} onChange={onChange} />
 //   </div>
 // );
 
-// export default Part2DateInput;
+// export default AddProductDateInput;

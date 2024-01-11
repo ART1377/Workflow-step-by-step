@@ -2,21 +2,21 @@
 import React, { useEffect, useState } from "react";
 import { MdDeleteOutline, MdDoneOutline } from "react-icons/md";
 
-import Part2NameInput from "./Part2NameInput/Part2NameInput";
-import Part2DateInput from "./Part2DateInput/Part2DateInput";
-import Part2FileInput from "./Part2FileInput/Part2FileInput";
-import Part2CategorySelect from "./Part2CategorySelect/Part2CategorySelect";
-import Part2NumberAndCheckbox from "./Part2NumberAndCheckbox/Part2NumberAndCheckbox";
-import Part2TextAreaSection from "./Part2TextAreaSection/Part2TextAreaSection";
+import AddProductNameInput from "./AddProductNameInput/AddProductNameInput";
+import AddProductDateInput from "./AddProductDateInput/AddProductDateInput";
+import AddProductFileInput from "./AddProductFileInput/AddProductFileInput";
+import AddProductCategorySelect from "./AddProductCategorySelect/AddProductCategorySelect";
+import AddProductNumberAndCheckbox from "./AddProductNumberAndCheckbox/AddProductNumberAndCheckbox";
+import AddProductTextAreaSection from "./AddProductTextAreaSection/AddProductTextAreaSection";
 import Button from "../../Gloabal/Button/Button";
-import Part2SubmissionResult from "./Part2SubmissionResult/Part2SubmissionResult";
+import AddProductSubmissionResult from "./AddProductSubmissionResult/AddProductSubmissionResult";
 
 import { fetchProducts } from "../../../redux/slices/productSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 
 import { DateObject } from "react-multi-date-picker";
 
-const Part2Page = () => {
+const AddProductPage = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.product.products);
 
@@ -148,23 +148,23 @@ const Part2Page = () => {
       className="p-8 flex flex-col gap-8 bg-white mx-auto max-w-[1200px] 1400:mt-10"
     >
       <div className="flex gap-4">
-        <Part2NameInput
+        <AddProductNameInput
           value={name}
           onChange={handleNameChange}
           suggestions={productSuggestions}
           onSuggestionClick={handleProductSuggestionClick}
           setProductSuggestions={setProductSuggestions}
         />
-        <Part2DateInput value={date} onDateChange={handleDateChange} />
+        <AddProductDateInput value={date} onDateChange={handleDateChange} />
       </div>
       <div className="flex gap-4">
-        <Part2FileInput
+        <AddProductFileInput
           label="Image"
           type="image"
           value={image}
           onChange={handleImageChange}
         />
-        <Part2FileInput
+        <AddProductFileInput
           label="File"
           type="pdf"
           value={file}
@@ -172,19 +172,19 @@ const Part2Page = () => {
         />
       </div>
       <div className="flex gap-4">
-        <Part2CategorySelect
+        <AddProductCategorySelect
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           options={["Category 1", "Category 2", "Category 3"]}
         />
-        <Part2NumberAndCheckbox
+        <AddProductNumberAndCheckbox
           number={number}
           check={check}
           onNumberChange={handleNumberChange}
           onCheckboxChange={() => setCheck(!check)}
         />
       </div>
-      <Part2TextAreaSection
+      <AddProductTextAreaSection
         check={check}
         textAreaValues={textAreaValues}
         onTextAreaChange={textareaChangeHandler}
@@ -210,7 +210,7 @@ const Part2Page = () => {
         </Button>
       </div>
       {/* Modal for displaying submission result */}
-      <Part2SubmissionResult
+      <AddProductSubmissionResult
         isOpen={modalOpen}
         onClose={closeModal}
         formValues={{
@@ -229,4 +229,4 @@ const Part2Page = () => {
   );
 };
 
-export default Part2Page;
+export default AddProductPage;

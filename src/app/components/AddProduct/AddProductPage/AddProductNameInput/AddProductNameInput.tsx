@@ -10,7 +10,7 @@ type Props = {
   setProductSuggestions: ([]) => void;
 };
 
-const Part2NameInput = ({
+const AddProductNameInput = ({
   value,
   onChange,
   suggestions,
@@ -65,4 +65,4 @@ const Part2NameInput = ({
   );
 };
 
-export default Part2NameInput;
+export default AddProductNameInput;
