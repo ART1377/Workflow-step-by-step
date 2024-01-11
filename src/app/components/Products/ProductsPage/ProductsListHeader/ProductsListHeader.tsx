@@ -3,13 +3,13 @@ import {
   MdOutlineHorizontalRule,
   MdHorizontalDistribute,
 } from "react-icons/md";
-import style from "./Part1ProductsListHeader.module.css";
+import style from "./ProductsListHeader.module.css";
 
 type Props = {
   setColumnsNumber: (columns: number) => void;
 };
 
-const Part1ProductsListHeader = ({ setColumnsNumber }: Props) => {
+const ProductsListHeader = ({ setColumnsNumber }: Props) => {
   return (
     <div className={`border-b-2 mb-4 p-1 flex justify-between ${style.icons}`}>
       <h5 className="font-medium">Product List</h5>
@@ -31,4 +31,4 @@ const Part1ProductsListHeader = ({ setColumnsNumber }: Props) => {
   );
 };
 
-export default Part1ProductsListHeader;
+export default ProductsListHeader;

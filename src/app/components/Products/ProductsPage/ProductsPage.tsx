@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
 import Loading from "../../../loading";
-import Part1ProductsListHeader from "./Part1ProductsListHeader/Part1ProductsListHeader";
-import Part1ProductsList from "./Part1ProductsList/Part1ProductsList";
+import ProductsListHeader from "./ProductsListHeader/ProductsListHeader";
+import ProductsList from "./ProductsList/ProductsList";
 import { fetchProducts } from "../../../redux/slices/productSlice";
 
-const Part1Page = () => {
+const ProductsPage = () => {
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.product.products);
@@ -36,8 +36,8 @@ const Part1Page = () => {
   return (
     <>
       <div className="px-2 480:px-4">
-        <Part1ProductsListHeader setColumnsNumber={setColumnsNumber} />
-        <Part1ProductsList
+        <ProductsListHeader setColumnsNumber={setColumnsNumber} />
+        <ProductsList
           columnsNumber={columnsNumber}
           filteredProducts={filteredProducts}
         />
@@ -46,4 +46,4 @@ const Part1Page = () => {
   );
 };
 
-export default Part1Page;
+export default ProductsPage;

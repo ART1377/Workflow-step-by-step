@@ -7,7 +7,7 @@ type Props = {
   filteredProducts: Product[];
 };
 
-const Part1ProductsList = ({ columnsNumber, filteredProducts }: Props) => {
+const ProductsList = ({ columnsNumber, filteredProducts }: Props) => {
   return (
     <div className="flex flex-wrap gap-3">
       {filteredProducts.length ? (
@@ -27,4 +27,4 @@ const Part1ProductsList = ({ columnsNumber, filteredProducts }: Props) => {
   );
 };
 
-export default Part1ProductsList;
+export default ProductsList;

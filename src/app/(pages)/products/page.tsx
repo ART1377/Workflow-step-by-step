@@ -1,10 +1,10 @@
 import React from "react";
-import Part1Page from "@/app/components/Part1/Part1Page/Part1Page";
+import ProductsPage from "@/app/components/Products/ProductsPage/ProductsPage";
 
 const page = () => {
   return (
     <>
-      <Part1Page />
+      <ProductsPage />
     </>
   );
 };

@@ -10,7 +10,7 @@
             "personName": "John",
             "personId": "001"
           },
-          "state": "succeed",
+          "state": "dafault",
           "step": 1,
           "file": null
         },

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks/hooks";
 import { fetchProducts } from "../../redux/slices/productSlice";
@@ -18,33 +18,35 @@ export default function Homepage() {
   }, 0);
 
   return (
-    <div className="flex flex-col gap-5 max-w-[90%] m-8 ml-auto">
-      <ProductStatistics
-        label="Numbers of All Products"
-        value={products.length}
-        borderClass="border-dark"
-      />
-      <ProductStatistics
-        label="Numbers of All Steps"
-        value={totalSteps}
-        borderClass="border-gray-mein"
-      />
-      <ProductStatistics
-        label="Numbers of All Default Steps"
-        value={countStepsByState(products, "default")}
-        borderClass="border-gray-main"
-      />
-      <ProductStatistics
-        label="Numbers of All Successfull Steps"
-        value={countStepsByState(products, "succeed")}
-        borderClass="border-success"
-      />
-      <ProductStatistics
-        label="Numbers of All Rejected Steps"
-        value={countStepsByState(products, "rejected")}
-        borderClass="border-reject"
-      />
-    </div>
+    <>
+      <div className="flex flex-col gap-5 max-w-[90%] m-8 ml-auto">
+        <ProductStatistics
+          label="Numbers of All Products"
+          value={products.length}
+          borderClass="border-dark"
+        />
+        <ProductStatistics
+          label="Numbers of All Steps"
+          value={totalSteps}
+          borderClass="border-gray-mein"
+        />
+        <ProductStatistics
+          label="Numbers of All Default Steps"
+          value={countStepsByState(products, "default")}
+          borderClass="border-gray-main"
+        />
+        <ProductStatistics
+          label="Numbers of All Successfull Steps"
+          value={countStepsByState(products, "succeed")}
+          borderClass="border-success"
+        />
+        <ProductStatistics
+          label="Numbers of All Rejected Steps"
+          value={countStepsByState(products, "rejected")}
+          borderClass="border-reject"
+        />
+      </div>
+    </>
   );
 }
 

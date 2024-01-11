@@ -28,6 +28,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const router = useRouter();
   const pathName = usePathname();
 
+  
   useLayoutEffect(() => {
     // Retrieve user data from local storage
     const storedUser = localStorage.getItem("user");
