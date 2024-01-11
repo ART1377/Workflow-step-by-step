@@ -27,7 +27,7 @@ const AddProductDateInput = ({ value, onDateChange }: Props) => {
   return (
     <>
 
-      <div className="w-1/2">
+      <div className="w-full">
         <div className="relative h-full">
           <label
             className={`absolute text-primary-main bg-white bottom-[83%] left-3 px-1`}

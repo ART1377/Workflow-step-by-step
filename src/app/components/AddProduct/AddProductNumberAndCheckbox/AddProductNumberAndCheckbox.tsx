@@ -15,7 +15,7 @@ const AddProductNumberAndCheckbox = ({
   onNumberChange,
   onCheckboxChange,
 }: Props) => (
-  <div className="w-1/2 flex gap-2">
+  <div className="w-full flex gap-2">
     <div className="w-full">
       <Input
         bgColor="bg-white"

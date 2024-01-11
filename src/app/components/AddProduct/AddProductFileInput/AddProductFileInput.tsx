@@ -9,7 +9,7 @@ type Props = {
 };
 
 const AddProductFileInput = ({ label, type, value, onChange }: Props) => (
-  <div className="w-1/2">
+  <div className="w-full">
     <Input
       bgColor="bg-white"
       label={label}

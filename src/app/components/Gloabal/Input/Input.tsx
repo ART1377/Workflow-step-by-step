@@ -38,7 +38,7 @@ const Input = ({
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
+            className={`${bgColor} text-primary-dark w-full min-h-[42px] p-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
         );
       case "date":
@@ -51,7 +51,7 @@ const Input = ({
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
+            className={`${bgColor} text-primary-dark w-full min-h-[42px] p-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
         );
       case "image":
@@ -64,7 +64,7 @@ const Input = ({
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main hidden`}
+            className={`${bgColor} text-primary-dark w-full min-h-[42px] p-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main hidden`}
           />
         );
       case "pdf":
@@ -77,7 +77,7 @@ const Input = ({
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main hidden`}
+            className={`${bgColor} text-primary-dark w-full min-h-[42px] p-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main hidden`}
           />
         );
       case "password":
@@ -90,7 +90,7 @@ const Input = ({
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
+            className={`${bgColor} text-primary-dark w-full min-h-[42px] p-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
         );
       default:
@@ -103,7 +103,7 @@ const Input = ({
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
-            className={`${bgColor} text-primary-dark w-full px-3 py-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
+            className={`${bgColor} text-primary-dark w-full min-h-[42px] p-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
         );
     }
@@ -120,9 +120,9 @@ const Input = ({
               >
                 {label}
               </label>
-              <label className="inline-block w-full px-3 py-2 outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main">
+              <label className="inline-block w-full min-h-[42px] p-2 outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main">
                 {renderInput()}
-                <div className="text-base cursor-pointer hover:opacity-70 transition-all duration-300 border-2 border-primary-main rounded-radius-main text-primary-main px-2 w-fit flex items-center gap-1 line-clamp-1">
+                <div className="text-sm cursor-pointer hover:opacity-70 transition-all duration-300 border-2 border-primary-main rounded-radius-main text-primary-main px-1 w-fit flex items-center gap-1 line-clamp-1">
                   <MdOutlineFileUpload className="text-lg" />
                   Upload your {type}
                 </div>

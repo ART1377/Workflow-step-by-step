@@ -8,7 +8,7 @@ type Props = {
 };
 
 const AddProductCategorySelect = ({ value, onChange, options }: Props) => (
-  <div className="w-1/2">
+  <div className="w-full">
     <SelectOption
       bgColor="bg-white"
       label="Category"

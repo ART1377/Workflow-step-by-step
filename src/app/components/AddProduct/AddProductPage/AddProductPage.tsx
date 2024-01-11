@@ -145,50 +145,52 @@ const AddProductPage = () => {
   return (
     <form
       onSubmit={submitFormHandler}
-      className="p-8 flex flex-col gap-8 bg-white mx-auto max-w-[1200px] 1400:mt-10"
+      className="p-4 flex flex-col gap-12 bg-white mx-auto max-w-[1100px] 1400:mt-10"
     >
-      <div className="flex gap-4">
-        <AddProductNameInput
-          value={name}
-          onChange={handleNameChange}
-          suggestions={productSuggestions}
-          onSuggestionClick={handleProductSuggestionClick}
-          setProductSuggestions={setProductSuggestions}
-        />
-        <AddProductDateInput value={date} onDateChange={handleDateChange} />
+      <div className="flex gap-6">
+        <div className="flex flex-col gap-8 w-2/5 h-[420px] py-2">
+          <AddProductNameInput
+            value={name}
+            onChange={handleNameChange}
+            suggestions={productSuggestions}
+            onSuggestionClick={handleProductSuggestionClick}
+            setProductSuggestions={setProductSuggestions}
+          />
+          <AddProductDateInput value={date} onDateChange={handleDateChange} />
+
+          <AddProductFileInput
+            label="Image"
+            type="image"
+            value={image}
+            onChange={handleImageChange}
+          />
+          <AddProductFileInput
+            label="File"
+            type="pdf"
+            value={file}
+            onChange={handlePdfChange}
+          />
+          <AddProductCategorySelect
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            options={["Category 1", "Category 2", "Category 3"]}
+          />
+          <AddProductNumberAndCheckbox
+            number={number}
+            check={check}
+            onNumberChange={handleNumberChange}
+            onCheckboxChange={() => setCheck(!check)}
+          />
+        </div>
+        <div className="w-3/5 h-[420px] py-2 overflow-y-scroll">
+          <AddProductTextAreaSection
+            check={check}
+            textAreaValues={textAreaValues}
+            onTextAreaChange={textareaChangeHandler}
+          />
+        </div>
       </div>
-      <div className="flex gap-4">
-        <AddProductFileInput
-          label="Image"
-          type="image"
-          value={image}
-          onChange={handleImageChange}
-        />
-        <AddProductFileInput
-          label="File"
-          type="pdf"
-          value={file}
-          onChange={handlePdfChange}
-        />
-      </div>
-      <div className="flex gap-4">
-        <AddProductCategorySelect
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          options={["Category 1", "Category 2", "Category 3"]}
-        />
-        <AddProductNumberAndCheckbox
-          number={number}
-          check={check}
-          onNumberChange={handleNumberChange}
-          onCheckboxChange={() => setCheck(!check)}
-        />
-      </div>
-      <AddProductTextAreaSection
-        check={check}
-        textAreaValues={textAreaValues}
-        onTextAreaChange={textareaChangeHandler}
-      />
+
       <div className="w-full mx-auto grid grid-flow-col gap-4 max-w-[400px]">
         <Button
           type="submit"

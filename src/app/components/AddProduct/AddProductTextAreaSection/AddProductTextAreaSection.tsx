@@ -12,7 +12,7 @@ const AddProductTextAreaSection = ({
   textAreaValues,
   onTextAreaChange,
 }: Props) => (
-  <div className="flex flex-col gap-4">
+  <div className="flex flex-col gap-4 h-full px-2 ">
     {check ? (
       textAreaValues.map((value, index) => (
         <TextArea

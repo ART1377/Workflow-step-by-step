@@ -8,9 +8,11 @@
     color: var(--primary-dark);
     width: 100%;
     height: 100%!important;
-    padding: 8px 12px!important;
+    min-height: 42px;
+    padding: 8px !important;
     margin: 0!important;
-    outline: 1px solid var(--primary-main);
+    border: none!important;
+    outline: 2px solid var(--primary-main);
     border-radius: var(--radius-main);
     -webkit-border-radius: var(--radius-main);
     -moz-border-radius: var(--radius-main);
@@ -19,5 +21,6 @@
 }
 .rmdp-input:focus{
     box-shadow: none;
+    border: none!important;
     outline: 3px solid var(--primary-main)!important;
 }
