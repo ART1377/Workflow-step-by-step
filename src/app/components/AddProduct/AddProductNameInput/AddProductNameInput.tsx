@@ -1,6 +1,6 @@
 import React from "react";
-import Input from "../../../Gloabal/Input/Input";
-import DropDownItem from "../../../Gloabal/DropDownItem/DropDownItem";
+import Input from "../../Gloabal/Input/Input";
+import DropDownItem from "../../Gloabal/DropDownItem/DropDownItem";
 
 type Props = {
   value: string;
@@ -17,8 +17,6 @@ const AddProductNameInput = ({
   onSuggestionClick,
   setProductSuggestions,
 }: Props) => {
-
-  
   const clearSuggestion = () => {
     setTimeout(() => {
       setProductSuggestions([]);
@@ -39,8 +37,7 @@ const AddProductNameInput = ({
         suggestions.length > 0 && (
           <ul className="absolute bg-white border border-primary-light z-10 ml-1 mt-0.5 rounded-radius-main min-w-[200px]">
             <div className="text-center border-b border-gray-main py-1 bg-light">
-
-            <span className="text-gray-dark text-center">suggessions</span>
+              <span className="text-gray-dark text-center">suggessions</span>
             </div>
             {suggestions.map((suggestion, index) => (
               <li

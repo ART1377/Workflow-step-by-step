@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../../redux/hooks/hooks";
-import { fetchProducts } from "../../redux/slices/productSlice";
-import { Product } from "../../../../next-type-d";
-import ProductStatistics from "./ProductStatistics/ProductStatistics";
+import { useAppSelector, useAppDispatch } from "../../../redux/hooks/hooks";
+import { fetchProducts } from "../../../redux/slices/productSlice";
+import { Product } from "../../../../../next-type-d";
+import ProductStatistics from "../ProductsStatistics/ProducsStatistics";
 
-export default function Homepage() {
+export default function HomepagePage() {
   const products = useAppSelector((state) => state.product.products);
   const dispatch = useAppDispatch();
 

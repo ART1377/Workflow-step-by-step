@@ -1,9 +1,9 @@
 "use client";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
-import AuthPageLoginForm from "./AuthPageLoginForm/AuthPageLoginForm";
-import AuthPageSocialButtons from "./AuthPageSocialButtons/AuthPageSocialButtons";
-import AuthPageLoginFormImage from "./AuthPageLoginFormImage/AuthPageLoginFormImage";
+import AuthPageLoginForm from "../AuthPageLoginForm/AuthPageLoginForm";
+import AuthPageSocialButtons from "../AuthPageSocialButtons/AuthPageSocialButtons";
+import AuthPageLoginFormImage from "../AuthPageLoginFormImage/AuthPageLoginFormImage";
 
 const AuthPage = () => {
   const authCtx = useContext(AuthContext);

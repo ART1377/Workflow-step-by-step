@@ -1,6 +1,6 @@
 import React from "react";
-import ProductCard from "../../../../components/Product/ProductCard/ProductCard";
-import { Product } from "../../../../../../next-type-d";
+import ProductCard from "../ProductCard/ProductCard";
+import { Product } from "../../../../../next-type-d";
 
 type Props = {
   columnsNumber: number;

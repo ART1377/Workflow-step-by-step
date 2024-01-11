@@ -1,10 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { Product, Step } from "../../../../../next-type-d";
-import { MdAdd } from "react-icons/md";
-import style from "./ProductCard.module.css";
+import { Product } from "../../../../../next-type-d";
 import ProductDetailModal from "../ProductDetailModal/ProductDetailModal";
-import StepIndicator from "./StepsIndicator/StepsIndicator";
 import ProductCardInfo from "./ProductCardInfo/ProductCardInfo";
 
 type Props = {
@@ -29,7 +26,6 @@ const ProductCard = ({ productData, columns }: Props) => {
     setIsModalOpen(false);
   };
 
-  
   return (
     <>
       <div className={`m-auto ${columns === 1 ? "w-full" : "w-[46%]"}`}>

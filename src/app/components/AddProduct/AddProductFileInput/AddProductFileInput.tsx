@@ -1,9 +1,9 @@
 import React from "react";
-import Input from "../../../Gloabal/Input/Input";
+import Input from "../../Gloabal/Input/Input";
 
 type Props = {
   label: string;
-  type: 'image'|'pdf';
+  type: "image" | "pdf";
   value: File | null;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };

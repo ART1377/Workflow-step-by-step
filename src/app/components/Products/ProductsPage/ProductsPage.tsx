@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
 import Loading from "../../../loading";
-import ProductsListHeader from "./ProductsListHeader/ProductsListHeader";
-import ProductsList from "./ProductsList/ProductsList";
+import ProductsListHeader from "../ProductsListHeader/ProductsListHeader";
+import ProductsList from "../ProductsList/ProductsList";
 import { fetchProducts } from "../../../redux/slices/productSlice";
 
 const ProductsPage = () => {

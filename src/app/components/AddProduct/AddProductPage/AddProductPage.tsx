@@ -2,14 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { MdDeleteOutline, MdDoneOutline } from "react-icons/md";
 
-import AddProductNameInput from "./AddProductNameInput/AddProductNameInput";
-import AddProductDateInput from "./AddProductDateInput/AddProductDateInput";
-import AddProductFileInput from "./AddProductFileInput/AddProductFileInput";
-import AddProductCategorySelect from "./AddProductCategorySelect/AddProductCategorySelect";
-import AddProductNumberAndCheckbox from "./AddProductNumberAndCheckbox/AddProductNumberAndCheckbox";
-import AddProductTextAreaSection from "./AddProductTextAreaSection/AddProductTextAreaSection";
+import AddProductNameInput from "../AddProductNameInput/AddProductNameInput";
+import AddProductDateInput from "../AddProductDateInput/AddProductDateInput";
+import AddProductFileInput from "../AddProductFileInput/AddProductFileInput";
+import AddProductCategorySelect from "../AddProductCategorySelect/AddProductCategorySelect";
+import AddProductNumberAndCheckbox from "../AddProductNumberAndCheckbox/AddProductNumberAndCheckbox";
+import AddProductTextAreaSection from "../AddProductTextAreaSection/AddProductTextAreaSection";
 import Button from "../../Gloabal/Button/Button";
-import AddProductSubmissionResult from "./AddProductSubmissionResult/AddProductSubmissionResult";
+import AddProductSubmissionResult from "../AddProductSubmissionResult/AddProductSubmissionResult";
 
 import { fetchProducts } from "../../../redux/slices/productSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";

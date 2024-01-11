@@ -48,16 +48,20 @@
             "personName": "Ella",
             "personId": "003"
           },
-          "state": "succeed",
+          "state": "uploaded",
           "step": 1,
-          "file": null
+          "file": {
+            "name": "Screenshot (2).png",
+            "type": "image/png",
+            "size": 96304
+          }
         },
         {
           "person": {
             "personName": "Adam",
             "personId": "004"
           },
-          "state": "succeed",
+          "state": "rejected",
           "step": 2,
           "file": null
         },
@@ -84,7 +88,7 @@
             "personName": "Sophia",
             "personId": "007"
           },
-          "state": "default",
+          "state": "succeed",
           "step": 5,
           "file": null
         }

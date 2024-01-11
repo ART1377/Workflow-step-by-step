@@ -6,7 +6,7 @@ type Props = {
   borderClass: string;
 };
 
-const ProductStatistics = ({
+const ProductsStatistics = ({
   label,
   value,
   borderClass,
@@ -19,4 +19,4 @@ const ProductStatistics = ({
   );
 };
 
-export default ProductStatistics;
+export default ProductsStatistics;
