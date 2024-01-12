@@ -73,25 +73,31 @@ const AddNotificationForm = () => {
   return (
     <form
       onSubmit={submitFormHandler}
-      className="p-4 flex flex-col gap-6 max-w-[1100px] mx-auto"
+      className="p-4 flex flex-col gap-6 max-w-[1000px] mx-auto mt-8"
     >
-      <Input
-        label="Title"
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+      <div className="flex gap-4">
+        <div className="w-1/2">
+          <Input
+            label="Title"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div className="w-1/2">
+          <SelectOption
+            label="Select Product"
+            value={selectedProduct}
+            onChange={(e) => setSelectedProduct(e.target.value)}
+            options={["", ...productOptions]}
+          />
+        </div>
+      </div>
       <TextArea
         label="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        placeHolder={"Desctiption"}
-      />
-      <SelectOption
-        label="Select Product"
-        value={selectedProduct}
-        onChange={(e) => setSelectedProduct(e.target.value)}
-        options={["", ...productOptions]}
+        placeHolder={"Description"}
       />
       <Button type="submit" variant="primary-main" size="large">
         Add Notification
