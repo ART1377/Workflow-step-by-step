@@ -86,7 +86,7 @@ const AddNotificationForm = () => {
         </div>
         <div className="w-1/2">
           <SelectOption
-            label="Select Product"
+            label="Related Product"
             value={selectedProduct}
             onChange={(e) => setSelectedProduct(e.target.value)}
             options={["", ...productOptions]}
