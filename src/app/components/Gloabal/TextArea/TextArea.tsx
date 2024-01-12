@@ -14,7 +14,7 @@ const TextArea = ({
   value,
   onChange,
   placeHolder,
-  bgColor = "bg-light",
+  bgColor = "bg-white",
   required = true,
 }: Props) => {
   return (

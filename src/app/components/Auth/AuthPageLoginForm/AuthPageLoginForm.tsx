@@ -29,12 +29,14 @@ const AuthPageLoginForm = ({ onLogin }: Props) => {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          bgColor="bg-light"
         />
         <Input
           label="Password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          bgColor="bg-light"
         />
       </div>
       <Button type="submit" variant="primary-main" size="large">

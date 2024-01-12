@@ -18,7 +18,6 @@ const AddProductNumberAndCheckbox = ({
   <div className="w-full flex gap-2">
     <div className="w-full">
       <Input
-        bgColor="bg-white"
         label="Number"
         type="number"
         value={number}

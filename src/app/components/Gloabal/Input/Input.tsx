@@ -24,7 +24,7 @@ const Input = ({
   isSearchBar,
   placeHolder,
   required = true,
-  bgColor = "bg-light",
+  bgColor = "bg-white",
 }: Props) => {
   const renderInput = () => {
     switch (type) {

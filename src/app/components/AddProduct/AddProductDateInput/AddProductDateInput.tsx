@@ -43,7 +43,6 @@ const AddProductDateInput = ({ value, onDateChange }: Props) => {
           />
         </div>
         {/* <Input
-        bgColor="bg-white"
         label="Date"
         type="date"
         value={value}
@@ -66,7 +65,7 @@ export default AddProductDateInput;
 
 // const AddProductDateInput = ({ value, onChange }:Props) => (
 //   <div className="w-1/2">
-//     <Input bgColor="bg-white" label="Date" type="date" value={value} onChange={onChange} />
+//     <Input label="Date" type="date" value={value} onChange={onChange} />
 //   </div>
 // );
 

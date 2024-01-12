@@ -17,7 +17,6 @@ const AddProductTextAreaSection = ({
       textAreaValues.map((value, index) => (
         <TextArea
           key={index}
-          bgColor="bg-white"
           label={`Textarea ${index + 1}`}
           placeHolder="product code"
           value={value}
@@ -26,7 +25,6 @@ const AddProductTextAreaSection = ({
       ))
     ) : (
       <TextArea
-        bgColor="bg-white"
         label="text"
         placeHolder="product code"
         value={textAreaValues[0]}

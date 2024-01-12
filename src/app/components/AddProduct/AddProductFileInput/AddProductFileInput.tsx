@@ -11,7 +11,6 @@ type Props = {
 const AddProductFileInput = ({ label, type, value, onChange }: Props) => (
   <div className="w-full">
     <Input
-      bgColor="bg-white"
       label={label}
       type={type}
       value={value}

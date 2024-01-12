@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { addNotification } from "../../../redux/slices/notificationSlice";
@@ -32,7 +32,7 @@ const AddNotificationForm = () => {
       selectedProduct === ""
     ) {
       // Handle validation or show an error message
-      toast.error('All fields must be filled !')
+      toast.error("All fields must be filled !");
       return;
     }
 
@@ -59,28 +59,25 @@ const AddNotificationForm = () => {
   return (
     <form
       onSubmit={submitFormHandler}
-      className="p-4 flex flex-col gap-6"
+      className="p-4 flex flex-col gap-6 max-w-[1100px] mx-auto"
     >
       <Input
         label="Title"
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        bgColor="bg-white"
       />
       <TextArea
         label="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeHolder={"Desctiption"}
-        bgColor="bg-white"
       />
       <SelectOption
         label="Select Product"
         value={selectedProduct}
         onChange={(e) => setSelectedProduct(e.target.value)}
         options={productOptions}
-        bgColor="bg-white"
       />
       <Button type="submit" variant="primary-main" size="large">
         Add Notification

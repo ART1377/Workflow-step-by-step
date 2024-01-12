@@ -28,7 +28,6 @@ const AddProductNameInput = ({
   return (
     <div className="w-full">
       <Input
-        bgColor="bg-white"
         label="Name"
         type="text"
         value={value}

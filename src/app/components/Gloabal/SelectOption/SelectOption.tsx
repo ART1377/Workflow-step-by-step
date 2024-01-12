@@ -14,7 +14,7 @@ const SelectOption = ({
   value,
   onChange,
   options,
-  bgColor = "bg-light",
+  bgColor = "bg-white",
   required = true,
 }: Props) => {
   return (
