@@ -17,6 +17,8 @@ const AddProductNameInput = ({
   onSuggestionClick,
   setProductSuggestions,
 }: Props) => {
+
+  
   const clearSuggestion = () => {
     setTimeout(() => {
       setProductSuggestions([]);
@@ -31,7 +33,7 @@ const AddProductNameInput = ({
         type="text"
         value={value}
         onChange={onChange}
-        // onBlur={clearSuggestion}
+        onBlur={clearSuggestion}
       />
       {
         suggestions.length > 0 && (

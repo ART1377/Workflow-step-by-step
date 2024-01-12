@@ -12,14 +12,13 @@ type Props = {
   last: boolean;
 };
 const NotificationItem = ({
-  notification: { id, message, read, sender, timestamp, title,productId },
+  notification: { id, message, read, sender, timestamp, title, productId },
   last,
 }: Props) => {
   const dispatch = useAppDispatch();
-  const productData=useAppSelector(state=>state.product.products.find(item=>item.id===productId))
-
-
-
+  const productData = useAppSelector((state) =>
+    state.product.products.find((item) => item.id === productId)
+  );
 
   const handleMarkAsRead = (notificationId: string) => {
     dispatch(markAsRead(notificationId));
@@ -106,7 +105,11 @@ const NotificationItem = ({
               read ? "bg-primary-dark" : "bg-light"
             } p-1 rounded-radius-main cursor-pointer`}
           >
-            <span className={`flex items-center gap-1 ${!read ? "text-primary-dark" : "text-light"}`}>
+            <span
+              className={`flex items-center gap-1 ${
+                !read ? "text-primary-dark" : "text-light"
+              }`}
+            >
               <MdMoreVert className="text-lg" />
             </span>
           </div>

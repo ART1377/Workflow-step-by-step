@@ -44,7 +44,10 @@ const AddProductPage = () => {
     const filteredProducts = products.filter((product) =>
       product.productName.toLowerCase().includes(inputValue.toLowerCase())
     );
-    return filteredProducts.slice(0, 5).map((product) => product.productName);
+    const shuffledProducts = filteredProducts.sort(() => Math.random() - 0.5);
+
+    return shuffledProducts.slice(0, 5).map((product) => product.productName);
+  
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
