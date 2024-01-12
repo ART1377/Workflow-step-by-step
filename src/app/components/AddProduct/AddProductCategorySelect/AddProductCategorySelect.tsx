@@ -1,5 +1,5 @@
 import React from "react";
-import SelectOption from "../../Gloabal/SelectOption/SelectOption";
+import SelectOption from "../../Global/SelectOption/SelectOption";
 
 type Props = {
   value: string;

@@ -17,7 +17,7 @@ const Sidebar = () => {
     { title: "products", path: "products", icon: <MdPerson /> },
     { title: "add product", path: "addproduct", icon: <MdPerson /> },
     { title: "add notification", path: "addnotification", icon: <MdPerson /> },
-    { title: "part 4", path: "part4", icon: <MdPerson /> },
+    { title: "steps", path: "steps", icon: <MdPerson /> },
     { title: "part 5", path: "part5", icon: <MdPerson /> },
     { title: "part 6", path: "part6", icon: <MdPerson /> },
     { title: "part 7", path: "part7", icon: <MdPerson /> },

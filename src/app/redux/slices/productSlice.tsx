@@ -3,7 +3,7 @@ import axios from "axios";
 // import { RootState } from '../store';
 import { Product, Step } from "../../../../next-type-d";
 
-const API_URL = 'http://127.0.0.1:3500'; // Adjust the API URL based on your prot
+const API_URL = "http://127.0.0.1:3500"; // Adjust the API URL based on your prot
 
 export interface InitialStateType {
   products: Product[];
@@ -62,6 +62,55 @@ export const updateProduct = createAsyncThunk(
   }
 );
 
+export const addStepToProduct = createAsyncThunk(
+  "products/addStepToProduct",
+  async ({ productId, newStep }: { productId: string; newStep: Step }) => {
+    const response = await axios.get(`${API_URL}/products/${productId}`);
+    const productToUpdate = response.data;
+
+    // Find the maximum step number in the current steps array
+    const maxStep = Math.max(
+      ...productToUpdate.steps.map((step: Step) => step.step),
+      0
+    );
+
+    // Set the step property of the newStep to be one greater than the maximum step
+    newStep.step = maxStep + 1;
+
+    // Add the newStep to the steps array
+    productToUpdate.steps.push(newStep);
+
+    // Now, update the product on the server
+    await axios.put(`${API_URL}/products/${productId}`, productToUpdate);
+
+    // Return the updated product
+    return { productId, updatedProduct: productToUpdate };
+  }
+);
+
+export const deleteStepsFromProduct = createAsyncThunk(
+  "products/deleteStepsFromProduct",
+  async ({
+    productId,
+    numberOfSteps,
+  }: {
+    productId: string;
+    numberOfSteps: number;
+  }) => {
+    const response = await axios.get(`${API_URL}/products/${productId}`);
+    const productToUpdate = response.data;
+
+    // Remove the specified number of steps from the beginning of the steps array
+    productToUpdate.steps.splice(0, numberOfSteps);
+
+    // Now, update the product on the server
+    await axios.put(`${API_URL}/products/${productId}`, productToUpdate);
+
+    // Return the updated product
+    return { productId, updatedProduct: productToUpdate };
+  }
+);
+
 const productSlice = createSlice({
   name: "product",
   initialState,
@@ -115,6 +164,41 @@ const productSlice = createSlice({
       .addCase(fetchProductById.rejected, (state, action) => {
         state.status = "failed";
         state.error = "Failed to fetch product";
+      })
+      // addCase for addStepToProduct
+      .addCase(addStepToProduct.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addStepToProduct.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        const { productId, updatedProduct } = action.payload;
+
+        // Update the state with the modified product
+        state.products = state.products.map((product: Product) =>
+          product.id === productId ? updatedProduct : product
+        );
+      })
+      .addCase(addStepToProduct.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Failed to add step to product";
+      })
+      // addCase for deleteStepsFromProduct
+      .addCase(deleteStepsFromProduct.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(deleteStepsFromProduct.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        const { productId, updatedProduct } = action.payload;
+
+        // Update the state with the modified product
+        state.products = state.products.map((product: Product) =>
+          product.id === productId ? updatedProduct : product
+        );
+      })
+      .addCase(deleteStepsFromProduct.rejected, (state, action) => {
+        state.status = "failed";
+        state.error =
+          action.error.message || "Failed to delete steps from product";
       });
   },
 });

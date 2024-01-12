@@ -8,7 +8,7 @@ import AddProductFileInput from "../AddProductFileInput/AddProductFileInput";
 import AddProductCategorySelect from "../AddProductCategorySelect/AddProductCategorySelect";
 import AddProductNumberAndCheckbox from "../AddProductNumberAndCheckbox/AddProductNumberAndCheckbox";
 import AddProductTextAreaSection from "../AddProductTextAreaSection/AddProductTextAreaSection";
-import Button from "../../Gloabal/Button/Button";
+import Button from "../../Global/Button/Button";
 import AddProductSubmissionResult from "../AddProductSubmissionResult/AddProductSubmissionResult";
 
 import { fetchProducts } from "../../../redux/slices/productSlice";
@@ -47,7 +47,6 @@ const AddProductPage = () => {
     const shuffledProducts = filteredProducts.sort(() => Math.random() - 0.5);
 
     return shuffledProducts.slice(0, 5).map((product) => product.productName);
-  
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {

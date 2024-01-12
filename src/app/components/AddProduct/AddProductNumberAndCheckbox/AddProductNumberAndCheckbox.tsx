@@ -1,6 +1,6 @@
 import React from "react";
-import Input from "../../Gloabal/Input/Input";
-import CheckBox from "../../Gloabal/CheckBox/CheckBox";
+import Input from "../../Global/Input/Input";
+import CheckBox from "../../Global/CheckBox/CheckBox";
 
 type Props = {
   number: string;

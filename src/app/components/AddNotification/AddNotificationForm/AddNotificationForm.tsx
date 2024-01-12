@@ -3,10 +3,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { addNotification } from "../../../redux/slices/notificationSlice";
 import { fetchProducts } from "../../../redux/slices/productSlice";
-import Input from "../../Gloabal/Input/Input";
-import TextArea from "../../Gloabal/TextArea/TextArea";
-import SelectOption from "../../Gloabal/SelectOption/SelectOption";
-import Button from "../../Gloabal/Button/Button";
+import Input from "../../Global/Input/Input";
+import TextArea from "../../Global/TextArea/TextArea";
+import SelectOption from "../../Global/SelectOption/SelectOption";
+import Button from "../../Global/Button/Button";
 import toast from "react-hot-toast";
 import { AuthContext } from "@/app/context/AuthContext";
 

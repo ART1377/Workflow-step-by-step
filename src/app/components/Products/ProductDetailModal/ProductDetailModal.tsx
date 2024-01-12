@@ -3,7 +3,7 @@ import ProductTabs from "./ProductTabs/ProductTabs";
 import ProductWorkflowSection from "./ProductWorkflowSection/ProductWorkflowSection";
 import ProductOperationsSection from "./ProductOperationsSection/ProductOperationsSection";
 import { Product } from "../../../../../next-type-d";
-import BaseModal from "../../Gloabal/BaseModal/BaseModal";
+import BaseModal from "../../Global/BaseModal/BaseModal";
 
 type Props = {
   activeTab: string;
@@ -13,13 +13,13 @@ type Props = {
   closeModal: () => void;
 };
 
-const ProductDetailModal= ({
+const ProductDetailModal = ({
   activeTab,
   switchTab,
   productData,
   isModalOpen,
   closeModal,
-}:Props) => {
+}: Props) => {
   return (
     <>
       <BaseModal isOpen={isModalOpen} onClose={closeModal}>

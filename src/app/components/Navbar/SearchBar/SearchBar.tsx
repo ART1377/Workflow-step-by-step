@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import style from "./SearchBar.module.css";
-import Input from "../../Gloabal/Input/Input";
+import Input from "../../Global/Input/Input";
 import useSearchParamsInteraction from "@/app/hooks/useSearchParamsInteraction/useSearchParamsInteraction";
 
 const SearchBar = () => {

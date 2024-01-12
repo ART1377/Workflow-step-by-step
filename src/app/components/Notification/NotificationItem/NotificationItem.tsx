@@ -4,7 +4,7 @@ import { Notification } from "../../../../../next-type-d";
 import { MdMoreVert, MdDoneAll } from "react-icons/md";
 import { markAsRead } from "../../../redux/slices/notificationSlice";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
-import TimeAgoComponent from "../../Gloabal/TimeAgoComponent/TimeAgoComponent";
+import TimeAgoComponent from "../../Global/TimeAgoComponent/TimeAgoComponent";
 import ProductDetailModal from "../../Products/ProductDetailModal/ProductDetailModal";
 
 type Props = {

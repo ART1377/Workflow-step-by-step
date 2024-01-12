@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Button from "./components/Gloabal/Button/Button";
+import Button from "./components/Global/Button/Button";
 
 export default function NotFound() {
   return (
@@ -8,7 +8,9 @@ export default function NotFound() {
       <h5>Not Found</h5>
       <p className="mb-4 capitalize">not find page</p>
       <Link href="/">
-        <Button variant="primary-main" size="medium">Back to Home</Button>
+        <Button variant="primary-main" size="medium">
+          Back to Home
+        </Button>
       </Link>
     </div>
   );

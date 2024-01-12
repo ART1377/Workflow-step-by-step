@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Step } from "../../../../../../../next-type-d";
-import Button from "../../../../Gloabal/Button/Button";
+import Button from "../../../../Global/Button/Button";
 import { MdDoneAll, MdClose, MdCircle, MdCheck } from "react-icons/md";
 import { MdPerson } from "react-icons/md";
 import { useAppDispatch } from "@/app/redux/hooks/hooks";

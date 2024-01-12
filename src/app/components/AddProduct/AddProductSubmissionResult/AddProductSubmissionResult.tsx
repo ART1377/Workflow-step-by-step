@@ -1,8 +1,7 @@
-import BaseModal from "@/app/components/Gloabal/BaseModal/BaseModal";
+import BaseModal from "@/app/components/Global/BaseModal/BaseModal";
 import React from "react";
 
-import type{Value} from "react-multi-date-picker"
-
+import type { Value } from "react-multi-date-picker";
 
 type Props = {
   isOpen: boolean;

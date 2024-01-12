@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Button from "./components/Gloabal/Button/Button";
+import Button from "./components/Global/Button/Button";
 
 export default function Error({
   error,

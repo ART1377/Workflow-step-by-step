@@ -1,5 +1,5 @@
 import React from "react";
-import TextArea from "../../Gloabal/TextArea/TextArea";
+import TextArea from "../../Global/TextArea/TextArea";
 
 type Props = {
   check: boolean;

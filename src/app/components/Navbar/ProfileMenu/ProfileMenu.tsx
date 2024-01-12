@@ -7,7 +7,7 @@ import {
   MdArrowDropDown,
   MdArrowDropUp,
 } from "react-icons/md";
-import DropDownItem from "../../Gloabal/DropDownItem/DropDownItem";
+import DropDownItem from "../../Global/DropDownItem/DropDownItem";
 import Link from "next/link";
 
 type Props = {};
@@ -22,7 +22,7 @@ const ProfileMenu = () => {
   };
 
   const handleLogout = () => {
-    if (!localStorage.getItem('user')) {
+    if (!localStorage.getItem("user")) {
       return toast.error("Already Loged out!");
     }
     authCtx?.logout();

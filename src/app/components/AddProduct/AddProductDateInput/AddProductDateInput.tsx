@@ -56,7 +56,7 @@ const AddProductDateInput = ({ value, onDateChange }: Props) => {
 export default AddProductDateInput;
 
 // import React from "react";
-// import Input from "../../../Gloabal/Input/Input";
+// import Input from "../../../Global/Input/Input";
 
 // type Props = {
 //   value: string;

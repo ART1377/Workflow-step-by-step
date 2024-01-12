@@ -1,5 +1,5 @@
-import Button from "@/app/components/Gloabal/Button/Button";
-import Input from "@/app/components/Gloabal/Input/Input";
+import Button from "@/app/components/Global/Button/Button";
+import Input from "@/app/components/Global/Input/Input";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 

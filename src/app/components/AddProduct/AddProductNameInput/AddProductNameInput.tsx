@@ -1,6 +1,6 @@
 import React from "react";
-import Input from "../../Gloabal/Input/Input";
-import DropDownItem from "../../Gloabal/DropDownItem/DropDownItem";
+import Input from "../../Global/Input/Input";
+import DropDownItem from "../../Global/DropDownItem/DropDownItem";
 
 type Props = {
   value: string;
