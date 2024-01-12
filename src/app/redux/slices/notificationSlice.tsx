@@ -46,7 +46,7 @@ export const markAsRead = createAsyncThunk(
 
 export const addNotification = createAsyncThunk(
   "notifications/addNotification",
-  async (newNotification) => {
+  async (newNotification:{title:string,description:string,productId:string}) => {
     const response = await axios.post(`${API_URL}/notifications`, newNotification);
     return response.data;
   }

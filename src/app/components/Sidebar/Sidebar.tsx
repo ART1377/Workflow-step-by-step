@@ -16,7 +16,7 @@ const Sidebar = () => {
   const sidebarItmes: SidebarItme[] = [
     { title: "products", path: "products", icon: <MdPerson /> },
     { title: "add product", path: "addproduct", icon: <MdPerson /> },
-    { title: "part 3", path: "part3", icon: <MdPerson /> },
+    { title: "add notification", path: "addnotification", icon: <MdPerson /> },
     { title: "part 4", path: "part4", icon: <MdPerson /> },
     { title: "part 5", path: "part5", icon: <MdPerson /> },
     { title: "part 6", path: "part6", icon: <MdPerson /> },
