@@ -49,13 +49,13 @@ const NotificationItem = ({
             : "bg-primary-dark border-gray-light"
         }`}
       >
-        <div className={`sender w-1/6 flex flex-col items-center`}>
+        <div className={`sender w-1/6 flex flex-col items-center overflow-hidden`}>
           <div className="bg-primary-light w-12 h-12 rounded-full flex justify-center items-center font-medium">
             {sender?.senderName[0]}
           </div>
           <div>
             <small
-              className={`text-bold capitalize ${
+              className={`text-bold capitalize line-clamp-1 ${
                 read ? "text-dark" : "text-light"
               }`}
             >

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/redux/hooks/hooks";
 import { addNotification } from "../../../redux/slices/notificationSlice";
 import { fetchProducts } from "../../../redux/slices/productSlice";
@@ -8,8 +8,13 @@ import TextArea from "../../Gloabal/TextArea/TextArea";
 import SelectOption from "../../Gloabal/SelectOption/SelectOption";
 import Button from "../../Gloabal/Button/Button";
 import toast from "react-hot-toast";
+import { AuthContext } from "@/app/context/AuthContext";
+
+import { nanoid } from "nanoid";
 
 const AddNotificationForm = () => {
+  const authCtx = useContext(AuthContext);
+
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.product.products);
 
@@ -39,11 +44,20 @@ const AddNotificationForm = () => {
     // Dispatch the addNotification action
     dispatch(
       addNotification({
+        id: nanoid(),
         title,
-        description,
+        message: description,
+        sender: {
+          senderName: authCtx?.user?.username!,
+          senderId: nanoid(),
+        },
+        timestamp: new Date().toString(),
+        read: false,
         productId: productId!,
       })
     );
+
+    toast.success("Notification Added Successfully");
 
     // reset the form fields after submission
     setTitle("");
@@ -77,7 +91,7 @@ const AddNotificationForm = () => {
         label="Select Product"
         value={selectedProduct}
         onChange={(e) => setSelectedProduct(e.target.value)}
-        options={productOptions}
+        options={["", ...productOptions]}
       />
       <Button type="submit" variant="primary-main" size="large">
         Add Notification
