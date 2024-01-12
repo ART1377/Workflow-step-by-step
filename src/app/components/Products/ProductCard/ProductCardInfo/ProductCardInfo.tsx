@@ -23,7 +23,7 @@ const ProductCardInfo = ({
         <h3 className="text-lg font-medium text-dark">{productName}</h3>
         <p className="mt-1 text-sm text-gray-main">{productDescription}</p>
       </div>
-      <div className="bg-light p-3 flex gap-2 relative">
+      <div className="bg-light p-3 flex gap-2 relative min-h-10">
         {steps.map((step: Step, index: number) => (
           <StepIndicator
             key={step.step}

@@ -23,7 +23,7 @@ const ProductDetailModal = ({
   return (
     <>
       <BaseModal isOpen={isModalOpen} onClose={closeModal}>
-        <div>
+        <div className="mb-6">
           <ProductTabs activeTab={activeTab} switchTab={switchTab} />
           {activeTab === "workflow" && (
             <ProductWorkflowSection

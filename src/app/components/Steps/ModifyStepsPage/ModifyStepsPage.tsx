@@ -1,14 +1,14 @@
-import React from 'react'
-import ModifyStepsForm from '../ModifyStepsForm/ModifyStepsForm'
+import React from "react";
+import ModifyStepsForm from "../ModifyStepsForm/ModifyStepsForm";
 
-type Props = {}
+type Props = {};
 
 const ModifyStepsPage = (props: Props) => {
   return (
     <>
-    <ModifyStepsForm/>
+      <ModifyStepsForm />
     </>
-  )
-}
+  );
+};
 
-export default ModifyStepsPage
+export default ModifyStepsPage;
