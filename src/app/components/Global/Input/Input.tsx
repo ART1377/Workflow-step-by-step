@@ -12,6 +12,8 @@ type Props = {
   placeHolder?: string;
   bgColor?: string;
   required?: boolean;
+  min?: number;
+  max?: number;
 };
 
 const Input = ({
@@ -25,6 +27,8 @@ const Input = ({
   placeHolder,
   required = true,
   bgColor = "bg-white",
+  max,
+  min,
 }: Props) => {
   const renderInput = () => {
     switch (type) {
@@ -38,6 +42,8 @@ const Input = ({
             onChange={onChange}
             onFocus={onFocus}
             onBlur={onBlur}
+            min={min}
+            max={max}
             className={`${bgColor} text-primary-dark w-full min-h-[42px] p-2 focus:shadow-none outline outline-primary-main outline-2 focus:outline-[3px] rounded-radius-main`}
           />
         );

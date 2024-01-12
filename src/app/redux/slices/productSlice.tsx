@@ -64,7 +64,15 @@ export const updateProduct = createAsyncThunk(
 
 export const addStepToProduct = createAsyncThunk(
   "products/addStepToProduct",
-  async ({ productId, newStep }: { productId: string; newStep: Step }) => {
+  async ({
+    productId,
+    newStep,
+    numberOfSteps,
+  }: {
+    productId: string;
+    newStep: Step;
+    numberOfSteps: number;
+  }) => {
     const response = await axios.get(`${API_URL}/products/${productId}`);
     const productToUpdate = response.data;
 
@@ -75,10 +83,14 @@ export const addStepToProduct = createAsyncThunk(
     );
 
     // Set the step property of the newStep to be one greater than the maximum step
-    newStep.step = maxStep + 1;
+    let maxNumber = maxStep + 1;
 
-    // Add the newStep to the steps array
-    productToUpdate.steps.push(newStep);
+    for (let index = 0; index < numberOfSteps; index++) {
+      newStep.step = maxNumber + index;
+      // Add the newStep to the steps array
+      productToUpdate.steps.push(newStep);
+    }
+
 
     // Now, update the product on the server
     await axios.put(`${API_URL}/products/${productId}`, productToUpdate);
@@ -101,7 +113,9 @@ export const deleteStepsFromProduct = createAsyncThunk(
     const productToUpdate = response.data;
 
     // Remove the specified number of steps from the beginning of the steps array
-    productToUpdate.steps.splice(0, numberOfSteps);
+    for (let index = 0; index < numberOfSteps; index++) {
+      productToUpdate?.steps?.shift();
+    }
 
     // Now, update the product on the server
     await axios.put(`${API_URL}/products/${productId}`, productToUpdate);

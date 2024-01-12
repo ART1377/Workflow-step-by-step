@@ -7,15 +7,6 @@
       "steps": [
         {
           "person": {
-            "personName": "John",
-            "personId": "001"
-          },
-          "state": "dafault",
-          "step": 1,
-          "file": null
-        },
-        {
-          "person": {
             "personName": "Sophia",
             "personId": "007"
           },
@@ -34,6 +25,33 @@
           },
           "state": "rejected",
           "step": 5,
+          "file": null
+        },
+        {
+          "person": {
+            "personName": "",
+            "personId": ""
+          },
+          "state": "default",
+          "step": 6,
+          "file": null
+        },
+        {
+          "person": {
+            "personName": "",
+            "personId": ""
+          },
+          "state": "default",
+          "step": 7,
+          "file": null
+        },
+        {
+          "person": {
+            "personName": "",
+            "personId": ""
+          },
+          "state": "default",
+          "step": 8,
           "file": null
         }
       ]
@@ -99,7 +117,28 @@
       "productName": "Product 3",
       "productDescription": "Description for Product 3",
       "steps": [
-       
+        {
+          "person": {
+            "personName": "Isaac",
+            "personId": "006"
+          },
+          "state": "succeed",
+          "step": 4,
+          "file": null
+        },
+        {
+          "person": {
+            "personName": "Adam",
+            "personId": "004"
+          },
+          "state": "uploaded",
+          "step": 5,
+          "file": {
+            "name": "Screenshot (2).png",
+            "type": "image/png",
+            "size": 96304
+          }
+        }
       ]
     },
     {

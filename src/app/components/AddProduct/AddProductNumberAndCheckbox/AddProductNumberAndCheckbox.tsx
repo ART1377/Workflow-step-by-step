@@ -19,6 +19,7 @@ const AddProductNumberAndCheckbox = ({
     <div className="w-full">
       <Input
         label="Number"
+        min={1}
         type="number"
         value={number}
         onChange={onNumberChange}

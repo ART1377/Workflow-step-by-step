@@ -14,9 +14,14 @@ import { nanoid } from "nanoid";
 
 const AddNotificationForm = () => {
   const authCtx = useContext(AuthContext);
-
+  
   const dispatch = useAppDispatch();
   const products = useAppSelector((state) => state.product.products);
+  
+    // Fetch products on component mount
+    useEffect(() => {
+      dispatch(fetchProducts());
+    }, [dispatch]);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -64,11 +69,6 @@ const AddNotificationForm = () => {
     setDescription("");
     setSelectedProduct("");
   };
-
-  // Fetch products on component mount
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
 
   return (
     <form
