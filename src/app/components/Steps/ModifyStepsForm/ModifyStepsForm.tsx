@@ -93,7 +93,7 @@ const ModifyStepsForm = () => {
       <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-1 mb-6">
           <h6 className="text-center text-primary-dark">
-            You Can Add Notification here !
+            You Can Modify Steps HERE !
           </h6>
           <small className="text-center text-primary-main">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
