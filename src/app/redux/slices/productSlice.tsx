@@ -83,14 +83,12 @@ export const addStepToProduct = createAsyncThunk(
     );
 
     // Set the step property of the newStep to be one greater than the maximum step
-    let maxNumber = maxStep + 1;
+    newStep.step = maxStep + 1;
 
+    // Add the newStep to the steps array
     for (let index = 0; index < numberOfSteps; index++) {
-      newStep.step = maxNumber + index;
-      // Add the newStep to the steps array
-      productToUpdate.steps.push(newStep);
+      productToUpdate.steps.push({ ...newStep, step: newStep.step + index });
     }
-
 
     // Now, update the product on the server
     await axios.put(`${API_URL}/products/${productId}`, productToUpdate);

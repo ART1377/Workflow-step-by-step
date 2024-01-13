@@ -43,6 +43,7 @@ const ModifyStepsForm = () => {
         step: 0, // The actual step will be assigned in the addStepToProduct thunk
         file: null,
       };
+      
 
       dispatch(
         addStepToProduct({
