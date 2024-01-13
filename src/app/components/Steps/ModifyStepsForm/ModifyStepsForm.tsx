@@ -36,14 +36,13 @@ const ModifyStepsForm = () => {
       toast.error("All fields must be filled !");
       return;
     }
-    if (selectedProduct) {
+    if (selectedProduct && numberOfSteps) {
       const newStep: Step = {
         person: { personName: "", personId: "" },
         state: "default",
         step: 0, // The actual step will be assigned in the addStepToProduct thunk
         file: null,
       };
-      
 
       dispatch(
         addStepToProduct({
@@ -52,6 +51,9 @@ const ModifyStepsForm = () => {
           numberOfSteps: Number(numberOfSteps),
         })
       );
+
+      toast.success(`${numberOfSteps} Steps added successfully`);
+      resetInputs();
     }
   };
 
@@ -75,10 +77,16 @@ const ModifyStepsForm = () => {
           numberOfSteps: Number(numberOfSteps),
         })
       );
+
+      toast.success(`${numberOfSteps} Steps deleted successfully`);
+      resetInputs();
     }
   };
 
-  console.log(relatedProduct);
+  const resetInputs = () => {
+    setNumberOfSteps("");
+    setSelectedProduct("");
+  };
 
   return (
     <div className="flex flex-col gap-8">
