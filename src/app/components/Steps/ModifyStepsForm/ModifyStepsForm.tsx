@@ -89,48 +89,47 @@ const ModifyStepsForm = () => {
   };
 
   return (
-    <div className='h-[calc(100vh - 120px)] max-w-[600px] bg-light p-10 m-auto mt-10 rounded-radius-large'>
+    <div className="h-[calc(100vh - 120px)] max-w-[600px] bg-light p-10 m-auto mt-10 rounded-radius-large">
+      <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-1 mb-6">
+          <h6 className="text-center text-primary-dark">
+            You Can Add Notification here !
+          </h6>
+          <small className="text-center text-primary-main">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est,
+            delectus?
+          </small>
+        </div>
+        <SelectOption
+          label="Select Product"
+          value={selectedProduct}
+          onChange={(e) => setSelectedProduct(e.target.value)}
+          options={["", ...productOptions]}
+          required={true}
+          bgColor="bg-light"
+        />
+        <Input
+          label="Number of Steps"
+          type="number"
+          min={1}
+          value={numberOfSteps.toString()}
+          onChange={(e) => setNumberOfSteps(e.target.value)}
+          placeHolder={`Current number of steps : ${
+            relatedProduct ? relatedProduct.steps.length : 0
+          }`}
+          required={true}
+          bgColor="bg-light"
+        />
+        <div className="flex flex-col gap-2">
+          <Button variant="primary-main" size="large" onClick={handleAddStep}>
+            Add Step
+          </Button>
 
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-1 mb-6">
-
-      <h6 className="text-center text-primary-dark">
-        You Can Add Notification here !
-      </h6>
-      <small className="text-center text-primary-main">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, delectus?
-      </small>
+          <Button variant="reject" size="large" onClick={handleDeleteSteps}>
+            Delete Steps
+          </Button>
+        </div>
       </div>
-      <SelectOption
-        label="Select Product"
-        value={selectedProduct}
-        onChange={(e) => setSelectedProduct(e.target.value)}
-        options={["", ...productOptions]}
-        required={true}
-        bgColor="bg-light"
-      />
-      <Input
-        label="Number of Steps"
-        type="number"
-        min={1}
-        value={numberOfSteps.toString()}
-        onChange={(e) => setNumberOfSteps(e.target.value)}
-        placeHolder={`Current number of steps : ${
-          relatedProduct ? relatedProduct.steps.length : 0
-        }`}
-        required={true}
-        bgColor="bg-light"
-      />
-      <div className="flex flex-col gap-3">
-        
-      <Button variant="reject" size="large" onClick={handleDeleteSteps}>
-        Delete Steps
-      </Button>
-      <Button variant="primary-main" size="large" onClick={handleAddStep}>
-        Add Step
-      </Button>
-      </div>
-    </div>
     </div>
   );
 };
