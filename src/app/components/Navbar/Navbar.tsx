@@ -8,9 +8,9 @@ import SearchBar from "./SearchBar/SearchBar";
 const Navbar = () => {
   return (
     <nav
-      className={`bg-primary-dark shadow p-4 sticky top-0 z-10 h-[72px] flex border-none`}
+      className={`bg-primary-dark shadow p-3 sticky top-0 z-10 h-[72px] flex border-none`}
     >
-      <div className="flex justify-between items-center w-full">
+      <div className="flex justify-between items-center w-full gap-2">
         {/* Profile Icon */}
         <ProfileMenu />
 

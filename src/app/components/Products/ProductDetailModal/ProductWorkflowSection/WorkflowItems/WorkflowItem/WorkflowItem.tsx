@@ -118,7 +118,7 @@ const WorkflowItem = ({ step, id, length, index }: Props) => {
             )}
             {step.state}
           </span>
-          {step.file && (
+          {step.file && step?.person?.personName && (
             <p className="text-gray-main text-xs my-1 font-bold flex items-center gap-px">
               <MdPerson className="text-sm" />
               {step.person.personName}

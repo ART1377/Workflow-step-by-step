@@ -41,9 +41,13 @@
             "personName": "",
             "personId": ""
           },
-          "state": "default",
+          "state": "uploaded",
           "step": 7,
-          "file": null
+          "file": {
+            "name": "Screenshot (2).png",
+            "type": "image/png",
+            "size": 96304
+          }
         },
         {
           "person": {
@@ -59,7 +63,7 @@
             "personName": "",
             "personId": ""
           },
-          "state": "default",
+          "state": "succeed",
           "step": 9,
           "file": null
         },
@@ -1323,7 +1327,7 @@
         "senderId": "009"
       },
       "timestamp": "2024-01-03T17:45:00Z",
-      "read": false,
+      "read": true,
       "productId": "11"
     },
     {
@@ -1373,6 +1377,18 @@
       "timestamp": "2024-01-01T21:45:00Z",
       "read": true,
       "productId": "18"
+    },
+    {
+      "id": "Wt3cRvGgpc9DkO3cRBb5i",
+      "title": "product 1 changed",
+      "message": "file uploaded in step 7 of product 1",
+      "sender": {
+        "senderName": "ali",
+        "senderId": "6mRI25w62qOAo6WupuE-w"
+      },
+      "timestamp": "Sat Jan 13 2024 17:34:03 GMT+0330 (Iran Standard Time)",
+      "read": false,
+      "productId": "1"
     }
   ]
 }
